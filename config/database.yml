@@ -26,9 +26,5 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database:  ashita_lesson
-  username:  ashita_lesson
-  password:  ashita_lesson
-  host:      localhost
-  socket:    /tmp/mysql.sock
+  adapter: postgresql
+  encoding: unicode
