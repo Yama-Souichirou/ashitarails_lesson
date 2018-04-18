@@ -3,7 +3,12 @@
   <%= render 'shared/head' %>
 
   <body>
-    <%= yield %>
-    <%= render 'shared/footer' %>
+    <div id="wrapper">
+      <%= render 'sidebar' %>
+      <section id="middle">
+        <%= yield %>
+      </section>
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>
