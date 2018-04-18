@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
-  def inddx
+  def index
     @tasks = Task.all
   end
   
