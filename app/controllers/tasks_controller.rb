@@ -14,13 +14,26 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(task_params)
+    if @task.save
+      flash[:notice] = "タスクを保存しました"
+      redirect_to tasks_path
+    else
+      flash[:danger] = "保存できませんでした"
+      render 'new'
+    end
   end
-  
+
   def edit
   end
   
   def update
-  
+    if @task.update(task_params)
+      flash[:notice] = "タスクを更新しました"
+      redirect_to tasks_path
+    else
+      flash[:danger] = "タスクを更新できませんでした"
+      render 'edit'
+    end
   end
   
   def destroy
