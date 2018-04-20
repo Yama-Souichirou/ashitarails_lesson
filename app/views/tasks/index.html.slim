@@ -11,9 +11,9 @@ table
   tbody
     - @tasks.each do |task|
       tr
-        td = task.title
+        td = link_to task.title, task_path(task)
         td = task.deadline_on.strftime("%Y/%m/%d")
-        td = Task.priorities.invert[task.priority]
-        td = Task.statuses.invert[task.status]
+        td = task.priority
+        td = task.status
         td = link_to "編集", edit_task_path(task)
         td = link_to "削除", task_path(task), method: :delete, data: { confirm: "本当に削除しますか？" }
