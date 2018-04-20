@@ -7,13 +7,13 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-  attributes:
-    task:
-      title: タスク名
-      description: 説明文
-      status: ステータス
-      priority: 優先度
-      deadline_on: 期日
+    attributes:
+      task:
+        title: "タスク名"
+        description: "説明文"
+        status: "ステータス"
+        priority: "優先度"
+        deadline_on: "期日"
   date:
     abbr_day_names:
     - 日

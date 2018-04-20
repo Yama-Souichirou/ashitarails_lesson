@@ -5,10 +5,10 @@ h1 Tasks
 table border="1" cellspacing="0"
   thead
     tr
-      th タスク名
-      th 期日
-      th 優先順位
-      th ステータス
+      th = Task.human_attribute_name(:title)
+      th = Task.human_attribute_name(:deadline_on)
+      th = Task.human_attribute_name(:priority)
+      th = Task.human_attribute_name(:status)
 
   tbody
     - @tasks.each do |task|
