@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <%= render 'shared/head' %>
+<head>
+  <title>Aaa</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
   <body>
-      <%= render 'shared/sidebar' %>
-      <%= render 'shared/header' %>
-        <%= yield %>
-      <%= render 'shared/footer' %>
+    <%= yield %>
   </body>
 </html>
