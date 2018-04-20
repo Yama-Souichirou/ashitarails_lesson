@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module AshitaRailsLesson
   class Application < Rails::Application
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
     config.generators.template_engine = :slim
     config.generators do |g|
       g.test_framework :rspec,
