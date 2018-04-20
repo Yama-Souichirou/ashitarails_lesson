@@ -26,7 +26,7 @@
             <th>Task name</th>
             <th>Deadline</th>
             <th>Priority</th>
-            <th>Manage</th>
+            <th>Created</th>
             <th></th>
           </tr>
           </thead>
@@ -34,10 +34,15 @@
           <% @tasks.each_with_index do |task, index| %>
           <tr>
             <td><%= index %></td>
-            <td><%= task.title %></td>
+            <td><%= link_to task.title, task_path(task) %></td>
             <td><%= task.dead.strftime("%Y/%m/%d") %></td>
-            <td><%= task.priority %></td>
-            <td><span class="label label-success">Approved </span></td>
+            <td><label class="label label-info"><%= Task.priorities.invert[task.priority] %></label></td>
+            <td><%= task.created_at.strftime("%Y/%m/%d") %></td>
+            <td>
+              <%= link_to task_path(task), method: :delete, data: { confirm: "削除しますか？" } do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+                </td>
           </tr>
           <% end %>
           </tbody>
