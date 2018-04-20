@@ -37,7 +37,13 @@ class TasksController < ApplicationController
   end
   
   def destroy
-  
+    if @task.destroy
+      flash[:notice] = "削除しました"
+      redirect_to tasks_path
+    else
+      flash[:danger] = "削除できませんでした"
+      redirect_to tasks_path
+    end
   end
   
   private
@@ -45,7 +51,7 @@ class TasksController < ApplicationController
       params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :user_id)
     end
   
-    def set_params
+    def set_task
       @task = Task.find(params[:id])
     end
 end
