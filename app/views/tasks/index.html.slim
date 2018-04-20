@@ -1,0 +1,16 @@
+h1 Tasks
+
+table
+  thead
+    tr
+      th タスク名
+      th 期日
+      th 優先順位
+      th ステータス
+
+  tbody
+    - @tasks.each do |task|
+      tr
+        th = task.title
+        th = task.deadline_on.strftime("%Y/%m/%d")
+        th = task.priority
