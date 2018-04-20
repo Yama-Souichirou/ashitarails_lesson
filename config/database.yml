@@ -9,25 +9,21 @@ default: &default
   pool: 5
   timeout: 5000
   encoding: utf8
-
-development:
-  <<: *default
   database:  ashita_lesson_local
   username:  ashita_lesson_local
   password:  ashita_lesson_local
   host:      localhost
   socket:    /tmp/mysql.sock
+
+development:
+  <<: *default
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database:  ashita_lesson_local
-  username:  ashita_lesson_local
-  password:  ashita_lesson_local
-  host:      localhost
-  socket:    /tmp/mysql.sock
 
 production:
   adapter: postgresql
