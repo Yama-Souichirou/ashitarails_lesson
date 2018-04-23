@@ -1,4 +1,10 @@
 = form_for @task do |f|
+  - if @task.errors.any?
+    div.errors
+    - @task.errors.full_messages.each do |error|
+      p.error-message
+        = error
+
   div.form-group
     = f.label :title, "タスク名"
     = f.text_field :title, class: "form-control"
