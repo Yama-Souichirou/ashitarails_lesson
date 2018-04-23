@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'capybara'
   gem 'pry-rails'
+  gem 'factory_girl_rails'
 
 end
 

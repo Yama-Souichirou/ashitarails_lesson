@@ -1,9 +1,9 @@
 = form_for @task do |f|
   - if @task.errors.any?
     div.errors
-    - @task.errors.full_messages.each do |error|
-      p.error-message
-        = error
+      - @task.errors.full_messages.each do |message|
+        p.error-message
+          = message
 
   div.form-group
     = f.label :title, "タスク名"
