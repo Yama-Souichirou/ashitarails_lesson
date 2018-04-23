@@ -42,7 +42,7 @@ group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'factory_girl_rails'
-  gem 'database_cleaner'
+  gem 'database_rewinder'
 end
 
 group :development do

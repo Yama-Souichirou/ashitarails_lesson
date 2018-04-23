@@ -27,7 +27,7 @@ table border="1" cellspacing="0"
       tr
         td.td-title = link_to task.title, task_path(task)
         td.td-deadlineon = task.deadline_on.strftime("%Y/%m/%d")
-        td = task.priority
+        td.td-priority = task.priority
         td.td-status = task.status
         td.td-createdat = task.created_at.strftime("%Y/%m/%d")
         td = link_to "編集", edit_task_path(task)
