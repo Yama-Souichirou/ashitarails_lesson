@@ -18,6 +18,7 @@ table border="1" cellspacing="0"
       th = Task.human_attribute_name(:deadline_on)
       th = Task.human_attribute_name(:priority)
       th = Task.human_attribute_name(:status)
+      th = Task.human_attribute_name(:created_at)
 
   tbody
     - @tasks.each do |task|
@@ -26,5 +27,6 @@ table border="1" cellspacing="0"
         td.td-deadlineon = task.deadline_on.strftime("%Y/%m/%d")
         td = task.priority
         td = task.status
+        td = task.created_at.strftime("%Y/%m/%d")
         td = link_to "編集", edit_task_path(task)
         td = link_to "削除", task_path(task), method: :delete, data: { confirm: "本当に削除しますか？" }
