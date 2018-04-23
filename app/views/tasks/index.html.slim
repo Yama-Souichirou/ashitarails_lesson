@@ -4,9 +4,9 @@ h1 Tasks
 
 div.search-items
   = form_tag "/", method: :get do
-    = check_box_tag "deadline_on", true, false, {}
     = label_tag "期日"
-
+    = check_box_tag "deadline_on", true, false, { checked: params[:deadline_on] ? true : false, class: "deadline-check" }
+    br
     = button_tag "適応"
 
 table border="1" cellspacing="0"
@@ -21,7 +21,7 @@ table border="1" cellspacing="0"
     - @tasks.each do |task|
       tr
         td.td-title = link_to task.title, task_path(task)
-        td = task.deadline_on.strftime("%Y/%m/%d")
+        td.td-deadlineon = task.deadline_on.strftime("%Y/%m/%d")
         td = task.priority
         td = task.status
         td = link_to "編集", edit_task_path(task)
