@@ -5,7 +5,7 @@ div.search-items
     = label_tag "タイトル"
     = text_field_tag "title"
     = label_tag "ステータス"
-    = select_tag "status", options_for_select(Task.statuses.keys, selected: params[:status])
+    = select_tag "status", options_for_select(Task.statuses.keys, selected: params[:status]), include_blank: true
     = label_tag "期日順"
     = check_box_tag "deadline_on", true, false, { checked: params[:deadline_on] ? true : false, class: "deadline-check" }
     br
@@ -26,7 +26,7 @@ table border="1" cellspacing="0"
         td.td-title = link_to task.title, task_path(task)
         td.td-deadlineon = task.deadline_on.strftime("%Y/%m/%d")
         td = task.priority
-        td = task.status
-        td = task.created_at.strftime("%Y/%m/%d")
+        td.td-status = task.status
+        td.td-createdat = task.created_at.strftime("%Y/%m/%d")
         td = link_to "編集", edit_task_path(task)
         td = link_to "削除", task_path(task), method: :delete, data: { confirm: "本当に削除しますか？" }

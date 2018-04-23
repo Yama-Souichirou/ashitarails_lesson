@@ -18,13 +18,14 @@ RSpec.feature "Tasks", type: :feature do
   
   describe "sort" do
     context "default" do
-      it "ordered created_at" do
-        tasks = []
+      before do
         1.upto(3) do |i|
-          tasks << FactoryGirl.create(:task, created_at: Date.today + i)
+          FactoryGirl.create(:task, created_at: Date.today + i)
         end
         visit root_path
-
+      end
+      
+      it "ordered created_at" do
         expect(page.all("tbody tr")[0].find(".td-title").text).to match "タスク名3"
         expect(page.all("tbody tr")[1].find(".td-title").text).to match "タスク名2"
         expect(page.all("tbody tr")[2].find(".td-title").text).to match "タスク名1"
@@ -33,20 +34,70 @@ RSpec.feature "Tasks", type: :feature do
     
     context "check '期日' and click button '適応'" do
       before do
+        1.upto(3) do |i|
+          FactoryGirl.create(:task, deadline_on: Date.today + i)
+        end
         visit root_path
         check "deadline_on"
         click_button "適応"
       end
       
       it "ordered deadline_on" do
-        tasks = []
-        1.upto(3) do |i|
-          tasks << FactoryGirl.create(:task, deadline_on: Date.today + i)
-        end
-
         expect(page.all("tbody tr")[0].find(".td-deadlineon").text).to match "#{(Date.today + 3).strftime("%Y/%m/%d")}"
         expect(page.all("tbody tr")[1].find(".td-deadlineon").text).to match "#{(Date.today + 2).strftime("%Y/%m/%d")}"
         expect(page.all("tbody tr")[2].find(".td-deadlineon").text).to match "#{(Date.today + 1).strftime("%Y/%m/%d")}"
+      end
+    end
+  end
+  
+  describe "search" do
+    context "fill in title field" do
+      before do
+        visit root_path
+        fill_in "title", with: "タスク名1"
+        click_button "適応"
+      end
+      
+      it "display result" do
+        expect(page.all("tbody tr")[0].find(".td-title").text).to match "タスク名1"
+      end
+    end
+
+    context "select status" do
+      context "完了" do
+        before do
+          visit root_path
+          select "完了",  from: "status"
+          click_button "適応"
+        end
+  
+        it "display result" do
+          expect(page.all("tbody tr")[0].find(".td-status").text).to match "完了"
+        end
+      end
+
+      context "着手中" do
+        before do
+          visit root_path
+          select "着手中",  from: "status"
+          click_button "適応"
+        end
+  
+        it "display result" do
+          expect(page.all("tbody tr")[0].find(".td-status").text).to match "着手中"
+        end
+      end
+
+      context "未着手" do
+        before do
+          visit root_path
+          select "未着手",  from: "status"
+          click_button "適応"
+        end
+  
+        it "display result" do
+          expect(page.all("tbody tr")[0].find(".td-status").text).to match "未着手"
+        end
       end
     end
   end
