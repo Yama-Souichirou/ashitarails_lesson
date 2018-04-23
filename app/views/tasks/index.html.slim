@@ -2,6 +2,13 @@ h1 Tasks
 
 = link_to "新規作成", new_task_path
 
+div.search-items
+  = form_tag "/", method: :get do
+    = check_box_tag "deadline_on", true, false, {}
+    = label_tag "期日"
+
+    = button_tag "適応"
+
 table border="1" cellspacing="0"
   thead
     tr
