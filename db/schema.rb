@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20180423002843) do
     t.string   "title",                     null: false
     t.text     "description", limit: 65535
     t.date     "deadline_on",               null: false
-    t.date     "status",                    null: false
-    t.date     "priority",                  null: false
+    t.integer  "status",                    null: false
+    t.integer  "priority",                  null: false
     t.integer  "user_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
