@@ -14,15 +14,19 @@ RSpec.feature "Tasks", type: :feature do
     }.to change(Task, :count).by(1)
   end
   
-  scenario "tasks are ordered descending created_at" do
+  scenario "tasks are sorted in descending order to created_at" do
     tasks = []
     3.times do |i|
-      tasks << Task.create(title: "#{i + 1}", description: "", deadline_on: "2018-04-12")
+      tasks << Task.create(
+        title: "タスク名#{i + 1}",
+        description: "",
+        deadline_on: "2018-01-10",
+        created_at: Date.today + i)
     end
-    
-    ordered_careated_at_tasks = tasks.sort_by { |task| task.created_at }.reverse
     visit root_path
-    p page.all("tbody tr")[0]
+    
+    expect(page.all("tbody tr")[0].find(".td-title").text).to match "タスク名3"
+    expect(page.all("tbody tr")[1].find(".td-title").text).to match "タスク名2"
+    expect(page.all("tbody tr")[2].find(".td-title").text).to match "タスク名1"
   end
-  # pending "add some scenarios (or delete) #{__FILE__}"
 end
