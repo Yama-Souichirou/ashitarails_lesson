@@ -6,6 +6,7 @@ class TasksController < ApplicationController
       .search_title(params[:title])
       .search_status(params[:status])
       .select_order(params[:order_selected])
+      .page(params[:page])
   end
   
   def show
