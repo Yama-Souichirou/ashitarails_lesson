@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     @tasks = Task.all
       .search_title(params[:title])
       .search_status(params[:status])
-      .order(params[:deadline_on].present? ? "deadline_on DESC " : "created_at DESC")
+      .select_order(params[:order_selected])
   end
   
   def show
