@@ -14,6 +14,7 @@ gem 'rails', '~> 5.0.7'
 gem 'puma', '~> 3.0'
 gem 'mysql2'
 gem 'kaminari'
+gem 'bootstrap-sass'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
