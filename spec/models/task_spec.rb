@@ -27,4 +27,8 @@ RSpec.describe Task, type: :model do
     task.valid?
     expect(task.errors[:priority]).to include("を入力してください")
   end
+  
+  it "has a valid factory" do
+    expect(FactoryGirl.create(:task)).to be_valid
+  end
 end
