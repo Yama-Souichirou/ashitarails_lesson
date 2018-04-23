@@ -9,5 +9,13 @@ class Task < ApplicationRecord
   
   enum priority: PRIORITIES
   enum status: STATUSES
+  
+  scope :search_title, -> (title) {
+    where("title like ?", "%#{title}%") if title.present?
+  }
+  
+  scope :search_status, -> (status) {
+    where(status: status) if status.present?
+  }
 end
 

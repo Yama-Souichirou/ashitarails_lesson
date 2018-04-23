@@ -3,6 +3,8 @@ class TasksController < ApplicationController
   
   def index
     @tasks = Task.all
+      .search_title(params[:title])
+      .search_status(params[:status])
       .order(params[:deadline_on].present? ? "deadline_on DESC " : "created_at DESC")
   end
   
