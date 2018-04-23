@@ -1,3 +1,8 @@
+$base_color: #F8FCFB;
+$main_color: #C9FDD7;
+$accent: #79D1C3;
+$pr_color: #6892D5;
+
 @for $i from 0 through 30 {
   .mt#{$i * 5} {
     margin-top:#{$i * 5}px;
