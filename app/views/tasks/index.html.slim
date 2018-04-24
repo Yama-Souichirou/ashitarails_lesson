@@ -1,49 +1,56 @@
-div.container
+div.container-fluid
   div.row
     div.col-sm-12
-      div.search-items.mt20
-        = form_tag "/", method: :get do
-          div.col-sm-3
-            div.form-group
-              label.control-label タイトル
-              = text_field_tag "title", "", :class => "form-control"
-          div.col-sm-3
-            div.form-group
-              label.control-label ステータス
-              = select_tag "status", options_for_select(Task.statuses.keys, selected: params[:status]), include_blank: true, class: "form-control"
-          div.col-sm-3
+      div.panel.panel-default.mt20
+        div.panel-body
+          / form_forを使うのが望ましい
+          = form_tag "/", method: :get do
+            div.col-sm-3
+              div.form-group
+                label.control-label タイトル
+                = text_field_tag "title", params[:title],  :class => "form-control"
+            div.col-sm-3
+              div.form-group
+                label.control-label ステータス
+                = select_tag "status", options_for_select(Task.statuses.keys, selected: params[:status]), include_blank: true, class: "form-control"
+            div.col-sm-3
               div.form-group
                 br
-                label.control-label 期日順
+                label.control-label 期日順　
                 = radio_button_tag "order_selected", 'deadline', class: "deadline-check"
-                label.control-label 優先順
+                br
+                label.control-label 優先順　
                 = radio_button_tag "order_selected", 'priority', class: "priority-check"
-          div.col-sm-12
-            div.form-group
-              = button_tag "適応", class: "btn btn-default"
+            div.col-sm-12
+              div.form-group
+                = button_tag id: "search-button", class: "btn btn-default btn-large" do
+                  i.glyphicon.glyphicon-search
 
   div.row
     div.col-sm-12
-      table.mt30.table
-        thead
-          tr
-            th = Task.human_attribute_name(:title)
-            th = Task.human_attribute_name(:deadline_on)
-            th = Task.human_attribute_name(:priority)
-            th = Task.human_attribute_name(:status)
-            th = Task.human_attribute_name(:created_at)
-            th
+      div.panel.panel-default
+        div.panel-body
+          table.mt30.table
+            thead
+              tr
+                th = Task.human_attribute_name(:title)
+                th = Task.human_attribute_name(:deadline_on)
+                th = Task.human_attribute_name(:priority)
+                th = Task.human_attribute_name(:status)
+                th = Task.human_attribute_name(:created_at)
+                th
 
-        tbody
-          - @tasks.each do |task|
-            tr
-              td.td-title = link_to task.title, task_path(task)
-              td.td-deadlineon = task.deadline_on.strftime("%Y/%m/%d")
-              td.td-priority = task.priority
-              td.td-status = task.status
-              td.td-createdat = task.created_at.strftime("%Y/%m/%d")
-              td
-                = link_to "編集", edit_task_path(task), class: "btn btn-default"
-                = link_to "削除", task_path(task), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-default"
+            tbody
+              - @tasks.each do |task|
+                tr
+                  td.td-title = link_to task.title, task_path(task)
+                  /i18n .lなる時間をlocaleに合わせられる
+                  td.td-deadlineon = l task.deadline_on
+                  td.td-priority = task.priority
+                  td.td-status = task.status
+                  td.td-createdat = l task.created_at
+                  td
+                    = link_to "編集", edit_task_path(task), class: "btn btn-primary"
+                    = link_to "削除", task_path(task), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger"
 
   = paginate @tasks

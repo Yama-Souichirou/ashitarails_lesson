@@ -8,12 +8,12 @@ html
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body.clearfix
-    div#wrapper
+  body
+    div#wrapper.clearfix
       = render "shared/header"
       = render "shared/sidebar"
       div#content
         = yield
       footer
 
-    script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    / script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"

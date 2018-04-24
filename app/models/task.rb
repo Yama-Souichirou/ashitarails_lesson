@@ -4,14 +4,16 @@ class Task < ApplicationRecord
   validates :status, presence: true
   validates :priority, presence: true
   
-  PRIORITIES = { "お手すき" => 1, "普通" => 2, "優先" => 3, "最優先" => 4 }
-  STATUSES   = { "未着手" => 1, "着手中" => 2, "完了" => 3 }
+  # 英語にしよう
+  PRIORITIES = { 'お手すき' => 1, '普通' => 2, '優先' => 3, '最優先' => 4 }
+  STATUSES   = { '未着手' => 1, '着手中' => 2, '完了' => 3 }
   
   enum priority: PRIORITIES
   enum status: STATUSES
+  #  くっつけるenum
   
-  after_create :set_default_status
-  after_create :set_default_priority
+  before_create :set_default_status
+  before_create :set_default_priority
   
   scope :search_title, -> (title) {
     where("title like ?", "%#{title}%") if title.present?
