@@ -24,6 +24,8 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'slim-rails'
+gem 'turbolinks', '~> 5'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -42,7 +44,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'capybara'
-  gem 'pry-rails'
+  # gem 'pry-rails'
   gem 'factory_girl_rails'
   gem 'database_rewinder'
 end
@@ -54,7 +56,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rspec-rails'
-  gem 'pry-rails'
+  # gem 'pry-rails'
 end
 
 group :production do
