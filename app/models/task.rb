@@ -10,6 +10,9 @@ class Task < ApplicationRecord
   enum priority: PRIORITIES
   enum status: STATUSES
   
+  after_create :set_default_status
+  after_create :set_default_priority
+  
   scope :search_title, -> (title) {
     where("title like ?", "%#{title}%") if title.present?
   }
@@ -20,12 +23,21 @@ class Task < ApplicationRecord
   
   scope :select_order, -> (request) {
     if request == "deadline"
-      order("deadline_on DESC")
+      order("deadline_on ASC")
     elsif request == "priority"
       order("priority ASC")
     else
       order("created_at DESC")
     end
   }
+  
+  private
+    def set_default_status
+      self.status ||= 1
+    end
+
+    def set_default_priority
+      self.priority ||= 1
+    end
 end
 
