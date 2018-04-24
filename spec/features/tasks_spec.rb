@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature "Tasks", type: :feature do
+  #  画面ごとにdescribe
   describe "fill in field and click button" do
     it "create task" do
-      visit root_path
-  
       expect {
-        click_link "新規作成"
+        visit new_task_path "新規作成"
         fill_in "タスク名", with: "テストタスク"
         fill_in "説明文", with: "this is a test"
         fill_in "期日", with: "2018-04-04"
@@ -15,6 +14,7 @@ RSpec.feature "Tasks", type: :feature do
       }.to change(Task, :count).by(1)
     end
   end
+  
   
   describe "sort" do
     describe "default" do
@@ -32,37 +32,39 @@ RSpec.feature "Tasks", type: :feature do
       end
     end
     
-    context "check '期日' and click button '適応'" do
+    context "check '期日' and click button 'search-button'" do
       before do
         1.upto(3) do |i|
           FactoryGirl.create(:task, deadline_on: Date.today + i)
         end
         visit root_path
         choose "order_selected_deadline"
-        click_button "適応"
+        click_button "search-button"
       end
       
       it "ordered deadline_on" do
-        expect(page.all("tbody tr")[0].find(".td-deadlineon").text).to match "#{(Date.today + 3).strftime("%Y/%m/%d")}"
-        expect(page.all("tbody tr")[1].find(".td-deadlineon").text).to match "#{(Date.today + 2).strftime("%Y/%m/%d")}"
-        expect(page.all("tbody tr")[2].find(".td-deadlineon").text).to match "#{(Date.today + 1).strftime("%Y/%m/%d")}"
+        # 理想は'2018/04/12'のような形で固定
+        expect(page.all("tbody tr")[0].find(".td-deadlineon").text).to match "#{(Date.today + 1.day).strftime("%Y/%m/%d")}"
+        expect(page.all("tbody tr")[1].find(".td-deadlineon").text).to match "#{(Date.today + 2.day).strftime("%Y/%m/%d")}"
+        expect(page.all("tbody tr")[2].find(".td-deadlineon").text).to match "#{(Date.today + 3.day).strftime("%Y/%m/%d")}"
       end
     end
 
-    context "check '優先順' and click button '適応'" do
+    context "check '優先順' and click button 'search-button'" do
       before do
-        0.upto(2) do |i|
+        0.upto(3) do |i|
           FactoryGirl.create(:task, priority: Task.priorities.keys[i])
         end
         visit root_path
         choose "order_selected_priority"
-        click_button "適応"
+        click_button "search-button"
       end
       
       it "ordered priority" do
-        expect(page.all("tbody tr")[0].find(".td-priority").text).to match "最優先"
-        expect(page.all("tbody tr")[1].find(".td-priority").text).to match "優先"
-        expect(page.all("tbody tr")[2].find(".td-priority").text).to match "普通"
+        expect(page.all("tbody tr")[0].find(".td-priority").text).to match "お手すき"
+        expect(page.all("tbody tr")[1].find(".td-priority").text).to match "普通"
+        expect(page.all("tbody tr")[2].find(".td-priority").text).to match "優先"
+        expect(page.all("tbody tr")[3].find(".td-priority").text).to match "最優先"
       end
     end
   end
@@ -71,52 +73,53 @@ RSpec.feature "Tasks", type: :feature do
     before do
       30.times { FactoryGirl.create(:task) }
       visit root_path
-
     end
     
     context "fill in title field" do
       before do
-        fill_in "title", with: "タスク名1"
-        click_button "適応"
+        Task.first.update(title: "これはタスク")
+        fill_in "title", with: "これはタスク"
+        click_button "search-button"
       end
       
       it "display result" do
-        expect(page.all("tbody tr")[0].find(".td-title").text).to match "タスク名1"
+        expect(page.all("tbody tr").size).to eq 1
       end
     end
 
     context "select status" do
       context "完了" do
         before do
-          Task.first()
+          Task.first.update(status: 3)
           select "完了",  from: "status"
-          click_button "適応"
+          click_button "search-button"
         end
   
-        it "display result" do
-          expect(page.all("tbody tr")[0].find(".td-status").text).to match "完了"
+        it "size 1" do
+          expect(page.all("tbody tr").size).to eq 1
         end
       end
 
       context "着手中" do
         before do
+          Task.first.update(status: 2)
           select "着手中",  from: "status"
-          click_button "適応"
+          click_button "search-button"
         end
   
-        it "display result" do
-          expect(page.all("tbody tr")[0].find(".td-status").text).to match "着手中"
+        it "size 1" do
+          expect(page.all("tbody tr").size).to eq 1
         end
       end
 
       context "未着手" do
         before do
           select "未着手",  from: "status"
-          click_button "適応"
+          click_button "search-button"
         end
   
-        it "display result" do
-          expect(page.all("tbody tr")[0].find(".td-status").text).to match "未着手"
+        it "size 30" do
+          expect(page.all("tbody tr").size).to eq 30
         end
       end
     end
