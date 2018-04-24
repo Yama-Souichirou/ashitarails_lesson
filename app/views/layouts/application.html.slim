@@ -8,7 +8,7 @@ html
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    h1
-      = link_to "Tasks Management", root_path
-    = yield
+    = render "shared/header"
+    div#wrapper
+      = yield
     footer

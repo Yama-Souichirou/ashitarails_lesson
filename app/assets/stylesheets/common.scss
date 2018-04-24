@@ -17,3 +17,8 @@ $pr_color: #6892D5;
     padding-bottom:#{$i * 5}px;
   }
 }
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}

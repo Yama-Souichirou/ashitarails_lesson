@@ -17,7 +17,7 @@ RSpec.feature "Tasks", type: :feature do
   end
   
   describe "sort" do
-    context "default" do
+    describe "default" do
       before do
         1.upto(3) do |i|
           FactoryGirl.create(:task, created_at: Date.today + i)
@@ -69,7 +69,7 @@ RSpec.feature "Tasks", type: :feature do
   
   describe "search" do
     before do
-      30.times { FactoryGirl.create(:task, status: [*(1..3)].sample, priority: [*(1..4)].sample) }
+      30.times { FactoryGirl.create(:task)
       visit root_path
 
     end
@@ -87,6 +87,7 @@ RSpec.feature "Tasks", type: :feature do
     context "select status" do
       context "完了" do
         before do
+          Task.first()
           select "完了",  from: "status"
           click_button "適応"
         end

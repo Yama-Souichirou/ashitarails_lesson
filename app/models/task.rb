@@ -4,8 +4,8 @@ class Task < ApplicationRecord
   validates :status, presence: true
   validates :priority, presence: true
   
-  PRIORITIES = { "最優先" => 1, "優先" => 2, "普通" => 3, "お手すき" => 4 }
-  STATUSES   = { "完了" => 1, "着手中" => 2, "未着手" => 3 }
+  PRIORITIES = { "お手すき" => 1, "普通" => 2, "優先" => 3, "最優先" => 4 }
+  STATUSES   = { "未着手" => 1, "着手中" => 2, "完了" => 3 }
   
   enum priority: PRIORITIES
   enum status: STATUSES
