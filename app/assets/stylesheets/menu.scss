@@ -11,17 +11,40 @@
     height: 60px;
     width: 20%;
     margin: 0;
-    background-color: $pr_color;
+    background-color: $accent;
     text-align: center;
-    font-size: 25px;
-    color: #fff;
+
     line-height: 60px;
+
+    a {
+      font-size: 25px;
+      color: #fff;
+    }
+    :hover {
+      text-decoration: none;
+    }
   }
   .header-nav {
     float: left;
     width: 80%;
     height: 60px;
     background-color: #fff;
+
+    .account-icon {
+      height: 60px;
+      width: 100px;
+      text-align: center;
+      img {
+        height: 40px;
+        width: 40px;
+        margin-top: 9px;
+        -webkit-border-radius: 50px 50px;
+        -moz-border-radius: 50px 50px;
+        border-radius: 50px 50px;
+      }
+    }
+
+
   }
 }
 #sidemenu {
@@ -31,12 +54,19 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 10;
 
-  ul li {
-    padding: 15px 5px !important;
-    list-style: none;
-    border-bottom: 1px solid $accent;
-    font-size: 14px;
+  ul {
+    a {
+      color: #888888;
+      font-weight: bold;
+    }
+    li {
+      padding: 15px 8px !important;
+      list-style: none;
+      border-bottom: 1px solid $accent;
+      font-size: 14px;
+    }
   }
+
 }

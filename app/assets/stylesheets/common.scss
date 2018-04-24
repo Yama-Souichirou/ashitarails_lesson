@@ -1,4 +1,4 @@
-$base_color: #F8FCFB;
+$base_color: #F3F3F4;
 $main_color: #C9FDD7;
 $accent: #79D1C3;
 $pr_color: #6892D5;
@@ -21,4 +21,13 @@ $pr_color: #6892D5;
   display: block;
   content: "";
   clear: both;
+}
+
+.primary-btn {
+  background-color: $pr_color;
+  color: #fff;
+  padding: 5px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }

@@ -5,8 +5,10 @@ class TasksController < ApplicationController
     @tasks = Task.all
       .search_title(params[:title])
       .search_status(params[:status])
+      .search_priority(params[:priority])
       .select_order(params[:order_selected])
       .page(params[:page])
+    @task = Task.new
   end
   
   def show

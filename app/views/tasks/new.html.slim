@@ -1,2 +1,36 @@
-h2 新規作成
-= render 'form'
+div.container-fluid
+  = form_for @task do |f|
+    div.row
+      - if @task.errors.any?
+        - @task.errors.full_messages.each do |message|
+          div.col-sm-12
+            p.error-message.alert.alert-danger
+              = message
+
+    div.row
+      div.col-sm-12
+        div.form-group
+          = f.label :title, "タスク名"
+          = f.text_field :title, class: "form-control"
+    div.row
+      div.col-sm-12
+        div.form-group
+          = f.label :deadline_on, "期日"
+          = f.text_field :deadline_on, class: "form-control", placeholder: "2018-04-01"
+    div.row
+      div.col-sm-6
+        div.form-group
+          = f.label :priority, "優先順位"
+          = f.select :priority, Task.priorities.keys, {}, class: "form-control"
+      div.col-sm-6
+        div.form-group
+          = f.label :status, "状況"
+          = f.select :status, Task.statuses.keys, {}, class: "form-control"
+    div.row
+      div.col-sm-12
+        div.form-group
+          = f.label :description, "説明文"
+          = f.text_area :description, rows: "10", class: "form-control"
+
+    br
+    = f.submit "登録", class: "btn btn-primary"

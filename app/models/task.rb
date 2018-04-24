@@ -23,6 +23,10 @@ class Task < ApplicationRecord
     where(status: status) if status.present?
   }
   
+  scope :search_priority, -> (priority) {
+    where(priority: priority) if priority.present?
+  }
+
   scope :select_order, -> (request) {
     if request == "deadline"
       order("deadline_on ASC")
