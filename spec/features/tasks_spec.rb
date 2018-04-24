@@ -69,10 +69,11 @@ RSpec.feature "Tasks", type: :feature do
   
   describe "search" do
     before do
-      30.times { FactoryGirl.create(:task)
+      30.times { FactoryGirl.create(:task) }
       visit root_path
 
     end
+    
     context "fill in title field" do
       before do
         fill_in "title", with: "タスク名1"

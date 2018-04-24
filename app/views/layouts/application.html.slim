@@ -4,11 +4,16 @@ html
     title Ashita Task Management
 
   = csrf_meta_tags
+  link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body
-    = render "shared/header"
+  body.clearfix
     div#wrapper
-      = yield
-    footer
+      = render "shared/header"
+      = render "shared/sidebar"
+      div#content
+        = yield
+      footer
+
+    script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"

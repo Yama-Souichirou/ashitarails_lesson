@@ -1,9 +1,16 @@
 * {
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-
 body {
-  backgroud-color: $base_color;
+  background-color: $base_color;
+}
+#wrapper {
+  position: relative;
+}
+#content {
+  width: 100%;
+  padding-top: 60px !important;
+  padding-left: 20% !important;
 }
