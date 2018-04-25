@@ -13,18 +13,22 @@ class Task < ApplicationRecord
   before_create :set_default_status
   before_create :set_default_priority
   
-  scope :search_title, -> (title) {
-    where("title like ?", "%#{title}%") if title.present?
-  }
+  def self.search(params)
+    tasks = Task.all
+    return tasks if params.blank?
+    
+    if params[:title].present?
+      tasks = tasks.where("title like ?", "%#{params[:title]}%")
+    end
+    if params[:status].present?
+      tasks = tasks.where(status: params[:status])
+    end
+    if params[:priority].present?
+      tasks = tasks.where(priority: params[:priority])
+    end
+    tasks
+  end
   
-  scope :search_status, -> (status) {
-    where(status: status) if status.present?
-  }
-  
-  scope :search_priority, -> (priority) {
-    where(priority: priority) if priority.present?
-  }
-
   scope :select_order, -> (request) {
     if request == "deadline"
       order("deadline_on ASC")
@@ -64,7 +68,7 @@ class Task < ApplicationRecord
     end
   end
   
-  def display_priority_color_class
+  def priority_color_class
     if self.priority == "anytime" || self.priority == "normal"
       "info"
     elsif self.priority == "prior"

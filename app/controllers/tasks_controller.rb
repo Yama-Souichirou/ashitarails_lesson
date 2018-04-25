@@ -2,13 +2,11 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   def index
-    @tasks = Task.all
-      .search_title(params[:title])
-      .search_status(params[:status])
-      .search_priority(params[:priority])
-      .select_order(params[:order_selected])
+    @tasks = Task
+      .search(params[:task])
       .page(params[:page])
     @task = Task.new
+    @q = params[:task].present? ? Task.new(task_search_params) : Task.new
   end
   
   def new
@@ -52,6 +50,10 @@ class TasksController < ApplicationController
   private
     def task_params
       params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :user_id)
+    end
+    
+    def task_search_params
+      params.require(:task).permit(:title, :status, :priority)
     end
   
     def set_task

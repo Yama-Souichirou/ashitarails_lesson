@@ -14,31 +14,26 @@
             .panel.panel-default.mt20
               .panel-body
                 / form_forを使うのが望ましい
-                = form_tag "/", method: :get do
+                = form_for @q, method: :get do |f|
                   .col-sm-3
                     .form-group
-                      label.control-label タイトル
-                      = text_field_tag "title", params[:title],  :class => "form-control"
-                  .col-sm-3
+                      = f.label :title, "タスク名", class: "label-control"
+                      = f.text_field :title, class: "form-control", id: "search_title"
+                  .col-sm-2
                     .form-group
-                      label.control-label ステータス
-                      = select_tag "status", options_for_select(Task.status_options.map { |k, v| [v, k] }, selected: params[:status]), include_blank: true, class: "form-control"
-                  .col-sm-3
+                      = f.label :status, "ステータス", class: "label-control"
+                      = f.select :status, Task.status_options.map { |k, v| [v, k] }, {include_blank: true}, class: "form-control", id: "search_status"
+                  .col-sm-2
                     .form-group
                       label.control-label 優先順位
-                      = select_tag "priority", options_for_select(Task.priority_options.map { |k, v| [v, k] }, selected: params[:priority]), include_blank: true, class: "form-control"
-                  .col-sm-3
-                    .form-group
-                      br
-                      label.control-label 期日順　
-                      = radio_button_tag "order_selected", 'deadline', class: "deadline-check"
-                      br
-                      label.control-label 優先順　
-                      = radio_button_tag "order_selected", 'priority', class: "priority-check"
-                  .col-sm-1
+                      = f.label :priority, "優先順位", class: "label-control"
+                      = f.select :priority, Task.priority_options.map { |k, v| [v, k] }, {include_blank: true}, class: "form-control"
+                  .col-sm-2.col-sm-offset-1
+                    label.label-control 検索
                     = button_tag id: "search-button", class: "btn btn-info btn-large btn-block" do
                         i.glyphicon.glyphicon-search
-                  .col-sm-1
+                  .col-sm-2
+                    label.label-control リセット
                     = link_to root_path, id: "reset-button", class: "btn btn-info btn-large btn-block" do
                         i.glyphicon.glyphicon-refresh
 
@@ -52,17 +47,16 @@
                       th = Task.human_attribute_name(:deadline_on)
                       th = Task.human_attribute_name(:priority)
                       th = Task.human_attribute_name(:status)
-                      th = Task.human_attribute_name(:created_at)
+                      th = link_to Task.human_attribute_name(:created_at), tasks_path(sort: "created_at")
                       th
 
                   tbody
                     - @tasks.each do |task|
                       tr
                         td.td-title = task.title
-                        /i18n .lなる時間をlocaleに合わせられる
                         td.td-deadlineon = l task.deadline_on
                         td.td-priority
-                          label class="label label-#{task.display_priority_color_class}" = task.human_priority
+                          label class="label label-#{task.priority_color_class}" = task.human_priority
                         td.td-status = task.human_status
                         td.td-createdat = l task.created_at
                         td
@@ -74,7 +68,7 @@
                             .modal-header = task.title
                             .modal-body
                               p.task-status-labels
-                                label class="label label-#{task.display_priority_color_class}" = task.human_priority
+                                label class="label label-#{task.priority_color_class}" = task.human_priority
                                 label.label.label-default = task.human_status
                                 label class="label label-#{task.display_deadline_color_class}" = task.display_days_left_format
                               .description.mt40
@@ -82,7 +76,7 @@
                             .modal-footer
                               = link_to edit_task_path(task), class: "btn btn-default" do
                                 i.glyphicon.glyphicon-pencil
-                              = link_to task_path(task), method: :delete, data: { confirm: "本当に削除しますか" }, class: "btn btn-danger" do
+                              = link_to task_path(task), method: :delete, data: { confirm: "本当に削除しますか",  disable_with: "送信中..." }, class: "btn btn-danger" do
                                 i.glyphicon.glyphicon-trash
 
           = paginate @tasks
