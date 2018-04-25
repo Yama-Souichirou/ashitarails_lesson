@@ -13,11 +13,13 @@ div.container-fluid.mt20
           div.col-sm-12
             div.form-group
               = f.label :title, "タスク名", class: "control-label"
+              label.validate-label 必須
               = f.text_field :title, class: "form-control"
         div.row
           div.col-sm-6
             div.form-group#datepicker-default
               = f.label :deadline_on, "期日", class: "control-label"
+              label.validate-label 必須
               div.input-group.date
                 = f.text_field :deadline_on, class: "form-control datepicker"
                 .input-group-addon
@@ -26,11 +28,13 @@ div.container-fluid.mt20
           div.col-sm-6
             div.form-group
               = f.label :priority, "優先順位", class: "control-label"
+              label.validate-label 必須
               = f.select :priority, Task.priorities.map { |k, _v| [Task.priority_options[k.to_sym], k] }, {}, class: "form-control"
         div.row
           div.col-sm-6
             div.form-group
               = f.label :status, "状況", class: "control-label"
+              label.validate-label 必須
               = f.select :status, Task.statuses.map { |k, _v| [Task.status_options[k.to_sym], k] }, {}, class: "form-control"
         div.row
           div.col-sm-12
