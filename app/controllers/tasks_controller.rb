@@ -6,7 +6,8 @@ class TasksController < ApplicationController
       .search(params[:task])
       .page(params[:page])
     @task = Task.new
-    @q = params[:task].present? ? Task.new(task_search_params) : Task.new
+    @q = params[:task].present? ? Task.new(task_search_params) : Task.new(status: nil, priority: nil)
+    sortable(params[:sort])
   end
   
   def new
@@ -58,5 +59,21 @@ class TasksController < ApplicationController
   
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def sort_str(order, toggle: false)
+      if toggle
+        order == "ASC" ? "DESC" : "ASC"
+      else
+        order == "ASC" ? "ASC" : "DESC"
+      end
+    end
+  
+    def sortable(params)
+      if params.present?
+        sort = sort_str(params[:order])
+        @tasks = @tasks.order("#{params[:column]} #{sort}")
+        @sort = sort_str(sort, toggle: true)
+      end
     end
 end

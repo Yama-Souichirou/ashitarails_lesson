@@ -22,12 +22,11 @@
                   .col-sm-2
                     .form-group
                       = f.label :status, "ステータス", class: "label-control"
-                      = f.select :status, Task.status_options.map { |k, v| [v, k] }, {include_blank: true}, class: "form-control", id: "search_status"
+                      = f.select :status, Task.status_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", id: "search_status"
                   .col-sm-2
                     .form-group
-                      label.control-label 優先順位
                       = f.label :priority, "優先順位", class: "label-control"
-                      = f.select :priority, Task.priority_options.map { |k, v| [v, k] }, {include_blank: true}, class: "form-control"
+                      = f.select :priority, Task.priority_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control"
                   .col-sm-2.col-sm-offset-1
                     label.label-control 検索
                     = button_tag id: "search-button", class: "btn btn-info btn-large btn-block" do
@@ -44,10 +43,10 @@
                   thead
                     tr
                       th = Task.human_attribute_name(:title)
-                      th = Task.human_attribute_name(:deadline_on)
-                      th = Task.human_attribute_name(:priority)
-                      th = Task.human_attribute_name(:status)
-                      th = link_to Task.human_attribute_name(:created_at), tasks_path(sort: "created_at")
+                      th = link_to Task.human_attribute_name(:deadline_on), sort_link("deadline_on", @sort || "ASC", @q)
+                      th = link_to Task.human_attribute_name(:priority), sort_link("priority", @sort || "ASC", @q)
+                      th = link_to Task.human_attribute_name(:status), sort_link("status", @sort || "ASC", @q)
+                      th = link_to Task.human_attribute_name(:created_at), sort_link("created_at", @sort || "ASC", @q)
                       th
 
                   tbody
