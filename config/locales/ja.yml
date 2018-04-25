@@ -22,6 +22,10 @@ ja:
         normal: "普通"
         prior: "優先"
         top_prior: "最優先"
+      statuses:
+        not_start: "未着手"
+        working: "着手中"
+        complete: "完了"
   date:
     abbr_day_names:
     - 日

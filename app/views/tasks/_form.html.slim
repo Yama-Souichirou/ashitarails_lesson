@@ -31,7 +31,7 @@ div.container-fluid.mt20
           div.col-sm-6
             div.form-group
               = f.label :status, "状況", class: "control-label"
-              = f.select :status, Task.statuses.keys, {}, class: "form-control"
+              = f.select :status, Task.statuses.map { |k, _v| [Task.status_options[k.to_sym], k] }, {}, class: "form-control"
         div.row
           div.col-sm-12
             div.form-group

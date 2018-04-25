@@ -61,7 +61,7 @@
                         td.td-deadlineon = l task.deadline_on
                         td.td-priority
                           label class="label label-#{task.display_priority_color_class}" = task.human_priority
-                        td.td-status = Task.human_attribute_name(:status)
+                        td.td-status = task.human_status
                         td.td-createdat = l task.created_at
                         td
                           button class="btn btn-default" type="button" data-toggle="modal" data-target="#task-id-#{task.id}"
@@ -73,7 +73,7 @@
                             .modal-body
                               p.task-status-labels
                                 label class="label label-#{task.display_priority_color_class}" = task.human_priority
-                                label.label.label-default = task.status
+                                label.label.label-default = task.human_status
                                 label class="label label-#{task.display_deadline_color_class}" = task.display_days_left_format
                               .description.mt40
                                 = simple_format(task.description)

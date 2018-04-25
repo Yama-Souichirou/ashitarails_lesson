@@ -6,7 +6,7 @@ class Task < ApplicationRecord
   
   # 英語にしよう
   PRIORITIES = { anytime: 1, normal: 2, prior: 3, top_prior: 4 }
-  STATUSES   = { '未着手' => 1, '着手中' => 2, '完了' => 3 }
+  STATUSES   = { not_start: 1, working: 2, complete: 3 }
   
   enum priority: PRIORITIES
   enum status: STATUSES
@@ -40,9 +40,17 @@ class Task < ApplicationRecord
   def human_priority
     I18n.t "enum.tasks.priorities.#{self.priority}"
   end
+
+  def human_status
+    I18n.t "enum.tasks.statuses.#{self.status}"
+  end
   
   def self.priority_options
     I18n.t 'enum.tasks.priorities'
+  end
+
+  def self.status_options
+    I18n.t 'enum.tasks.statuses'
   end
   
   def days_left
