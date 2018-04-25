@@ -35,17 +35,19 @@ RSpec.describe Task, type: :model do
   end
   
   describe "search" do
+    let(:params) { Hash.new }
+    
     describe "title" do
       context "タスク" do
         before do
+          params[:title] = "タスク"
           FactoryGirl.create(:task, title: 'これはタスク')
           FactoryGirl.create(:task, title: 'タスクはこれ')
           FactoryGirl.create(:task, title: 'これはちがう')
           FactoryGirl.create(:task, title: 'これもちがう')
         end
-        
-        it "return all records" do
-          expect(Task.search_title("タスク").count).to eq 2
+        it "return 2 records" do
+          expect(Task.search(params).count).to eq 2
         end
       end
     end
@@ -57,34 +59,37 @@ RSpec.describe Task, type: :model do
       
       context "完了" do
         before do
+          params[:status] = "complete"
           Task.first.update(status: 3)
         end
         it "return stauts complete"do
-          expect(Task.search_status("complete").first.status).to eq "complete"
+          expect(Task.search(params).first.status).to eq "complete"
         end
       end
-
+      
       context "着手中" do
         before do
+          params[:status] = "working"
           Task.first.update(status: 2)
         end
         it "return stauts working"do
-          expect(Task.search_status("working").first.status).to eq "working"
+          expect(Task.search(params).first.status).to eq "working"
         end
       end
-
+      
       context "未着手" do
         before do
+          params[:status] = "not_start"
           Task.first.update(status: 1)
         end
         it "return stauts not_start"do
-          expect(Task.search_status("not_start").first.status).to eq "not_start"
+          expect(Task.search(params).first.status).to eq "not_start"
         end
       end
       
       context "empty" do
         it "return all records" do
-          expect(Task.search_status("").count).to eq Task.all.size
+          expect(Task.search("").count).to eq Task.all.size
         end
       end
     end
