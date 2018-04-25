@@ -61,7 +61,7 @@ RSpec.feature "Tasks", type: :feature do
       end
       
       it "ordered priority" do
-        expect(page.all("tbody tr")[0].find(".td-priority").text).to match "お手すき"
+        expect(page.all("tbody tr")[0].find(".td-priority").text).to match "いつでも"
         expect(page.all("tbody tr")[1].find(".td-priority").text).to match "普通"
         expect(page.all("tbody tr")[2].find(".td-priority").text).to match "優先"
         expect(page.all("tbody tr")[3].find(".td-priority").text).to match "最優先"

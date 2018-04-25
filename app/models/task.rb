@@ -4,13 +4,11 @@ class Task < ApplicationRecord
   validates :status, presence: true
   validates :priority, presence: true
   
-  # 英語にしよう
   PRIORITIES = { anytime: 1, normal: 2, prior: 3, top_prior: 4 }
   STATUSES   = { not_start: 1, working: 2, complete: 3 }
   
   enum priority: PRIORITIES
   enum status: STATUSES
-  #  くっつけるenum
   
   before_create :set_default_status
   before_create :set_default_priority
@@ -31,7 +29,7 @@ class Task < ApplicationRecord
     if request == "deadline"
       order("deadline_on ASC")
     elsif request == "priority"
-      order("priority ASC")
+      order("priority DESC")
     else
       order("created_at DESC")
     end
@@ -67,8 +65,10 @@ class Task < ApplicationRecord
   end
   
   def display_priority_color_class
-    if self.human_priority == "いつでも" || self.human_priority == "普通"
+    if self.priority == "anytime" || self.priority == "normal"
       "info"
+    elsif self.priority == "prior"
+      "warning"
     else
       "danger"
     end

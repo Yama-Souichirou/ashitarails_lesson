@@ -59,8 +59,8 @@ RSpec.describe Task, type: :model do
         before do
           Task.first.update(status: 3)
         end
-        it "return stauts '完了'"do
-          expect(Task.search_status("完了").first.status).to eq "完了"
+        it "return stauts complete"do
+          expect(Task.search_status("complete").first.status).to eq "complete"
         end
       end
 
@@ -68,8 +68,8 @@ RSpec.describe Task, type: :model do
         before do
           Task.first.update(status: 2)
         end
-        it "return stauts '着手中'"do
-          expect(Task.search_status("着手中").first.status).to eq "着手中"
+        it "return stauts working"do
+          expect(Task.search_status("working").first.status).to eq "working"
         end
       end
 
@@ -77,8 +77,8 @@ RSpec.describe Task, type: :model do
         before do
           Task.first.update(status: 1)
         end
-        it "return stauts '未着手'"do
-          expect(Task.search_status("未着手").first.status).to eq "未着手"
+        it "return stauts not_start"do
+          expect(Task.search_status("not_start").first.status).to eq "not_start"
         end
       end
       
