@@ -15,6 +15,7 @@ ja:
         priority: "優先度"
         deadline_on: "期日"
         created_at: "作成日"
+        user: "作成者"
   enum:
     tasks:
       priorities:

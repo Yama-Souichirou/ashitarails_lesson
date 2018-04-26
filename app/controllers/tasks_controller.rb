@@ -17,12 +17,13 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(task_params)
+    @task.user_id = @current_user.id
     if @task.save
       flash[:notice] = "登録しました"
       redirect_to tasks_path
     else
       flash[:danger] = "登録できませんでした"
-      render 'new'
+      redirect_to tasks_path
     end
   end
   
