@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   def create
     if @user.authenticate(session_params[:password])
       sign_in(@user)
+      flash[:notice] = "ログインしました"
       after_sign_in_path
     else
       flash[:danger] = "ログインできませんでした"
@@ -22,9 +23,10 @@ class SessionsController < ApplicationController
   
   private
     def set_user
-      @user = User.find_by!(mail: session_params[:mail])
+      p User.find_by!(email: session_params[:email])
+      @user = User.find_by!(email: session_params[:email])
     rescue
-      flash.now[:danger] = t('.flash.invalid_mail')
+      flash.now[:danger] = "ユーザーがいません"
       render 'new'
     end
   

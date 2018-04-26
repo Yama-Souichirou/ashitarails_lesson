@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_sign_in_user
   
-  def current_user
+  def set_sign_in_user
     remember_token = User.encrypt(cookies[:user_remember_token])
     @current_user ||= User.find_by(remember_token: remember_token)
   end
