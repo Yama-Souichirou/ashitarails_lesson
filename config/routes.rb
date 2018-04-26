@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :users
+    resources :tasks, except: :show
   end
   root "tasks#index"
 end

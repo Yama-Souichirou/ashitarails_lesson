@@ -9,7 +9,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "アカウントを登録しました。ログインしてください"
-      redirect_to new_session_path
+      redirect_to admin_users_path
     else
       flash[:danger] = "登録できませんでした"
       render "new"
