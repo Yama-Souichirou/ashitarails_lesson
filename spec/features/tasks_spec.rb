@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature "Tasks", type: :feature do
-  #  画面ごとにdescribe
   describe "fill in field and click button" do
     it "create task" do
       expect {
@@ -15,7 +14,6 @@ RSpec.feature "Tasks", type: :feature do
     end
   end
   
-  
   describe "sort" do
     context "click link th '期日'" do
       before do
@@ -23,12 +21,13 @@ RSpec.feature "Tasks", type: :feature do
           FactoryGirl.create(:task, deadline_on: Date.today + i)
         end
         visit root_path
-        click_link '期日'
       end
       
       context "click link once" do
+        before do
+          click_link "期日"
+        end
         it "ordered deadline_on ASC" do
-          # 理想は'2018/04/12'のような形で固定
           expect(page.all("tbody tr")[0].find(".td-deadlineon").text).to match "#{(Date.today + 1.day).strftime("%Y/%m/%d")}"
           expect(page.all("tbody tr")[1].find(".td-deadlineon").text).to match "#{(Date.today + 2.day).strftime("%Y/%m/%d")}"
           expect(page.all("tbody tr")[2].find(".td-deadlineon").text).to match "#{(Date.today + 3.day).strftime("%Y/%m/%d")}"
@@ -36,11 +35,14 @@ RSpec.feature "Tasks", type: :feature do
       end
       
       context "click link twice" do
+        before do
+          click_link "期日"
+          click_link "期日"
+        end
         it "ordered deadline_on DESC" do
-          # 理想は'2018/04/12'のような形で固定
-          expect(page.all("tbody tr")[2].find(".td-deadlineon").text).to match "#{(Date.today + 3.day).strftime("%Y/%m/%d")}"
+          expect(page.all("tbody tr")[0].find(".td-deadlineon").text).to match "#{(Date.today + 3.day).strftime("%Y/%m/%d")}"
           expect(page.all("tbody tr")[1].find(".td-deadlineon").text).to match "#{(Date.today + 2.day).strftime("%Y/%m/%d")}"
-          expect(page.all("tbody tr")[0].find(".td-deadlineon").text).to match "#{(Date.today + 1.day).strftime("%Y/%m/%d")}"
+          expect(page.all("tbody tr")[2].find(".td-deadlineon").text).to match "#{(Date.today + 1.day).strftime("%Y/%m/%d")}"
         end
       end
     end
@@ -51,10 +53,12 @@ RSpec.feature "Tasks", type: :feature do
           FactoryGirl.create(:task, priority: Task.priorities.keys[i])
         end
         visit root_path
-        click_link "優先度"
       end
       
       context "click link once" do
+        before do
+          click_link "優先度"
+        end
         it "ordered priority ASC" do
           expect(page.all("tbody tr")[0].find(".td-priority").text).to match "いつでも"
           expect(page.all("tbody tr")[1].find(".td-priority").text).to match "普通"
@@ -64,11 +68,15 @@ RSpec.feature "Tasks", type: :feature do
       end
       
       context "click link twice" do
+        before do
+          click_link "優先度"
+          click_link "優先度"
+        end
         it "ordered priority ASC" do
-          expect(page.all("tbody tr")[3].find(".td-priority").text).to match "最優先"
-          expect(page.all("tbody tr")[2].find(".td-priority").text).to match "優先"
-          expect(page.all("tbody tr")[1].find(".td-priority").text).to match "普通"
-          expect(page.all("tbody tr")[0].find(".td-priority").text).to match "いつでも"
+          expect(page.all("tbody tr")[0].find(".td-priority").text).to match "最優先"
+          expect(page.all("tbody tr")[1].find(".td-priority").text).to match "優先"
+          expect(page.all("tbody tr")[2].find(".td-priority").text).to match "普通"
+          expect(page.all("tbody tr")[3].find(".td-priority").text).to match "いつでも"
         end
       end
     end
@@ -79,10 +87,12 @@ RSpec.feature "Tasks", type: :feature do
           FactoryGirl.create(:task, created_at: Date.today + i.day)
         end
         visit root_path
-        click_link "作成日"
       end
       
       context "click link once" do
+        before do
+          click_link "作成日"
+        end
         it "ordered created_at ASC" do
           expect(page.all("tbody tr")[0].find(".td-createdat").text).to match "#{(Date.today + 1.day).strftime("%Y/%m/%d 00:00:00")}"
           expect(page.all("tbody tr")[1].find(".td-createdat").text).to match "#{(Date.today + 2.day).strftime("%Y/%m/%d 00:00:00")}"
@@ -91,10 +101,14 @@ RSpec.feature "Tasks", type: :feature do
       end
 
       context "click link twice" do
+        before do
+          click_link "作成日"
+          click_link "作成日"
+        end
         it "ordered created_at DESC" do
-          expect(page.all("tbody tr")[2].find(".td-createdat").text).to match "#{(Date.today + 3.day).strftime("%Y/%m/%d 00:00:00")}"
+          expect(page.all("tbody tr")[0].find(".td-createdat").text).to match "#{(Date.today + 3.day).strftime("%Y/%m/%d 00:00:00")}"
           expect(page.all("tbody tr")[1].find(".td-createdat").text).to match "#{(Date.today + 2.day).strftime("%Y/%m/%d 00:00:00")}"
-          expect(page.all("tbody tr")[0].find(".td-createdat").text).to match "#{(Date.today + 1.day).strftime("%Y/%m/%d 00:00:00")}"
+          expect(page.all("tbody tr")[2].find(".td-createdat").text).to match "#{(Date.today + 1.day).strftime("%Y/%m/%d 00:00:00")}"
         end
       end
     end
