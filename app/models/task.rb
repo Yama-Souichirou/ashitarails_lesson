@@ -28,6 +28,12 @@ class Task < ApplicationRecord
     if params[:priority].present?
       tasks = tasks.where(priority: params[:priority])
     end
+    if params[:responsible].present?
+      tasks = tasks.where(responsible: params[:responsible])
+    end
+    if params[:user_id].present?
+      tasks = tasks.where(user_id: params[:user_id])
+    end
     tasks
   end
   
@@ -88,6 +94,11 @@ class Task < ApplicationRecord
     elsif 10 <= self.days_left
       "info"
     end
+  end
+  
+  def task_responsible
+    user = User.find(self.responsible)
+    user.username
   end
   
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426013238) do
+ActiveRecord::Schema.define(version: 20180426045203) do
 
   create_table "labels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20180426013238) do
     t.integer  "user_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.integer  "responsible"
+    t.index ["responsible"], name: "index_tasks_on_responsible", using: :btree
     t.index ["user_id", "deadline_on", "priority"], name: "index_tasks_on_user_id_and_deadline_on_and_priority", using: :btree
   end
 
