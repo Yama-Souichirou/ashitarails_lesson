@@ -43,10 +43,13 @@
         border-radius: 50px 50px;
       }
     }
-
-
+  }
+  .dropdown .dropdown-menu {
+    right: 0 !important;
+    left: inherit;
   }
 }
+
 #sidemenu {
   width: 20%;
   height: 100%;
