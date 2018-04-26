@@ -37,7 +37,7 @@ ja:
     users:
       roles:
         normal: "一般"
-        admibn: "管理者"
+        admin: "管理者"
   date:
     abbr_day_names:
     - 日

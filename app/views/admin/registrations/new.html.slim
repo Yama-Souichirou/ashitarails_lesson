@@ -12,6 +12,10 @@
                 = f.text_field :username, class: "form-control"
             .col-sm-12
               .form-group
+                = f.label :role, "役割", class: "label-control"
+                = f.select :role, User.roles.map { |k, _v| [User.role_options[k.to_sym], k] }, {}, class: "form-control"
+            .col-sm-12
+              .form-group
                 = f.label :email, "メールアドレス", class: "label-control"
                 = f.email_field :email, class: "form-control"
             .col-sm-12

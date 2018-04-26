@@ -32,7 +32,7 @@ class User < ApplicationRecord
     I18n.t "enum.users.roles.#{self.role}"
   end
 
-  def self.roles_options
+  def self.role_options
     I18n.t 'enum.users.roles'
   end
   
