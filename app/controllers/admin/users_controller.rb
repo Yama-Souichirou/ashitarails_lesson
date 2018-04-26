@@ -7,6 +7,10 @@ class Admin::UsersController < ApplicationController
     @q = params[:user].present? ? User.new(search_user_params) : User.new
   end
   
+  def show
+  
+  end
+  
   private
     def search_user_params
       params.require(:user).permit(:username, :created_at)

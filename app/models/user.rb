@@ -20,7 +20,12 @@ class User < ApplicationRecord
   
   def self.search(params)
     users = User.all
-    return users
+    return users if params.blank?
+    
+    if params[:username].present?
+      usres = users.where("username like ?", "%#{params[:username]}%")
+    end
+    users
   end
 
   def human_roles
