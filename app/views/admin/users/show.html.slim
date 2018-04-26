@@ -8,9 +8,9 @@
             .col-sm-12
               img class="img-responsibe img-circle" src="/assets/images/sample-account.jpg" style="width: 200px; height: 200px;"
             .col-sm-6.mt30
-              = link_to "アカウント編集", edit_registration_path(@user), class: "primary-btn-block"
+              = link_to "アカウント編集", edit_admin_registration_path(@user), class: "primary-btn-block"
             .col-sm-6.mt30
-              = link_to "アカウント抹消", registration_path(@user), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-block"
+              = link_to "アカウント抹消", admin_registration_path(@user), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-block"
 
           .col-sm-8
             h3 = @user.username

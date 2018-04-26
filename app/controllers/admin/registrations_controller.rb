@@ -1,6 +1,6 @@
-class RegistrationsController < ApplicationController
+class Admin::RegistrationsController < ApplicationController
   before_action :set_user, only: [:edit , :update, :destroy]
-  layout 'login'
+  layout 'admin'
   
   def new
     @user = User.new
@@ -33,10 +33,10 @@ class RegistrationsController < ApplicationController
   def destroy
     if @user.destroy
       flash[:danger] = "削除しました"
-      redirect_to admin_tasks_path
+      redirect_to admin_users_path
     else
       flash[:danger] = "削除できませんでした"
-      redirect_to admin_tasks_path
+      redirect_to admin_users_path
     end
   end
   

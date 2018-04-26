@@ -5,7 +5,7 @@
         .panel-heading
           h4.text-center New Account
         .panel-body
-          = form_for @user, url: registrations_path do |f|
+          = form_for([:admin, @user], url: admin_registrations_path) do |f|
             .col-sm-12
               .form-group
                 = f.label :username, "ユーザーネーム", class: "label-control"
