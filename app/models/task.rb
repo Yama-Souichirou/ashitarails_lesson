@@ -96,7 +96,7 @@ class Task < ApplicationRecord
     end
   end
   
-  def task_responsible
+  def responsible_user
     user = User.find(self.responsible)
     user.username
   end

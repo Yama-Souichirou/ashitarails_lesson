@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   
   def index
     @tasks = Task
+      .includes(:user)
       .search(params[:task])
       .page(params[:page])
     @task = Task.new
@@ -56,7 +57,7 @@ class TasksController < ApplicationController
     end
     
     def task_search_params
-      params.require(:task).permit(:title, :status, :priority)
+      params.require(:task).permit(:title, :status, :priority, :user_id, :responsible)
     end
   
     def set_task
