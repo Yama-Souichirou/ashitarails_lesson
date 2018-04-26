@@ -1,0 +1,33 @@
+.container-fluid
+  .row
+    .col-sm-12
+      .panel.panel-default
+        .panel-body
+          .row
+            = form_for([:admin, @q], url: admin_users_path, method: :get) do |f|
+              .col-sm-3
+                = f.label :username, "ユーザー名", class: "label-control"
+                = f.text_field :username, class: "form-control"
+              .col-sm-1
+                label.label-control 検索
+                = button_tag id: "search-button", class: "primary-btn-block" do
+                  i.glyphicon.glyphicon-search
+          hr
+          .col-sm-12
+            table.table
+              thead
+                tr
+                  th #id
+                  th = User.human_attribute_name(:username)
+                  th = User.human_attribute_name(:email)
+                  th = User.human_attribute_name(:created_at)
+                  th
+              tbody
+                - @users.each do |user|
+                  tr
+                    td = user.id
+                    td = user.username
+                    td = user.email
+                    td = l user.created_at
+                    td = link_to "詳細を見る", admin_user_path(user), class: "primary-btn"
+

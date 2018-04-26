@@ -2,6 +2,7 @@ $base_color: #F3F3F4;
 $main_color: #C9FDD7;
 $accent: #79D1C3;
 $pr_color: #6892D5;
+$admin_base: #226B80;
 
 @for $i from 0 through 30 {
   .mt#{$i * 5} {

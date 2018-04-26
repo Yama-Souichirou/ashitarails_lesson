@@ -17,6 +17,11 @@ class User < ApplicationRecord
   def self.encrypt(token)
     Digest::SHA256.hexdigest(token.to_s)
   end
+  
+  def self.search(params)
+    users = User.all
+    return users
+  end
 
   def human_roles
     I18n.t "enum.users.roles.#{self.role}"

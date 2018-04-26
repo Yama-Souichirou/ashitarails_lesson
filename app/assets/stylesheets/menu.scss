@@ -24,7 +24,7 @@
       text-decoration: none;
     }
   }
-  .header-nav {
+  .header-nav, .admin-header-nav {
     float: left;
     width: 80%;
     height: 60px;
@@ -44,32 +44,53 @@
       }
     }
   }
+  .admin-header-nav {
+    background-color: $admin_base;
+  }
   .dropdown .dropdown-menu {
     right: 0 !important;
     left: inherit;
   }
 }
 
-#sidemenu {
+#sidemenu, #admin-sidemenu {
   width: 20%;
   height: 100%;
-  background-color: #fff;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
+  a {
+    font-weight: bold;
+  }
+  li {
+    padding: 15px 8px !important;
+    list-style: none;
+  }
+}
+#sidemenu {
+  background-color: #fff;
 
   ul {
     a {
       color: #888888;
-      font-weight: bold;
     }
     li {
-      padding: 15px 8px !important;
-      list-style: none;
       border-bottom: 1px solid $accent;
       font-size: 14px;
     }
   }
+}
+#admin-sidemenu {
+  background-color: $admin_base;
 
+  ul {
+    a {
+      color: #fff;
+    }
+    li {
+      border-bottom: 1px solid #fff;
+      font-size: 14px;
+    }
+  }
 }
