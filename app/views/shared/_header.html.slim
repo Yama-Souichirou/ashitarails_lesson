@@ -8,6 +8,7 @@ header#header.clearfix
           img class="img-circle" src="/assets/images/account.jpg"
           span.caret
         ul.dropdown-menu aria-labelledby="dropdownMenu1"
+          li.dropdown-header = @current_user.username
           li
             = link_to "ログアウト", destroy_session_path, method: :delete
 
