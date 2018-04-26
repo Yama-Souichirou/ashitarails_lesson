@@ -1,0 +1,27 @@
+.container-fluid.mt40
+  = render "shared/flash"
+  .row
+    .col-sm-12
+      .panel.panel-default
+        .panel-body
+          .col-sm-4.text-center
+            img class="img-responsibe img-circle" src="/assets/images/sample-account.jpg" style="width: 200px; height: 200px;"
+          .col-sm-8
+            h3 = @user.username
+            table.table
+              tbody
+                tr
+                  td id
+                  td = @user.id
+                tr
+                  td = User.human_attribute_name(:email)
+                  td = @user.email
+                tr
+                  td = User.human_attribute_name(:created_at)
+                  td = l @user.created_at
+                tr
+                  td 作成したタスク
+                  td = @user.tasks.size
+                tr
+                  td 担当しているタスク
+                  td = @user.responsible_tasks

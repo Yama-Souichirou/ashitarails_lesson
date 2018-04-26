@@ -36,6 +36,11 @@ class User < ApplicationRecord
     I18n.t 'enum.users.roles'
   end
   
+  def responsible_tasks
+    tasks = Task.where(responsible: self.id)
+    tasks.size
+  end
+  
   private
     def set_default_role
       self.role ||= 0
