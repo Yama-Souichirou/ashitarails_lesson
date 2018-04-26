@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
   delete "/session" => "sessions#destroy", as: :destroy_session
   
+  namespace :admin do
+    resources :users
+  end
   root "tasks#index"
 end
