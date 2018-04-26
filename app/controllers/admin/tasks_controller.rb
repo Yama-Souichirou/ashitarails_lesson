@@ -1,6 +1,6 @@
 class Admin::TasksController < ApplicationController
   layout 'admin'
-  before_action :authenticate_user!
+  before_action :authenticate_admin!
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   def index

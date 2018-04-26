@@ -15,7 +15,10 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path unless signed_in?
   end
   
-  def authneticate_admin!
-  
+  def authenticate_admin!
+    unless signed_in? && @current_user.admin?
+      flash[:danger] = "このアカウントではページに入れません"
+      redirect_to root_path
+    end
   end
 end

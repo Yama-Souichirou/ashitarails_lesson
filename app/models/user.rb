@@ -41,6 +41,10 @@ class User < ApplicationRecord
     tasks.size
   end
   
+  def admin?
+    self.role == "admin" ? true : false
+  end
+  
   private
     def set_default_role
       self.role ||= 0
