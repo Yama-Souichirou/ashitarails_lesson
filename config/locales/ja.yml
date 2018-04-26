@@ -17,6 +17,11 @@ ja:
         created_at: "作成日"
         user: "作成者"
         responsible: "担当"
+      user:
+        username: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
   enum:
     tasks:
       priorities:
