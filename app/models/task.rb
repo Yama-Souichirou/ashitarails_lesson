@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  has_many :task_labels
   belongs_to :user
   
   validates :title, presence: true
