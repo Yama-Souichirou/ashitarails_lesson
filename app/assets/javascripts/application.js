@@ -22,7 +22,7 @@ $(function(){
 
     // ラベル選択に関する
     $('.selected-label').each(function(i, em) {
-        // console.log($(em).text());
+        console.log($(em).text());
         $('.select-label-form option').each(function(){
             if( $(this).text() == $(em).text()) {
                 $(this).remove();
