@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   has_many :task_labels
   has_many :labels, through: :task_labels
   belongs_to :user
+  # belongs_to でかけるよ
   accepts_nested_attributes_for :task_labels, allow_destroy: true
 
 
@@ -16,6 +17,7 @@ class Task < ApplicationRecord
   enum priority: PRIORITIES
   enum status: STATUSES
   
+  # コールバック時は注意
   before_create :set_default_status
   before_create :set_default_priority
   
@@ -76,7 +78,7 @@ class Task < ApplicationRecord
     if self.days_left.to_i <= -1
       "期限を過ぎています"
     else
-      return "残り#{days_left.to_i}日"
+      "残り#{days_left.to_i}日"
     end
   end
   
@@ -101,6 +103,7 @@ class Task < ApplicationRecord
   end
   
   def responsible_user
+    # responsible_usernameがよい
     user = User.find(self.responsible)
     user.username
   end

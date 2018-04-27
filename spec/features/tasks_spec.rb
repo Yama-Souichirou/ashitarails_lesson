@@ -116,7 +116,7 @@ RSpec.feature "Tasks", type: :feature do
   
   describe "search" do
     before do
-      20.times { FactoryGirl.create(:task) }
+      20.times { FactoryGirl.create(:task, status: 1) }
       visit root_path
     end
     
@@ -164,6 +164,7 @@ RSpec.feature "Tasks", type: :feature do
         end
         
         it "size 20" do
+          # sizeはよくない
           expect(page.all("tbody tr").size).to eq 20
         end
       end

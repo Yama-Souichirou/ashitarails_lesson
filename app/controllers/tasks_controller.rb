@@ -9,6 +9,7 @@ class TasksController < ApplicationController
       .page(params[:page])
     @task = Task.new
     @q = params[:task].present? ? Task.new(task_search_params) : Task.new(status: nil, priority: nil)
+    # sortableで何がされているのかわかりにくい。ソートできるって意味しか伝わらない
     sortable(params[:sort])
   end
   
@@ -74,6 +75,7 @@ class TasksController < ApplicationController
   
     def sortable(params)
       if params.present?
+        # 少々無駄がおおい
         sort = sort_str(params[:order])
         @tasks = @tasks.order("#{params[:column]} #{sort}")
         @sort = sort_str(sort, toggle: true)
