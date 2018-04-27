@@ -74,6 +74,11 @@
                         td = task.responsible_user
                         td = task.user.username
                         td
+                          - task.labels.each.with_index(1) do |label, i|
+                            label.selected-label-green = label.name
+                            - if i % 2 == 0
+                              br
+                        td
                           button class="btn btn-default" type="button" data-toggle="modal" data-target="#task-id-#{task.id}"
                             i.glyphicon.glyphicon-zoom-in
                       .modal.fade id="task-id-#{task.id}" role="dialog"
