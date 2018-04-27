@@ -16,7 +16,7 @@
                 / form_forを使うのが望ましい
                 = form_for @q, method: :get do |f|
                   .row
-                    .col-sm-3
+                    .col-sm-2
                       .form-group
                         = f.label :title, "タスク名", class: "label-control"
                         = f.text_field :title, class: "form-control", id: "search_title"
@@ -60,6 +60,7 @@
                       th = Task.human_attribute_name(:responsible)
                       th = Task.human_attribute_name(:user)
                       th
+                      th
 
                   tbody
                     - @tasks.each do |task|
@@ -73,6 +74,11 @@
                         td.td-createdat = l task.created_at
                         td = task.responsible_user
                         td = task.user.username
+                        td
+                          - task.labels.each.with_index(1) do |label, i|
+                            label.selected-label = label.name
+                            - if  i % 2 == 0
+                              br
                         td
                           button class="btn btn-default" type="button" data-toggle="modal" data-target="#task-id-#{task.id}"
                             i.glyphicon.glyphicon-zoom-in
