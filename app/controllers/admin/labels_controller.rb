@@ -18,6 +18,17 @@ class Admin::LabelsController < ApplicationController
     end
   end
   
+  def destroy
+    @label = Label.find(params[:id])
+    if @label.destroy
+      flash[:notice] = "削除しました"
+      redirect_to admin_labels_path
+    else
+      flash[:danger] = "削除できませんでした"
+      redirect_to admin_labels_path
+    end
+  end
+  
   private
   def label_params
     params.require(:label).permit(:name)

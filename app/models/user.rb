@@ -52,8 +52,10 @@ class User < ApplicationRecord
     end
   
     def validates_destroy
-      errors.add :base, "少なくとも管理者が１人必要です"
-      throw :abort
+      if User.all.length <= 1 ? true: false
+        errors.add :base, "少なくとも管理者が１人必要です"
+        throw :abort
+      end
     end
   
     def one_or_more_admin?

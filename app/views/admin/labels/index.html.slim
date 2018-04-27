@@ -1,4 +1,5 @@
 .container-fluid
+  = render 'shared/flash'
   .row
     .col-sm-6
       .panel.panel-default
@@ -9,12 +10,14 @@
                 th id
                 th name
                 th タスク数
+                th
             tbody
               - @labels.each do |label|
                 tr
                   td = label.id
                   td = label.name
                   td = label.tasks.size
+                  td = link_to "削除", admin_label_path(label), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？" }
     .col-sm-6
       .panel.panel-default
         .panel-body
