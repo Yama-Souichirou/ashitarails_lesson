@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   has_many :task_labels
+  has_many :labels, through: :task_labels
   belongs_to :user
   accepts_nested_attributes_for :task_labels, allow_destroy: true
 

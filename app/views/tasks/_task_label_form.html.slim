@@ -1,4 +1,8 @@
-= f.fields_for :task_labels do |t|
+= f.fields_for @task.task_labels.build do |t|
   = t.label :label_id, "ラベル", class: "label-control"
   = t.collection_select :label_id, Label.all, :id, :name, { multiple: true, include_blank: true }, class: "form-control select-label-form"
   p.selected-labels.mt10
+    - if @task.labels.present?
+      - @task.labels.each do |label|
+        span.selected-label = label.name
+        = t.hidden_field :label_id

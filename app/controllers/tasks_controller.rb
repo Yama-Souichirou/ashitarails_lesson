@@ -8,7 +8,6 @@ class TasksController < ApplicationController
       .search(params[:task])
       .page(params[:page])
     @task = Task.new
-    @task.task_labels.build
     @q = params[:task].present? ? Task.new(task_search_params) : Task.new(status: nil, priority: nil)
     sortable(params[:sort])
   end
@@ -20,7 +19,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = @current_user.id
-    if @task.save
+    if @task.save!
       flash[:notice] = "登録しました"
       redirect_to tasks_path
     else
@@ -54,7 +53,7 @@ class TasksController < ApplicationController
   
   private
     def task_params
-      params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :user_id, :responsible, task_labels_attribute: [:task_id, :label_id, :_destroy, :id])
+      params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :user_id, :responsible, task_labels_attributes: [:task_id, :label_id, :_destroy, :id])
     end
     
     def task_search_params

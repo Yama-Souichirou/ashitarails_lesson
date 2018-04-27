@@ -15,25 +15,56 @@
 //= require turbolinks
 //= require_tree .
 $(function(){
-    //Default
     $('#datepicker-default .date').datepicker({
         format: "yyyy-mm-dd",
     });
 
+
+    // ラベル選択に関する
+    $('.selected-label').each(function(i, em) {
+        // console.log($(em).text());
+        $('.select-label-form option').each(function(){
+            if( $(this).text() == $(em).text()) {
+                $(this).remove();
+            }
+        })
+    })
     $('.select-label-form').on('change', function(){
         var value = $(this).val();
         var text = $('.select-label-form option:selected').text();
+        var labelLength = $('.selected-labels span').length;
+        var label = '<span class="selected-label">' + text + '</span>';
+        var hiddenForm = '<input type="hidden" value="' + value + '" name="task[task_labels_attributes][' + labelLength + '][label_id]" id="task_task_labels_attributes_' + labelLength + '_label_id">';
+        var hiddenFormId = '<input type="hidden" value="' + "id" + '" name="task[task_labels_attributes][' + labelLength + '][label_id]" id="task_task_labels_attributes_' + labelLength + '_label_id">';
 
         $('.select-label-form option').each(function(){
             if( $(this).val() == value) {
                 $(this).remove();
             }
         })
-        var labelLength = $('.selected-labels span').length;
-        var label = '<span class="selected-label">' + text + '</span>';
-        var form = '<input type="hidden" value="' + value + '" name="task[task_labels_attributes][' + labelLength + '][label_id]" id="task_task_labels_attributes_' + labelLength + '_label_id"'
 
-        $('.selected-labels').append(label + form);
-    })
+        $('.selected-labels').append(label);
+        $('.selected-labels').append(hiddenForm);
+    });
+
+    $(document).on('click', '.selected-label', function(){
+        var text = $(this).text();
+        $(this).next('input:hidden').remove();
+        $(this).remove();
+        $.ajax({
+            url: "/labels.json",
+            type: "GET",
+            data: {
+                name: text
+            },
+        })
+        .done((data) => {
+            $option = $('<option>')
+                .val(data.id)
+                .text(data.name)
+            $('.select-label-form').append($option);
+        })
+    });
+
 
 });
