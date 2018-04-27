@@ -1,0 +1,32 @@
+.container-fluid
+  .row
+    .col-sm-6
+      .panel.panel-default
+        .panel-body
+          table.table
+            thead
+              tr
+                th id
+                th name
+                th タスク数
+            tbody
+              - @labels.each do |label|
+                tr
+                  td = label.id
+                  td = label.name
+                  td = label.tasks.size
+    .col-sm-6
+      .panel.panel-default
+        .panel-body
+          = form_for([:admin, @label]) do |f|
+            - if @label.errors.any?
+              - @label.errors.full_messages.each do |message|
+                div.col-sm-12
+                  p.error-message.alert.alert-danger
+                    = message
+            .col-sm-12
+              .form-group
+                = f.label :name, "ラベル名", class: "label-control"
+                = f.text_field :name, class: "form-control"
+            .col-sm-12
+              = f.submit "登録", class: "primary-btn"

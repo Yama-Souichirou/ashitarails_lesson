@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
     resources :tasks, except: :show
     resources :registrations
+    resources :labels, only: [:index, :new, :create, :destroy]
   end
   root "tasks#index"
 end
