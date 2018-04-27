@@ -16,7 +16,7 @@
                 / form_forを使うのが望ましい
                 = form_for @q, method: :get do |f|
                   .row
-                    .col-sm-2
+                    .col-sm-3
                       .form-group
                         = f.label :title, "タスク名", class: "label-control"
                         = f.text_field :title, class: "form-control", id: "search_title"

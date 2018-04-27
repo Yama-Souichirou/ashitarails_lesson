@@ -24,7 +24,7 @@ class User < ApplicationRecord
     return users if params.blank?
     
     if params[:username].present?
-      usres = users.where("username like ?", "%#{params[:username]}%")
+      users = users.where("username like ?", "%#{params[:username]}%")
     end
     users
   end

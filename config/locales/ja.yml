@@ -23,6 +23,7 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         created_at: "登録日"
+        role: "ロール"
   enum:
     tasks:
       priorities:

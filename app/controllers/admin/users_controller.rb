@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
   
   def index
     @users = User
-      .search(params)
+      .search(params[:user])
     @q = params[:user].present? ? User.new(search_user_params) : User.new
   end
   
