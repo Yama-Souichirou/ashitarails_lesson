@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   
   before_create :set_default_role
+  before_destroy :validates_destroy
   
   ROLE = { normal: 0, admin: 1 }
   enum role: ROLE
@@ -48,5 +49,14 @@ class User < ApplicationRecord
   private
     def set_default_role
       self.role ||= 0
+    end
+  
+    def validates_destroy
+      errors.add :base, "少なくとも管理者が１人必要です"
+      throw :abort
+    end
+  
+    def one_or_more_admin?
+      User.all.length <= 1 ? true: false
     end
 end
