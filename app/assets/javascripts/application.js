@@ -20,4 +20,20 @@ $(function(){
         format: "yyyy-mm-dd",
     });
 
+    $('.select-label-form').on('change', function(){
+        var value = $(this).val();
+        var text = $('.select-label-form option:selected').text();
+
+        $('.select-label-form option').each(function(){
+            if( $(this).val() == value) {
+                $(this).remove();
+            }
+        })
+        var labelLength = $('.selected-labels span').length;
+        var label = '<span class="selected-label">' + text + '</span>';
+        var form = '<input type="hidden" value="' + value + '" name="task[task_labels_attributes][' + labelLength + '][label_id]" id="task_task_labels_attributes_' + labelLength + '_label_id"'
+
+        $('.selected-labels').append(label + form);
+    })
+
 });

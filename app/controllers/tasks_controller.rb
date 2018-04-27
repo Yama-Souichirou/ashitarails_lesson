@@ -8,6 +8,7 @@ class TasksController < ApplicationController
       .search(params[:task])
       .page(params[:page])
     @task = Task.new
+    @task.task_labels.build
     @q = params[:task].present? ? Task.new(task_search_params) : Task.new(status: nil, priority: nil)
     sortable(params[:sort])
   end
@@ -53,7 +54,7 @@ class TasksController < ApplicationController
   
   private
     def task_params
-      params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :user_id, :responsible)
+      params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :user_id, :responsible, task_labels_attribute: [:task_id, :label_id, :_destroy, :id])
     end
     
     def task_search_params
