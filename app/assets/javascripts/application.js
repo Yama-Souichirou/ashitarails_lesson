@@ -33,7 +33,7 @@ $(function(){
         var value = $(this).val();
         var text = $('.select-label-form option:selected').text();
         var labelLength = $('.selected-labels span').length;
-        var label = '<span class="selected-label">' + text + '</span>';
+        var label = '<span class="selected-label selected-label-green">' + text + '</span>';
         var hiddenForm = '<input type="hidden" value="' + value + '" name="task[task_labels_attributes][' + labelLength + '][label_id]" id="task_task_labels_attributes_' + labelLength + '_label_id">';
         var hiddenFormId = '<input type="hidden" value="' + "id" + '" name="task[task_labels_attributes][' + labelLength + '][label_id]" id="task_task_labels_attributes_' + labelLength + '_label_id">';
 
