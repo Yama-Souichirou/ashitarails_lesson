@@ -21,9 +21,11 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = @current_user.id
     if @task.save!
-      @message = "タスクを登録しました"
+      flash[:notice] = "タスクを登録しました"
+      redirect_to tasks_path
     else
-      @message = "タスクを登録できませんでした"
+      flash[:danger] = "タスクを登録できませんでした"
+      redirect_to tasks_path
     end
   end
   

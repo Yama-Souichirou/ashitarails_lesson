@@ -1,10 +1,11 @@
 - if flash.present?
-  div.row
-    - flash.each do |key, value|
-      - status = "success" if key == "notice"
-      - status = "danger"  if key == "danger"
-      div.col-sm-12
-        div[class="alert alert-#{status} fade in alert-dismissible"]
-          div class="close" data-dismiss="alert" aria-label="close" &times;
-          = value
+  - flash.each do |key, value|
+    - status = "success" if key == "notice"
+    - status = "error"  if key == "danger"
+    javascript:
+      $(function(){
+        toastr.#{status}("#{value}");
+        toastr.options.progressBar = true;  
+      })
+      
 

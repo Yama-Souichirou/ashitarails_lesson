@@ -1,0 +1,21 @@
+tbody#tasks-table
+  - tasks.each do |task|
+    tr
+      td.td-title = task.title
+      td.td-deadlineon = l task.deadline_on
+      td.td-priority
+        label class="label label-#{task.priority_color_class}" = task.human_priority
+      td.td-status
+        label.label.label-default = task.human_status
+      td.td-createdat = l task.created_at
+      td = task.responsible_user
+      td = task.user.username
+      td
+        - task.labels.each.with_index(1) do |label, i|
+          label.selected-label-green = label.name
+          - if  i % 2 == 0
+            br
+      td
+        button class="btn btn-default" type="button" data-toggle="modal" data-target="#task-id-#{task.id}"
+          i.glyphicon.glyphicon-zoom-in
+        = render partial: "modal", locals: { task: task }
