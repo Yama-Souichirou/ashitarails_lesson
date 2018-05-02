@@ -4,5 +4,4 @@
   p.selected-labels.mt10
     - if @task.labels.present?
       - @task.labels.each do |label|
-        span.selected-label.selected-label-green = label.name
-        = t.hidden_field :label_id
+        span.selected-label.selected-label-green data-task_id=@task.id = label.name

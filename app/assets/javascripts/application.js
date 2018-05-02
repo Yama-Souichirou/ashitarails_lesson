@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+<<<<<<< Updated upstream
+=======
 $(function(){
     $('#datepicker-default .date').datepicker({
         format: "yyyy-mm-dd",
@@ -22,7 +24,6 @@ $(function(){
 
     // ラベル選択に関する
     $('.selected-label').each(function(i, em) {
-        console.log($(em).text());
         $('.select-label-form option').each(function(){
             if( $(this).text() == $(em).text()) {
                 $(this).remove();
@@ -34,8 +35,18 @@ $(function(){
         var text = $('.select-label-form option:selected').text();
         var labelLength = $('.selected-labels span').length;
         var label = '<span class="selected-label selected-label-green">' + text + '</span>';
-        var hiddenForm = '<input type="hidden" value="' + value + '" name="task[task_labels_attributes][' + labelLength + '][label_id]" id="task_task_labels_attributes_' + labelLength + '_label_id">';
-        var hiddenFormId = '<input type="hidden" value="' + "id" + '" name="task[task_labels_attributes][' + labelLength + '][label_id]" id="task_task_labels_attributes_' + labelLength + '_label_id">';
+        var hiddenFormLabelId = '<input type="hidden" value="' 
+          + value
+          + '" name="task[task_labels_attributes][' 
+          + labelLength 
+          + '][label_id]" id="task_task_labels_attributes_' 
+          + labelLength + '_label_id">';
+        // var hiddenFormId = '<input type="hidden" value="'
+        //   + "id" + '" name="task[task_labels_attributes]['
+        //   + labelLength 
+        //   + '][label_id]" id="task_task_labels_attributes_' 
+        //   + labelLength 
+        //   + '_label_id">';
 
         $('.select-label-form option').each(function(){
             if( $(this).val() == value) {
@@ -44,18 +55,20 @@ $(function(){
         })
 
         $('.selected-labels').append(label);
-        $('.selected-labels').append(hiddenForm);
+        $('.selected-labels').append(hiddenFormLabelId);
     });
 
     $(document).on('click', '.selected-label', function(){
         var text = $(this).text();
+        var task_id = $(this).data('task_id');
         $(this).next('input:hidden').remove();
         $(this).remove();
         $.ajax({
             url: "/labels.json",
             type: "GET",
             data: {
-                name: text
+                name: text,
+                task_id: task_id
             },
         })
         .done((data) => {
@@ -68,3 +81,4 @@ $(function(){
 
 
 });
+>>>>>>> Stashed changes
