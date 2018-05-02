@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-<<<<<<< Updated upstream
-=======
 $(function(){
     $('#datepicker-default .date').datepicker({
         format: "yyyy-mm-dd",
@@ -81,4 +79,3 @@ $(function(){
 
 
 });
->>>>>>> Stashed changes
