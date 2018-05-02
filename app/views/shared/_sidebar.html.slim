@@ -7,5 +7,8 @@ div#sidemenu.pt60
       = link_to admin_users_path do
         li
           i.glyphicon.glyphicon-exclamation-sign 　管理者専用
+      = link_to user_path(@current_user.id) do 
+        li
+          i.glyphicon.glyphicon-user 　マイページ
 
 
