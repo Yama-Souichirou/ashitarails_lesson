@@ -1,0 +1,20 @@
+.container-fluid.mt20
+  .row
+    .col-sm-8
+      - @user.tasks.each do |task|
+        .panel.panel-default
+          .panel-heading
+            = task.title
+          .panel-body
+            p
+              |  期日：
+              = l task.deadline_on
+            p.task-status-labels
+              label class="label label-#{task.priority_color_class}" = task.human_priority
+              label.label.label-default = task.human_status
+              label class="label label-#{task.display_deadline_color_class}" = task.display_days_left_format
+            hr
+            p = simple_format(task.description)
+
+
+      
