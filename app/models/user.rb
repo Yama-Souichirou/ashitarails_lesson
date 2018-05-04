@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :tasks, dependent: :delete_all
+  has_many :tasks, :class_name => 'Task', :foreign_key => 'user_id', dependent: :delete_all
+  has_many :responsibles, :class_name => 'Task', :foreign_key => 'responsible_id', dependent: :delete_all
  
   has_secure_password validations: true
   

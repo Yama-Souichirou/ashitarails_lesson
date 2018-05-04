@@ -2,9 +2,8 @@ class Task < ApplicationRecord
   has_many :task_labels
   has_many :labels, through: :task_labels
   belongs_to :user
-  # belongs_to でかけるよ
+  belongs_to :responsible, :class_name => 'User'
   accepts_nested_attributes_for :task_labels, allow_destroy: true
-
 
   validates :title, presence: true
   validates :deadline_on, presence: true
@@ -100,12 +99,6 @@ class Task < ApplicationRecord
     elsif 10 <= self.days_left
       "info"
     end
-  end
-  
-  def responsible_user
-    # responsible_usernameがよい
-    user = User.find(self.responsible)
-    user.username
   end
   
   private

@@ -28,16 +28,16 @@ ActiveRecord::Schema.define(version: 20180426055554) do
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title",                                 null: false
-    t.text     "description", limit: 65535
-    t.date     "deadline_on",                           null: false
-    t.integer  "status",                    default: 1, null: false
-    t.integer  "priority",                  default: 1, null: false
+    t.string   "title",                                    null: false
+    t.text     "description",    limit: 65535
+    t.date     "deadline_on",                              null: false
+    t.integer  "status",                       default: 1, null: false
+    t.integer  "priority",                     default: 1, null: false
     t.integer  "user_id"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.integer  "responsible"
-    t.index ["responsible"], name: "index_tasks_on_responsible", using: :btree
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "responsible_id"
+    t.index ["responsible_id"], name: "index_tasks_on_responsible_id", using: :btree
     t.index ["user_id", "deadline_on", "priority"], name: "index_tasks_on_user_id_and_deadline_on_and_priority", using: :btree
   end
 

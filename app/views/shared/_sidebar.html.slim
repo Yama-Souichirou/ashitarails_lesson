@@ -4,11 +4,12 @@ div#sidemenu.pt60
       = link_to root_path do
         li
           i.glyphicon.glyphicon-th-list 　タスク管理
-      = link_to admin_users_path do
-        li
-          i.glyphicon.glyphicon-exclamation-sign 　管理者専用
       = link_to user_path(@current_user.id) do 
         li
           i.glyphicon.glyphicon-user 　マイページ
+      = link_to admin_users_path do
+        li
+          i.glyphicon.glyphicon-exclamation-sign 　管理者専用
+     
 
 

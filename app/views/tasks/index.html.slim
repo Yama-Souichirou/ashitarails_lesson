@@ -71,7 +71,7 @@
                         td.td-status
                           label.label.label-default = task.human_status
                         td.td-createdat = l task.created_at
-                        td = task.responsible_user
+                        td = task.responsible.username
                         td = task.user.username
                         td
                           - task.labels.each.with_index(1) do |label, i|
