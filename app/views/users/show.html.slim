@@ -1,20 +1,35 @@
 .container-fluid.mt20
   .row
     .col-sm-8
-      - @user.responsibles.each do |task|
-        .panel.panel-default
-          .panel-heading
-            = task.title
-          .panel-body
+      - if @user.responsible_tasks == 0
+        p.text-center 担当しているタスクはありません
+      - else
+        - @user.responsibles.each do |task|
+          .panel.panel-default
+            .panel-heading
+              = task.title
+            .panel-body
+              p
+                |  期日：
+                = l task.deadline_on
+              p.task-status-labels
+                label class="label label-#{task.priority_color_class}" = task.human_priority
+                label.label.label-default = task.human_status
+                label class="label label-#{task.display_deadline_color_class}" = task.display_days_left_format
+              hr
+              p = simple_format(task.description)
+    .col-sm-4
+      .panel.panel-default
+        .panel-body
+          .text-center
+            img class="img-circle" src="/assets/images/account.jpg" style="width: 200px; height: 200px;"
+          .col-sm-12.mt20
             p
-              |  期日：
-              = l task.deadline_on
-            p.task-status-labels
-              label class="label label-#{task.priority_color_class}" = task.human_priority
-              label.label.label-default = task.human_status
-              label class="label label-#{task.display_deadline_color_class}" = task.display_days_left_format
-            hr
-            p = simple_format(task.description)
+              | ユーザー名：
+              = @user.username
+            p
+              | メールアドレス：
+              = @user.email
 
 
       
