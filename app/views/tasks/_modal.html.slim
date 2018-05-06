@@ -6,7 +6,7 @@
         p.task-status-labels
           label class="label label-#{task.priority_color_class}" = task.human_priority
           label.label.label-default = task.human_status
-          label class="label label-#{task.display_deadline_color_class}" = task.display_days_left_format
+          label class="label label-#{task.deadline_color_class}" = task.display_days_left_format
         .description.mt40
           = simple_format(task.description)
       .modal-footer

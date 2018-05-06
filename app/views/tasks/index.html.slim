@@ -12,26 +12,25 @@
           .col-sm-12
             .panel.panel-default.mt20
               .panel-body
-                / form_forを使うのが望ましい
                 = form_for @q, method: :get do |f|
                   .row
                     .col-sm-3
                       .form-group
                         = f.label :title, "タスク名", class: "label-control"
                         = f.text_field :title, class: "form-control", id: "search_title"
-                    .col-sm-2
+                    .col-sm-3
                       .form-group
                         = f.label :status, "ステータス", class: "label-control"
                         = f.select :status, Task.status_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", id: "search_status"
-                    .col-sm-2
+                    .col-sm-3
                       .form-group
                         = f.label :priority, "優先順位", class: "label-control"
                         = f.select :priority, Task.priority_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control"
-                    .col-sm-2
+                    .col-sm-3
                       .form-group
                         = f.label :responsible, "担当者", class: "label-control"
                         = f.select :responsible, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control"
-                    .col-sm-2
+                    .col-sm-3
                       .form-group
                         = f.label :user_id, "作成者", class: "label-control"
                         = f.select :user_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control"

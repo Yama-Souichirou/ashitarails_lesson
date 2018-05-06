@@ -91,7 +91,7 @@ class Task < ApplicationRecord
     end
   end
 
-  def display_deadline_color_class
+  def deadline_color_class
     if 6 >= self.days_left
       "danger"
     elsif 7 <= self.days_left && self.days_left  <= 9
