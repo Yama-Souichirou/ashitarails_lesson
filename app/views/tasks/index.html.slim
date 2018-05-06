@@ -68,7 +68,7 @@
                         td.td-priority
                           label class="label label-#{task.priority_color_class}" = task.human_priority
                         td.td-status
-                          label.label.label-default = task.human_status
+                          label class="label label-#{task.status_color_class}" = task.human_status
                         td.td-createdat = l task.created_at
                         td = task.responsible.username
                         td = task.user.username

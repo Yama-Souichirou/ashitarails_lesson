@@ -82,9 +82,10 @@ class Task < ApplicationRecord
   end
   
   def priority_color_class
-    if self.priority == "anytime" || self.priority == "normal"
+    priority = self.priority
+    if priority == "anytime" || priority == "normal"
       "info"
-    elsif self.priority == "prior"
+    elsif priority == "prior"
       "warning"
     else
       "danger"
@@ -97,6 +98,18 @@ class Task < ApplicationRecord
     elsif 7 <= self.days_left && self.days_left  <= 9
       "warning"
     elsif 10 <= self.days_left
+      "info"
+    end
+  end
+
+  def status_color_class
+    status = self.status
+    p status
+    if status == "not_start"
+      "warning"
+    elsif status == "working"
+      "success"
+    else
       "info"
     end
   end
