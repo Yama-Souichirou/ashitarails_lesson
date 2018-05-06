@@ -21,7 +21,7 @@ class Task < ApplicationRecord
   before_create :set_default_priority
   
   def self.search(params)
-    tasks = Task.all
+    tasks = Task.where.not(status: "complete")
     return tasks if params.blank?
     
     if params[:title].present?
@@ -104,7 +104,6 @@ class Task < ApplicationRecord
 
   def status_color_class
     status = self.status
-    p status
     if status == "not_start"
       "warning"
     elsif status == "working"

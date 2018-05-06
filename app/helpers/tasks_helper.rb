@@ -8,7 +8,7 @@ module TasksHelper
       task: {
         title: query.title,
         status: query.status,
-        riority: query.priority,
+        priority: query.priority,
         responsible: @q.responsible,
         user_id: @q.user_id
       }
