@@ -21,13 +21,6 @@ RSpec.feature "Tasks", type: :feature do
         click_button "登録"
       }.to change(Task, :count).by(1)
     end
-
-    # it "delete task" do
-    #   expect {
-    #     visit root_path
-    #     page.all("tbody tr")[0].find("#delete-task-btn").click
-    #   }.to change(Task, :count).by(-1)
-    # end
   end
   
   describe "sort" do
