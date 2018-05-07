@@ -21,7 +21,7 @@ class Task < ApplicationRecord
   before_create :set_default_priority
   
   def self.search(params)
-    tasks = Task.where.not(status: "complete")
+    tasks = Task.all
     return tasks if params.blank?
     
     if params[:title].present?

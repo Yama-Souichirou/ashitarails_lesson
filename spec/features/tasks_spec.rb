@@ -1,13 +1,22 @@
 require 'rails_helper'
 
 RSpec.feature "Tasks", type: :feature do
+  before do
+    FactoryGirl.create(:user)
+    visit new_session_path
+    fill_in 'メールアドレス', with: "s.yama@ashita-team.com"
+    fill_in 'パスワード', with: "password"
+    click_on 'Sign In'
+  end
+  
   describe "fill in field and click button" do
     it "create task" do
       expect {
-        visit new_task_path "新規作成"
-        fill_in "タスク名", with: "テストタスク"
+        visit root_path
         fill_in "説明文", with: "this is a test"
+        fill_in "task_title", with: "this is a test"
         fill_in "期日", with: "2018-04-04"
+        select "yamasou", from: "responsible_select"
         
         click_button "登録"
       }.to change(Task, :count).by(1)
@@ -163,7 +172,7 @@ RSpec.feature "Tasks", type: :feature do
           click_button "search-button"
         end
         
-        it "size 20" do
+        it "return 20" do
           # sizeはよくない
           expect(page.all("tbody tr").size).to eq 20
         end
