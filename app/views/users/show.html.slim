@@ -4,7 +4,7 @@
       - if @user.responsible_tasks == 0
         p.text-center 担当しているタスクはありません
       - else
-        - @user.responsibles.each do |task|
+        - @user.responsibles.where.not(status: "complete").each do |task|
           .panel.panel-default
             .panel-heading
               = task.title
@@ -18,6 +18,10 @@
                 label class="label label-#{task.deadline_color_class}" = task.display_days_left_format
               hr
               p = simple_format(task.description)
+            .panel-footer
+              = form_for task, html: { class: "clearfix" } do |f|
+                = f.hidden_field :status, value: "complete"
+                = f.submit "完了にする", class: "primary-btn pull-right"
     .col-sm-4
       .panel.panel-default
         .panel-body
