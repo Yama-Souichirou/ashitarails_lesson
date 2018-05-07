@@ -22,7 +22,7 @@
       .panel.panel-default
         .panel-body
           .text-center
-            img class="img-circle" src="/assets/images/account.jpg" style="width: 200px; height: 200px;"
+            = image_tag(@user.image, class: "img-circle users-show_image")
           .col-sm-12.mt20
             p
               | ユーザー名：
@@ -32,4 +32,3 @@
               = @user.email
 
 
-      
