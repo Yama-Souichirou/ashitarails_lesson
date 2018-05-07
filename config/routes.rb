@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :tasks, except: :show
   resources :sessions, only: [:new, :create]
   resources :labels, only: [:index]
-  resources :users, only: :show
+  resources :users, only: [:show, :update]
   delete "/session" => "sessions#destroy", as: :destroy_session
   
   namespace :admin do

@@ -15,11 +15,6 @@
 //= require turbolinks
 //= require_tree .
 $(function(){
-    $('#datepicker-default .date').datepicker({
-        format: "yyyy-mm-dd",
-    });
-
-
     // ラベル選択に関する
     $('.selected-label').each(function(i, em) {
         $('.select-label-form option').each(function(){

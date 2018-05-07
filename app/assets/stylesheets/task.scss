@@ -4,5 +4,12 @@
 .users-show_image {
   width: 200px;
   height: 200px;
+  margin: auto;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 

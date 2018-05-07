@@ -21,8 +21,10 @@
     .col-sm-4
       .panel.panel-default
         .panel-body
-          .text-center
-            = image_tag(@user.image, class: "img-circle users-show_image")
+          .text-center.users-show_image
+            = image_tag(@user.image, class: "img-circle")
+            .change-img-display.display-none
+              p.text-center アイコンを変更する
           .col-sm-12.mt20
             p
               | ユーザー名：
@@ -30,5 +32,12 @@
             p
               | メールアドレス：
               = @user.email
+          .col-sm-12.change-image-form.mt20
+            p アイコンを変更する
+            = form_for @user do |f|
+              .form-group
+                = f.file_field :image
+              .form-group
+                = f.submit "変更", class: "primary-btn"
 
 
