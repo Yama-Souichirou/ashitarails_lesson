@@ -12,17 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+
 $(function(){
+    $('#datepicker-default .date').datepicker({
+        format: "yyyy-mm-dd",
+    });
+
     // ラベル選択に関する
     $('.selected-label').each(function(i, em) {
+        console.log(em);
         $('.select-label-form option').each(function(){
             if( $(this).text() == $(em).text()) {
                 $(this).remove();
             }
         })
-    })
+    });
     $('.select-label-form').on('change', function(){
         var value = $(this).val();
         var text = $('.select-label-form option:selected').text();
@@ -34,12 +39,6 @@ $(function(){
           + labelLength 
           + '][label_id]" id="task_task_labels_attributes_' 
           + labelLength + '_label_id">';
-        // var hiddenFormId = '<input type="hidden" value="'
-        //   + "id" + '" name="task[task_labels_attributes]['
-        //   + labelLength 
-        //   + '][label_id]" id="task_task_labels_attributes_' 
-        //   + labelLength 
-        //   + '_label_id">';
 
         $('.select-label-form option').each(function(){
             if( $(this).val() == value) {
