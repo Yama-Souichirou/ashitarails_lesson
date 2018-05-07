@@ -14,6 +14,9 @@ gem 'rails', '~> 5.0.7'
 gem 'puma', '~> 3.0'
 gem 'mysql2'
 gem 'kaminari'
+gem 'carrierwave'
+gem 'rmagick', require: 'RMagick'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
