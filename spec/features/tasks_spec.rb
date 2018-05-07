@@ -23,6 +23,19 @@ RSpec.feature "Tasks", type: :feature do
     end
   end
   
+  describe "click delete btn" do
+    before do
+      FactoryGirl.create(:task)
+    end
+    
+    it "delete task" do
+      expect {
+        visit root_path
+        page.first(".delete-task-btn").click
+      }.to change(Task, :count).by(-1)
+    end
+  end
+  
   describe "sort" do
     context "click link th '期日'" do
       before do
