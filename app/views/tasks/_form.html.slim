@@ -1,13 +1,7 @@
 div.container-fluid.mt20
   div.panel.panel-default
     div.panel-body
-      = form_for @task do |f|
-        / - if @task.errors.any?
-          / - @task.errors.full_messages.each do |message|
-            / javascript:
-            //    $(function () {
-            //        toastr.error("#{message}");
-            //    })
+      = form_for @task, html: { id: "create-task-form" } do |f|
         div.row
           div.col-sm-12
             div.form-group
@@ -50,4 +44,4 @@ div.container-fluid.mt20
               = f.text_area :description, rows: "10", class: "form-control"
 
         br
-        = f.submit "登録", class: "primary-btn"
+          btn.primary-btn.submit-task 登録

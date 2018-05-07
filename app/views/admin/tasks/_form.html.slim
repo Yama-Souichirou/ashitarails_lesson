@@ -1,7 +1,7 @@
 div.container-fluid.mt20
   div.panel.panel-default
     div.panel-body
-      = form_for([:admin, @task]) do |f|
+      = form_for([:admin, @task], html: { id: "create-task-form" }) do |f|
         div.row
           - if @task.errors.any?
             - @task.errors.full_messages.each do |message|
@@ -51,4 +51,4 @@ div.container-fluid.mt20
               = f.text_area :description, rows: "10", class: "form-control"
 
         br
-        = f.submit "登録", class: "primary-btn"
+          btn.primary-btn.submit-task 登録

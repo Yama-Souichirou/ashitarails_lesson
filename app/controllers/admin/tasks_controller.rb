@@ -21,11 +21,10 @@ class Admin::TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = @current_user.id
     if @task.save
-      flash[:notice] = "登録しました"
-      redirect_to tasks_path
+      flash[:notice] = "タスクを登録しました"
+      head :ok
     else
-      flash[:danger] = "登録できませんでした"
-      redirect_to admin_tasks_path
+      render json: { messages: @task.errors.full_messages }, status: :bad_request
     end
   end
   
@@ -54,7 +53,7 @@ class Admin::TasksController < ApplicationController
   
   private
     def task_params
-      params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :user_id, :responsible)
+      params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :user_id, :responsible_id, task_labels_attributes: [:task_id, :label_id, :_destroy, :id])
     end
     
     def task_search_params

@@ -71,5 +71,29 @@ $(function(){
         })
     });
 
+    // tasks create
+    $('.submit-task').on('click', function(){
+        var $form = $('#create-task-form');
+        var query = $form.serialize();
+
+        $.ajax({
+            url: "/tasks",
+            type: "POST",
+            data: query,
+            headers: {
+                'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
+            },
+        })
+        .done((data) => {
+            location.reload();
+        })
+        .fail((data) => {
+            var messages = data.responseJSON.messages;
+            for(var i=0; i < messages.length; i++) {
+                toastr.error(messages[i]);
+            }
+        })
+    })
+
 
 });

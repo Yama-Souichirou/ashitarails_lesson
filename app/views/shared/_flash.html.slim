@@ -5,7 +5,13 @@
     javascript:
       $(function(){
         toastr.#{status}("#{value}");
-        toastr.options.progressBar = true;  
       })
+
+- if flash[:tasks].present?
+  - flash[:tasks].each do |value|
+    javascript:
+        $(function () {
+            toastr.error("#{value}");
+        })
       
 

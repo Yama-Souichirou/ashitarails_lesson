@@ -7,9 +7,9 @@ class TasksController < ApplicationController
       .includes(:user)
       .search(params[:task])
       .page(params[:page])
+    # binding.pry
     @task = Task.new
     @q = params[:task].present? ? Task.new(task_search_params) : Task.new(status: nil, priority: nil)
-    # sortableで何がされているのかわかりにくい。ソートできるって意味しか伝わらない
     sortable(params[:sort])
   end
   
@@ -22,10 +22,9 @@ class TasksController < ApplicationController
     @task.user_id = @current_user.id
     if @task.save
       flash[:notice] = "タスクを登録しました"
-      redirect_to tasks_path
+      head :ok
     else
-      flash[:danger] = "タスクを登録できませんでした"
-      redirect_to tasks_path
+      render json: { messages: @task.errors.full_messages }, status: :bad_request
     end
   end
   
