@@ -1,7 +1,7 @@
 div.container-fluid.mt20
   div.panel.panel-default
     div.panel-body
-      = form_for @task, remote: true do |f|
+      = form_for @task do |f|
         / - if @task.errors.any?
           / - @task.errors.full_messages.each do |message|
             / javascript:

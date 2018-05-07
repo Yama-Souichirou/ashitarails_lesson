@@ -11,5 +11,7 @@ header#header.clearfix
           ul.dropdown-menu aria-labelledby="dropdownMenu1"
             li.dropdown-header = @current_user.username
             li
+              = link_to "マイページ", user_path(@current_user)
+            li
               = link_to "ログアウト", destroy_session_path, method: :delete
 
