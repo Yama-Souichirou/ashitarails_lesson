@@ -68,16 +68,16 @@ class Task < ApplicationRecord
     I18n.t 'enum.tasks.statuses'
   end
   
-  def days_left
-    days_left = self.deadline_on - Date.today
-    days_left.to_i
+  def left_days
+    left_days = self.deadline_on - Date.today
+    left_days.to_i
   end
   
-  def display_days_left_format
-    if self.days_left.to_i <= -1
+  def display_left_days_format
+    if self.left_days.to_i <= -1
       "期限を過ぎています"
     else
-      "残り#{days_left.to_i}日"
+      "残り#{left_days.to_i}日"
     end
   end
   
@@ -93,11 +93,11 @@ class Task < ApplicationRecord
   end
 
   def deadline_color_class
-    if 6 >= self.days_left
+    if 6 >= self.left_days
       "danger"
-    elsif 7 <= self.days_left && self.days_left  <= 9
+    elsif 7 <= self.left_days && self.left_days  <= 9
       "warning"
-    elsif 10 <= self.days_left
+    elsif 10 <= self.left_days
       "info"
     end
   end
