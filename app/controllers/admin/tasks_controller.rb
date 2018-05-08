@@ -33,11 +33,10 @@ class Admin::TasksController < ApplicationController
   
   def update
     if @task.update(task_params)
-      flash[:notice] = "更新しました"
-      redirect_to admin_tasks_path
+      flash[:notice] = "タスクを登録しました"
+      head :ok
     else
-      flash[:danger] = "更新できませんでした"
-      render 'edit'
+      render json: { messages: @task.errors.full_messages }, status: :bad_request
     end
   end
   

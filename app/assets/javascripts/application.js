@@ -77,8 +77,8 @@ $(function(){
         var query = $form.serialize();
 
         $.ajax({
-            url: "/tasks",
-            type: "POST",
+            url: $form.attr('action'),
+            type: $form.attr('method'),
             data: query,
             headers: {
                 'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
