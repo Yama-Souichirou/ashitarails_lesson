@@ -4,7 +4,7 @@
       - if @user.responsible_tasks == 0
         p.text-center 担当しているタスクはありません
       - else
-        - @user.responsibles.where.not(status: "complete").each do |task|
+        - @user.responsibles.exclude_complete.each do |task|
           .panel.panel-default
             .panel-heading
               = task.title
@@ -15,7 +15,7 @@
               p.task-status-labels
                 label class="label label-#{task.priority_color_class}" = task.human_priority
                 label.label.label-default = task.human_status
-                label class="label label-#{task.deadline_color_class}" = task.display_days_left_format
+                label class="label label-#{task.deadline_color_class}" = task.display_left_days_format
               hr
               p = simple_format(task.description)
             .panel-footer

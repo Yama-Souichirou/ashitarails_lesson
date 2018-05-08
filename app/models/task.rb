@@ -20,9 +20,13 @@ class Task < ApplicationRecord
   before_create :set_default_status
   before_create :set_default_priority
   
+  scope :exclude_complete, -> () {
+    where.not(status: "complete")
+  }
+  
   def self.search(params)
     tasks = Task.all
-    return tasks if params.blank?
+    return tasks.exclude_complete if params.blank?
     
     if params[:title].present?
       tasks = tasks.where("title like ?", "%#{params[:title]}%")
