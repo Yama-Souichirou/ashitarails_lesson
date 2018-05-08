@@ -9,8 +9,8 @@ module TasksHelper
         title: query.title,
         status: query.status,
         priority: query.priority,
-        responsible: @q.responsible,
-        user_id: @q.user_id
+        responsible_id: query.responsible_id,
+        user_id: query.user_id
       }
     )
   end

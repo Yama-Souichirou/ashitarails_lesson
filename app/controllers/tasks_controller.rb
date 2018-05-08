@@ -6,8 +6,8 @@ class TasksController < ApplicationController
     @tasks = Task
       .includes(:user)
       .search(params[:task])
-      .page(params[:page])
       .order(sortable_conditions_str(params[:sort]))
+      .page(params[:page])
     @task = Task.new
     @q = params[:task].present? ? Task.new(task_search_params) : Task.new(status: nil, priority: nil)
   end
