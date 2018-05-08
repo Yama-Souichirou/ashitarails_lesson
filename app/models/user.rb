@@ -39,9 +39,8 @@ class User < ApplicationRecord
     I18n.t 'enum.users.roles'
   end
   
-  def responsible_tasks
-    tasks = Task.where(responsible: self.id)
-    tasks.size
+  def completed_tasks
+    tasks = self.responsibles.where(status: "complete")
   end
   
   def admin?

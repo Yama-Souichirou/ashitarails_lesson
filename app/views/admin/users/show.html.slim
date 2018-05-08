@@ -5,7 +5,7 @@
         .panel-body
           .col-sm-4.text-center
             .col-sm-12
-              img class="img-responsibe img-circle" src="/assets/images/sample-account.jpg" style="width: 200px; height: 200px;"
+              = image_tag @user.image, class: "img-responsibe img-circle", style: "width: 200px; height: 200px;"
             .col-sm-6.mt30
               = link_to "アカウント編集", edit_admin_registration_path(@user), class: "primary-btn-block"
             .col-sm-6.mt30
@@ -31,4 +31,7 @@
                   td = @user.tasks.size
                 tr
                   td 担当しているタスク
-                  td = @user.responsible_tasks
+                  td = @user.responsibles.size
+                tr
+                  td 完了したタスク
+                  td = @user.completed_tasks.size
