@@ -42,16 +42,6 @@ class Task < ApplicationRecord
     tasks
   end
   
-  scope :select_order, -> (request) {
-    if request == "deadline"
-      order("deadline_on ASC")
-    elsif request == "priority"
-      order("priority DESC")
-    else
-      order("created_at DESC")
-    end
-  }
-  
   def human_priority
     I18n.t "enum.tasks.priorities.#{self.priority}"
   end

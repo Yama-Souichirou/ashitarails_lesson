@@ -7,9 +7,9 @@ class TasksController < ApplicationController
       .includes(:user)
       .search(params[:task])
       .page(params[:page])
+      .order(sortable_conditions_str(params[:sort]))
     @task = Task.new
     @q = params[:task].present? ? Task.new(task_search_params) : Task.new(status: nil, priority: nil)
-    sortable(params[:sort])
   end
   
   def new
@@ -70,11 +70,11 @@ class TasksController < ApplicationController
       end
     end
   
-    def sortable(params)
+    def sortable_conditions_str(params)
       if params.present?
         sort = sort_str(params[:order])
-        @tasks = @tasks.order("#{params[:column]} #{sort}")
         @sort = sort_str(sort, toggle: true)
+        return "#{params[:column]} #{sort}"
       end
     end
 end

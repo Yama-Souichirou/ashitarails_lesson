@@ -7,10 +7,10 @@ class Admin::TasksController < ApplicationController
     @tasks = Task
       .includes(:user)
       .search(params[:task])
+      .order(sortable_conditions_str(params[:sort]))
       .page(params[:page])
     @task = Task.new
     @q = params[:task].present? ? Task.new(task_search_params) : Task.new(status: nil, priority: nil)
-    sortable(params[:sort])
   end
   
   def new
@@ -62,7 +62,7 @@ class Admin::TasksController < ApplicationController
     def set_task
       @task = Task.find(params[:id])
     end
-    
+
     def sort_str(order, toggle: false)
       if toggle
         order == "ASC" ? "DESC" : "ASC"
@@ -70,12 +70,12 @@ class Admin::TasksController < ApplicationController
         order == "ASC" ? "ASC" : "DESC"
       end
     end
-    
-    def sortable(params)
+
+    def sortable_conditions_str(params)
       if params.present?
         sort = sort_str(params[:order])
-        @tasks = @tasks.order("#{params[:column]} #{sort}")
         @sort = sort_str(sort, toggle: true)
+        return "#{params[:column]} #{sort}"
       end
     end
 end
