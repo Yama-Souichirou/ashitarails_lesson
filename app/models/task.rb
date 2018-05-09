@@ -44,6 +44,10 @@ class Task < ApplicationRecord
     if params[:user_id].present?
       tasks = tasks.where(user_id: params[:user_id])
     end
+    if params[:label_ids].present?
+      ids = params[:label_ids].map { | id| id.to_i }
+      tasks = tasks.joins(:task_labels).where("task_labels.label_id IN (?)", ids)
+    end
     tasks
   end
   

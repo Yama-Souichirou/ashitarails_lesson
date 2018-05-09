@@ -10,7 +10,7 @@ module TasksHelper
         status: query.status,
         priority: query.priority,
         responsible_id: query.responsible_id,
-        user_id: query.user_id
+        user_id: query.user_id,
       }
     )
   end

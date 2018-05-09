@@ -15,9 +15,13 @@
 //= require_tree .
 
 $(function(){
+    // datepicker
     $('#datepicker-default .date').datepicker({
         format: "yyyy-mm-dd",
     });
+
+    // multi-select
+    $('#label-select').multiSelect()
 
     // ラベル選択に関する
     $('.selected-label').each(function(i, em) {
