@@ -56,7 +56,7 @@ class Admin::TasksController < ApplicationController
     end
     
     def task_search_params
-      params.require(:task).permit(:title, :status, :priority, :user_id, :responsible)
+      params.require(:task).permit(:title, :status, :priority, :user_id, :responsible, label_ids: [])
     end
     
     def set_task
