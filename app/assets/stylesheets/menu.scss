@@ -76,6 +76,9 @@
   ul {
     a {
       color: #888888;
+      &:hover {
+        color: #888888;
+      }
     }
     li {
       border-bottom: 1px solid $accent;
