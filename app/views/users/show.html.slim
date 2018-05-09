@@ -41,6 +41,7 @@
             = form_for @user do |f|
               .form-group
                 = f.file_field :image
+                = f.hidden_field :image_cache
               .form-group
                 = f.submit "変更", class: "main-btn"
 

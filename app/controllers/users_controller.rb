@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
 	def show
+		@user.image.cache! unless @user.image.blank?
 	end
   
   def update
