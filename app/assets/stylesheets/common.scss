@@ -24,7 +24,7 @@ $admin_base: #226B80;
   clear: both;
 }
 
-.primary-btn {
+.main-btn {
   background-color: $accent;
   color: #fff;
   padding: 5px 10px;
@@ -33,11 +33,31 @@ $admin_base: #226B80;
   border-radius: 3px;
   cursor: pointer;
 }
-.primary-btn-block {
+.sub-btn {
+  background-color: $main_color;
+  color: $pr_color;
+  padding: 5px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.main-btn-block {
   display: block;
   width: 100%;
   background-color: $accent;
   color: #fff;
+  text-align: center;
+  padding: 7px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.sub-btn-block {
+  display: block;
+  width: 100%;
+  background-color: $base_color;
+  color: $pr_color;
   text-align: center;
   padding: 7px 10px;
   -webkit-border-radius: 3px;

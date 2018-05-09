@@ -21,7 +21,7 @@
             .panel-footer
               = form_for task, html: { class: "clearfix" } do |f|
                 = f.hidden_field :status, value: "complete"
-                = f.submit "完了にする", class: "primary-btn pull-right"
+                = f.submit "完了にする", class: "main-btn pull-right"
     .col-sm-4
       .panel.panel-default
         .panel-body
@@ -42,6 +42,6 @@
               .form-group
                 = f.file_field :image
               .form-group
-                = f.submit "変更", class: "primary-btn"
+                = f.submit "変更", class: "main-btn"
 
 
