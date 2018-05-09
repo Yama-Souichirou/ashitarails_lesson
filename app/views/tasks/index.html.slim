@@ -20,9 +20,9 @@
                         = f.text_field :title, class: "form-control", id: "search_title"
                     .row
                       .col-sm-12
-                        .col-sm-12
+                        .col-sm-3
                           p.detail-toggle-btn
-                            | 詳細検索 
+                            | 詳細検索
                             i.fas.fa-caret-down
                       #detail.display-none
                         .col-sm-6
@@ -87,7 +87,8 @@
                         td = task.user.username
                         td
                           - task.labels.each.with_index(1) do |label, i|
-                            label.selected-label-green = label.name
+                            = link_to tasks_path(task: { 'label_ids' => [label.id] }) do
+                              label.selected-label-green = label.name
                             - if  i % 2 == 0
                               br
                         td
