@@ -1,4 +1,4 @@
-.container
+.container-fluid.mt40
   .row
     .col-sm-6.col-sm-offset-3
       .panel.panel-default
@@ -6,6 +6,11 @@
           h4.text-center = @user.username
         .panel-body
           = form_for([:admin, @user], url: admin_registrations_path) do |f|
+            - if @current_user.id == @user.id
+              .col-sm-12
+                .form-group
+                  = f.label :image, "アイコン画像", class: "label-control"
+                  = f.file_field :image
             .col-sm-12
               .form-group
                 = f.label :username, "ユーザーネーム", class: "label-control"
