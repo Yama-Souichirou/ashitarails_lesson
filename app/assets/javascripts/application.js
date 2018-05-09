@@ -24,7 +24,7 @@ $(function(){
     $('#label-select').multiSelect();
 
     $('.detail-toggle-btn').on('click', function(){
-        $('#detail').stop().fadeToggle();
+        $('#detail').stop().fadeToggle(200);
     })
 
     // ラベル選択に関する
