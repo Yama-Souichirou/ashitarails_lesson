@@ -1,14 +1,29 @@
 .modal.fade id="task-id-#{task.id}" role="dialog"
   .modal-dialog
     .modal-content
-      .modal-header = task.title
+      .modal-header
+        h4.mb0 = task.title
+        - task.labels.each do |label|
+          label.selected-label-green = label.name
       .modal-body
-        p.task-status-labels
-          label class="label label-#{task.priority_color_class}" = task.human_priority
-          label.label.label-default = task.human_status
-          label class="label label-#{task.deadline_color_class}" = task.display_left_days_format
+        .row
+          .col-sm-4
+            | 【担当】
+            = task.responsible.username
+          .col-sm-4
+            | 【作成者】
+            = task.user.username
+          .col-sm-4
+            | 【期日】
+            = l task.deadline_on
+          .col-sm-4
+            | 【優先度】
+            = task.human_priority
+          .col-sm-4
+            | 【現在の状況】
+            = task.human_status
         .description.mt40
-          = simple_format(task.description)
+          p = simple_format(task.description)
       .modal-footer
         = link_to edit_task_path(task), class: "btn btn-default" do
           i.glyphicon.glyphicon-pencil
