@@ -44,4 +44,6 @@ div.container-fluid.mt20
               = f.text_area :description, rows: "10", class: "form-control"
 
         br
-          btn.main-btn.submit-task 登録
+          .clearfix
+            = link_to "戻る", tasks_path, class: "default-btn"
+            btn.main-btn.submit-task.pull-right 登録

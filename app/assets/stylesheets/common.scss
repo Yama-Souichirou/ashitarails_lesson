@@ -33,6 +33,16 @@ $admin_base: #226B80;
   border-radius: 3px;
   cursor: pointer;
 }
+.default-btn {
+  background-color: #fff;
+  color: #ccc;
+  padding: 5px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
 .sub-btn {
   background-color: $main_color;
   color: $pr_color;
@@ -68,6 +78,21 @@ $admin_base: #226B80;
   border-radius: 3px;
   &:hover {
     color: $pr_color;
+  }
+}
+.default-btn-block {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  color: #ccc;
+  text-align: center;
+  padding: 7px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 2px solid #ccc;
+  &:hover {
+    color: #ccc;
   }
 }
 .validate-label {
