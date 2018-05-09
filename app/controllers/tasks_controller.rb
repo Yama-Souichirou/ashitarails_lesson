@@ -23,6 +23,7 @@ class TasksController < ApplicationController
       flash[:notice] = "タスクを登録しました"
       head :ok
     else
+      pp @task.errors.full_messages
       render json: { messages: @task.errors.full_messages }, status: :bad_request
     end
   end

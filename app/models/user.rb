@@ -40,7 +40,7 @@ class User < ApplicationRecord
   end
   
   def completed_tasks
-    tasks = self.responsibles.where(status: "complete")
+    self.responsibles.where(status: "complete")
   end
   
   def admin?
