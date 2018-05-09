@@ -25,15 +25,15 @@ class Task < ApplicationRecord
   }
   
   def self.search(params)
-    tasks = Task.all.exclude_complete
+    tasks = Task.exclude_complete
 
-    return tasks if params.blank?
+    return tasks if params.blank? || params[:status].blank?
     
     if params[:title].present?
       tasks = tasks.where("title like ?", "%#{params[:title]}%")
     end
     if params[:status].present?
-      tasks = tasks.where(status: params[:status])
+      tasks = Task.where(status: params[:status])
     end
     if params[:priority].present?
       tasks = tasks.where(priority: params[:priority])
