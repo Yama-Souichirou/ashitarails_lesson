@@ -21,7 +21,11 @@ $(function(){
     });
 
     // multi-select
-    $('#label-select').multiSelect()
+    $('#label-select').multiSelect();
+
+    $('.detail-toggle-btn').on('click', function(){
+        $('#detail').stop().fadeToggle();
+    })
 
     // ラベル選択に関する
     $('.selected-label').each(function(i, em) {
