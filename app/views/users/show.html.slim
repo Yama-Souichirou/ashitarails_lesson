@@ -1,7 +1,7 @@
 .container-fluid.mt20
   .row
     .col-sm-8
-      - if @user.responsible_tasks == 0
+      - if @user.responsibles.blank?
         p.text-center 担当しているタスクはありません
       - else
         - @user.responsibles.exclude_complete.each do |task|
