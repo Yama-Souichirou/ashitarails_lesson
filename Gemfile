@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+spec/models/task_spec.rbsource 'https://rubygems.org'
 ruby '2.3.3'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -51,6 +51,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_rewinder'
   gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :development do
