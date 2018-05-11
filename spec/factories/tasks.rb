@@ -5,7 +5,12 @@ FactoryGirl.define do
     status         1
     priority       1
     
-    association :user, factory: :create_user
-    association :responsible, factory: :responsible_user
+    trait :with_user do
+      association :user, factory: :user
+    end
+
+    trait :with_responsible do
+      association :responsible, factory: :responsible_user
+    end
   end
 end
