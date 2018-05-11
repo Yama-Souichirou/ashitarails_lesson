@@ -2,61 +2,62 @@ require 'rails_helper'
 
 RSpec.describe Task, type: :model do
   it "is valid with a title, deadline_on, status, and priority" do
-    task = FactoryGirl.build(:task)
+    task = FactoryGirl.build(:task, :with_user, :with_responsible)
     expect(task).to be_valid
   end
   
   it "is invalid without title" do
-    task = FactoryGirl.build(:task, title: nil,)
+    task = FactoryGirl.build(:task, :with_user, :with_responsible, title: nil, )
     task.valid?
     expect(task.errors[:title]).to include("を入力してください")
   end
   
   it "is invalid without deadline_on" do
-    task = FactoryGirl.build(:task, deadline_on: nil,)
+    task = FactoryGirl.build(:task, :with_user, :with_responsible, deadline_on: nil,)
     task.valid?
     expect(task.errors[:deadline_on]).to include("を入力してください")
   end
   
   it "is invalid without status" do
-    task = FactoryGirl.build(:task, status: nil,)
+    task = FactoryGirl.build(:task, :with_user, :with_responsible, status: nil,)
     task.valid?
     expect(task.errors[:status]).to include("を入力してください")
   end
   
   it "is invalid without priority" do
-    task = FactoryGirl.build(:task, priority: nil,)
+    task = FactoryGirl.build(:task, :with_user, :with_responsible, priority: nil,)
     task.valid?
     expect(task.errors[:priority]).to include("を入力してください")
   end
 
   it "is invalid without user_id" do
-    task = FactoryGirl.build(:task, user_id: nil,)
+    task = FactoryGirl.build(:task, :with_responsible)
     task.valid?
     expect(task.errors[:user]).to include("を入力してください")
   end
 
   it "is invalid without responsible_id" do
-    task = FactoryGirl.build(:task, responsible_id: nil,)
+    task = FactoryGirl.build(:task, :with_user)
     task.valid?
     expect(task.errors[:responsible]).to include("を入力してください")
   end
   
   it "has a valid factory" do
-    expect(FactoryGirl.create(:task)).to be_valid
+    expect(FactoryGirl.create(:task, :with_user, :with_responsible)).to be_valid
   end
   
   describe "search" do
     let(:params) { Hash.new }
+    let(:user) { FactoryGirl.create(:user) }
     
     describe "title" do
       context "タスク" do
         before do
           params[:title] = "タスク"
-          FactoryGirl.create(:task, title: 'これはタスク')
-          FactoryGirl.create(:task, title: 'タスクはこれ')
-          FactoryGirl.create(:task, title: 'これはちがう')
-          FactoryGirl.create(:task, title: 'これもちがう')
+          FactoryGirl.create(:task, user: user, responsible: user, title: 'これはタスク')
+          FactoryGirl.create(:task, user: user, responsible: user, title: 'タスクはこれ')
+          FactoryGirl.create(:task, user: user, responsible: user, title: 'これはちがう')
+          FactoryGirl.create(:task, user: user, responsible: user, title: 'これもちがう')
         end
         it "return 2 records" do
           expect(Task.search(params).count).to eq 2
@@ -66,7 +67,7 @@ RSpec.describe Task, type: :model do
     
     describe "status" do
       before do
-        30.times { FactoryGirl.create(:task) }
+        30.times { FactoryGirl.create(:task, user: user, responsible: user) }
       end
       
       context "完了" do
