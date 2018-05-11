@@ -17,5 +17,4 @@ RSpec.feature "Session new", type: :feature, js: true do
     end
   end
 
-
 end
