@@ -82,8 +82,8 @@
                         td.td-status
                           label class="label label-#{task.status_color_class}" = task.human_status
                         td.td-createdat = l task.created_at
-                        td = task.responsible.username
-                        td = task.user.username
+                        td = task.responsible.username.truncate(8)
+                        td = task.user.username.truncate(8)
                         td
                           - task.labels.each.with_index(1) do |label, i|
                             = link_to tasks_path(task: { 'label_ids' => [label.id] }) do
