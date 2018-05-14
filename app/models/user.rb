@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_secure_password validations: true
   
   validates :email, presence: true, uniqueness: true
+  validates :username, presence: true
   
   before_create :set_default_role
   before_destroy :validates_destroy

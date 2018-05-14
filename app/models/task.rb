@@ -16,7 +16,6 @@ class Task < ApplicationRecord
   enum priority: PRIORITIES
   enum status: STATUSES
   
-  # コールバック時は注意
   before_create :set_default_status
   before_create :set_default_priority
   
@@ -33,9 +32,6 @@ class Task < ApplicationRecord
       tasks = tasks.where("title like ?", "%#{params[:title]}%")
     end
     if params[:status].present?
-      tasks = tasks.where(status: params[:status])
-    end
-    if params[:status].present? &&
       tasks = tasks.where(status: params[:status])
     end
     if params[:priority].present?
