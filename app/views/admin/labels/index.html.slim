@@ -1,5 +1,4 @@
 .container-fluid.mt40
-  = render 'shared/flash'
   .row
     .col-sm-6
       .panel.panel-default
@@ -24,11 +23,6 @@
       .panel.panel-default
         .panel-body
           = form_for([:admin, @label]) do |f|
-            - if @label.errors.any?
-              - @label.errors.full_messages.each do |message|
-                div.col-sm-12
-                  p.error-message.alert.alert-danger
-                    = message
             .col-sm-12
               .form-group
                 = f.label :name, "ラベル名", class: "label-control"
