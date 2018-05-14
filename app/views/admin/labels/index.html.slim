@@ -10,12 +10,16 @@
                 th id
                 th name
                 th タスク数
+                th
             tbody
               - @labels.each do |label|
                 tr
                   td = label.id
                   td = label.name
                   td = label.tasks.size
+                  td
+                    = link_to admin_label_path(label), method: :delete, data: { confirm: "本当に削除しますか？" } do
+                      .btn.btn-danger.delete-label-btn 削除
     .col-sm-6
       .panel.panel-default
         .panel-body

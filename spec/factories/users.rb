@@ -19,4 +19,12 @@ FactoryGirl.define do
     password_confirmation "password"
     sequence(:email) { |n| "responsibler#{n}@ashita-team.com" }
   end
+  
+  factory :admin, class: "User" do
+    username "yamasou"
+    password "password"
+    password_confirmation "password"
+    role 1
+    email "s.yama@admin.com"
+  end
 end
