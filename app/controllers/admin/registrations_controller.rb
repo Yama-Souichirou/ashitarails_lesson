@@ -10,10 +10,9 @@ class Admin::RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "アカウントを登録しました。"
-      redirect_to admin_users_path
+      head :ok
     else
-      flash[:danger] = "登録できませんでした"
-      render "new"
+      render json: { messages: @user.errors.full_messages }, status: :bad_request
     end
   end
   

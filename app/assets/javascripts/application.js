@@ -80,8 +80,8 @@ $(function(){
     });
 
     // tasks create
-    $('.submit-task').on('click', function(){
-        var $form = $('#create-task-form');
+    $('.data-submit').on('click', function(){
+        var $form = $('#data-form');
         var query = $form.serialize();
 
         $.ajax({

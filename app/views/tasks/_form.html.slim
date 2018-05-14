@@ -1,7 +1,7 @@
 div.container-fluid.mt20
   div.panel.panel-default
     div.panel-body
-      = form_for @task, html: { id: "create-task-form" } do |f|
+      = form_for @task, html: { id: "data-form" } do |f|
         div.row
           div.col-sm-12
             div.form-group
@@ -46,4 +46,4 @@ div.container-fluid.mt20
         br
           .clearfix
             = link_to "戻る", tasks_path, class: "default-btn"
-            btn.main-btn.submit-task.pull-right 登録
+            btn.main-btn.data-submit.pull-right 登録
