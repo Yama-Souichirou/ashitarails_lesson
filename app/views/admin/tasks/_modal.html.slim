@@ -12,5 +12,5 @@
       .modal-footer
         = link_to edit_admin_task_path(task), class: "btn btn-default" do
           i.glyphicon.glyphicon-pencil
-        = link_to admin_task_path(task), method: :delete, data: { confirm: "本当に削除しますか",  disable_with: "送信中..." }, class: "btn btn-danger" do
+        = link_to admin_task_path(task), method: :delete, data: { confirm: "本当に削除しますか",  disable_with: "送信中..." }, class: "btn btn-danger delete-task-btn" do
           i.glyphicon.glyphicon-trash
