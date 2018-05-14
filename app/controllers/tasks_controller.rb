@@ -32,7 +32,7 @@ class TasksController < ApplicationController
   
   def update
     if @task.update(task_params)
-      flash[:notice] = "タスクを登録しました"
+      flash[:notice] = "更新しました"
       head :ok
     else
       render json: { messages: @task.errors.full_messages }, status: :bad_request
