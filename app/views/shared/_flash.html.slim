@@ -7,11 +7,14 @@
         toastr.#{status}("#{value}");
       })
 
-- if flash[:tasks].present?
-  - flash[:tasks].each do |value|
-    javascript:
-        $(function () {
-            toastr.error("#{value}");
-        })
-      
+- if flash[:close_deadline].present?
+  javascript:
+      $(function () {
+          toastr.error("#{flash[:close_deadline]}");
+      })
 
+- if flash[:too_deadline].present?
+  javascript:
+      $(function () {
+          toastr.error("#{flash[:too_deadline]}");
+      })
