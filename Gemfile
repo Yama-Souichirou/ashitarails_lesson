@@ -14,8 +14,8 @@ gem 'rails', '~> 5.0.7'
 gem 'puma', '~> 3.0'
 gem 'mysql2'
 gem 'kaminari'
-gem 'carrierwave'
-gem 'rmagick', require: 'RMagick'
+gem "mini_magick"
+gem "refile", require: ["refile/rails", "refile/image_processing"]
 
 
 # Use SCSS for stylesheets

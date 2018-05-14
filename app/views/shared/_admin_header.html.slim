@@ -6,7 +6,7 @@ header#header.clearfix
       span.account-icon.pull-right
         .dropdown
           a.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-            = image_tag(@current_user.image, class: "img-circle")
+            = image_tag attachment_url(@current_user, :image, :fill, 50, 50), class: "img-circle"
             span.caret
           ul.dropdown-menu aria-labelledby="dropdownMenu1"
             li.dropdown-header = @current_user.username

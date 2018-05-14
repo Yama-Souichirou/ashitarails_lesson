@@ -26,7 +26,7 @@
       .panel.panel-default
         .panel-body
           .text-center.users-show_image
-            = image_tag(@user.image, class: "img-circle")
+            = image_tag attachment_url(@user, :image, :fill, 200, 200), class: "img-circle"
             .change-img-display.display-none
               p.text-center アイコンを変更する
           .col-sm-12.mt20
@@ -40,8 +40,7 @@
             p アイコンを変更する
             = form_for @user do |f|
               .form-group
-                = f.file_field :image
-                = f.hidden_field :image_cache
+                = f.attachment_field :image
               .form-group
                 = f.submit "変更", class: "main-btn"
 
