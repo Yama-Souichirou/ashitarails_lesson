@@ -21,11 +21,10 @@ class Admin::RegistrationsController < ApplicationController
   
   def update
     if @user.update(user_params)
-      flash[:notice] = "アカウントを更新しました。"
-      redirect_to admin_users_path
+      flash[:notice] = "アカウントを登録しました。"
+      head :ok
     else
-      flash[:danger] = "更新できませんでした"
-      render "new"
+      render json: { messages: @user.errors.full_messages }, status: :bad_request
     end
   end
   
