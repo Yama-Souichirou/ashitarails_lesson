@@ -9,7 +9,8 @@ class User < ApplicationRecord
   validates :username, presence: true
   
   before_create :set_default_role
-  before_destroy :validates_destroy
+  before_destroy :validates_must_exist_admin, if: :admin_and_more_one?
+  before_destroy :validates_has_tasks
   
   ROLE = { normal: 0, admin: 1 }
   enum role: ROLE
@@ -53,9 +54,18 @@ class User < ApplicationRecord
       self.role ||= 0
     end
   
-    def validates_destroy
-      if User.where(role: "admin").length <= 1
-        errors.add :base, "少なくとも管理者が１人必要です"
+    def validates_must_exist_admin
+      errors.add :base, "少なくとも管理者が１人必要です"
+      throw :abort
+    end
+  
+    def admin_and_more_one?
+      User.where(role: "admin").length <= 1 && self.role == "admin"
+    end
+  
+    def validates_has_tasks
+      if self.tasks.present? || self.responsibles.present?
+        errors.add :base, "紐付いたタスクがあります"
         throw :abort
       end
     end

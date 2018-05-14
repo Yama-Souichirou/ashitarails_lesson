@@ -34,18 +34,38 @@ RSpec.describe User, type: :model do
   end
   
   describe 'delete' do
-    before { FactoryGirl.create(:admin) }
+    let(:admin) { FactoryGirl.create(:admin) }
+    let(:user) { FactoryGirl.create(:user) }
+    
+    describe 'delete normal user' do
+      it 'change count -1' do
+        user = FactoryGirl.create(:user)
+        expect { user.destroy }.to change { User.count }.by(-1)
+      end
+    end
+    
+    context 'user has tasks' do
+      before do
+        FactoryGirl.create(:task, user: user, responsible: admin)
+      end
+      
+      it 'can not delete' do
+        user.destroy
+        expect(user.errors[:base]).to include('紐付いたタスクがあります')
+      end
+    end
     
     context 'more 2 admins' do
+      before { admin }
+      
       it 'can delete' do
-        admin = FactoryGirl.create(:admin, email: "sample2@admin.com", role: 1)
-        expect { admin.destroy }.to change { User.count }.by(- 1)
+        admin2 = FactoryGirl.create(:admin, email: "sample2@admin.com")
+        expect { admin2.destroy }.to change { User.count }.by(-1)
       end
     end
     
     context '1 admins' do
       it 'can not delete' do
-        admin = User.find_by(role: "admin")
         admin.destroy
         expect(admin.errors[:base]).to include('少なくとも管理者が１人必要です')
       end

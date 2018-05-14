@@ -30,7 +30,7 @@ class Admin::RegistrationsController < ApplicationController
   
   def destroy
     if @user.destroy
-      flash[:danger] = "削除しました"
+      flash[:notice] = "削除しました"
       redirect_to admin_users_path
     else
       flash[:danger] = "削除できませんでした"
