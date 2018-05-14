@@ -33,6 +33,25 @@ RSpec.describe User, type: :model do
     end
   end
   
+  describe 'delete' do
+    before { FactoryGirl.create(:admin) }
+    
+    context 'more 2 admins' do
+      it 'can delete' do
+        admin = FactoryGirl.create(:admin, email: "sample2@admin.com", role: 1)
+        expect { admin.destroy }.to change { User.count }.by(- 1)
+      end
+    end
+    
+    context '1 admins' do
+      it 'can not delete' do
+        admin = User.find_by(role: "admin")
+        admin.destroy
+        expect(admin.errors[:base]).to include('少なくとも管理者が１人必要です')
+      end
+    end
+  end
+  
   it 'is default set normal to role' do
     user = FactoryGirl.create(:user, role: nil)
     expect(user.role).to eq "normal"

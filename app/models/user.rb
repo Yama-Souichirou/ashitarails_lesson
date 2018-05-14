@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   mount_uploader :image, ImageUploader
-  has_many :tasks, :class_name => 'Task', :foreign_key => 'user_id', dependent: :delete_all
-  has_many :responsibles, :class_name => 'Task', :foreign_key => 'responsible_id', dependent: :delete_all
+  has_many :tasks, :class_name => 'Task', :foreign_key => 'user_id'
+  has_many :responsibles, :class_name => 'Task', :foreign_key => 'responsible_id'
  
   has_secure_password validations: true
   
@@ -54,13 +54,10 @@ class User < ApplicationRecord
     end
   
     def validates_destroy
-      if User.all.length <= 1 ? true: false
+      if User.where(role: "admin").length <= 1
         errors.add :base, "少なくとも管理者が１人必要です"
         throw :abort
       end
     end
-  
-    def one_or_more_admin?
-      User.all.length <= 1 ? true: false
-    end
+
 end
