@@ -1,62 +1,107 @@
 .container-fluid.mt20
   .row
     .col-sm-12
+      = link_to new_task_path, class: "main-btn" do
+        i.fas.fa-plus  新規作成
+  .row
+    .col-sm-12
+      .panel.panel-default.mt20
+        .panel-body
+          = form_for @q, method: :get do |f|
+            .row
+              .col-sm-3
+                .form-group
+                  = f.label :title, "タスク名", class: "label-control"
+                  = f.text_field :title, class: "form-control", id: "search_title"
+              .row
+                .col-sm-12
+                  .col-sm-3
+                    p.detail-toggle-btn
+                      | 詳細検索
+                      i.fas.fa-caret-down
+                #detail.display-none
+                  .col-sm-6
+                    .col-sm-6
+                      .form-group
+                        = f.label :status, "ステータス", class: "label-control"
+                        = f.select :status, Task.status_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", id: "search_status"
+                    .col-sm-6
+                      .form-group
+                        = f.label :priority, "優先順位", class: "label-control"
+                        = f.select :priority, Task.priority_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control"
+                    .col-sm-6
+                      .form-group
+                        = f.label :responsible_id, "担当者", class: "label-control"
+                        = f.select :responsible_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control"
+                    .col-sm-6
+                      .form-group
+                        = f.label :user_id, "作成者", class: "label-control"
+                        = f.select :user_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control"
+                  .col-sm-6
+                    .form-group
+                      = label_tag "task[label_ids]", "ラベル"
+                      = select_tag 'task[label_ids]', options_for_select(Label.all.map { |label| [label.name, label.id] }), include_blank: true, multiple: true, id: "label-select"
+            .row
+              .col-sm-12
+                .col-sm-2
+                  label.label-control 検索
+                  = button_tag id: "search-button", class: "main-btn-block" do
+                    i.glyphicon.glyphicon-search
+                .col-sm-2
+                  label.label-control リセット
+                  = link_to root_path, id: "reset-button", class: "sub-btn-block" do
+                    i.fas.fa-times
+  .row.mt20
+    .col-sm-12
       ul.nav.nav-tabs
         li.active
-          a data-toggle="tab" href="#tasks" id="tasks_tab_link" タスク
+          a data-toggle="tab" href="#claose_tasks" id="close_tasks_tab_link" 期限近いタスク
         li
-          a data-toggle="tab" href="#new" id="newtask_tab_link"
-            i.glyphicon.glyphicon-plus
+          a data-toggle="tab" href="#all_tasks" id="all_tasks_tab_link" 全タスク
       .tab-content
-        #tasks.tab-pane.fade.in.active
+        #claose_tasks.tab-pane.fade.in.active
           .col-sm-12
             .panel.panel-default.mt20
               .panel-body
-                = form_for @q, method: :get do |f|
-                  .row
-                    .col-sm-3
-                      .form-group
-                        = f.label :title, "タスク名", class: "label-control"
-                        = f.text_field :title, class: "form-control", id: "search_title"
-                    .row
-                      .col-sm-12
-                        .col-sm-3
-                          p.detail-toggle-btn
-                            | 詳細検索
-                            i.fas.fa-caret-down
-                      #detail.display-none
-                        .col-sm-6
-                          .col-sm-6
-                            .form-group
-                              = f.label :status, "ステータス", class: "label-control"
-                              = f.select :status, Task.status_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", id: "search_status"
-                          .col-sm-6
-                            .form-group
-                              = f.label :priority, "優先順位", class: "label-control"
-                              = f.select :priority, Task.priority_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control"
-                          .col-sm-6
-                            .form-group
-                              = f.label :responsible_id, "担当者", class: "label-control"
-                              = f.select :responsible_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control"
-                          .col-sm-6
-                            .form-group
-                              = f.label :user_id, "作成者", class: "label-control"
-                              = f.select :user_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control"
-                        .col-sm-6
-                          .form-group
-                            = label_tag "task[label_ids]", "ラベル"
-                            = select_tag 'task[label_ids]', options_for_select(Label.all.map { |label| [label.name, label.id] }), include_blank: true, multiple: true, id: "label-select"
-                  .row
-                    .col-sm-12
-                      .col-sm-2
-                        label.label-control 検索
-                        = button_tag id: "search-button", class: "main-btn-block" do
-                          i.glyphicon.glyphicon-search
-                      .col-sm-2
-                        label.label-control リセット
-                        = link_to root_path, id: "reset-button", class: "sub-btn-block" do
-                          i.fas.fa-times
-          .col-sm-12
+                table.mt30.table
+                  thead
+                    tr
+                      th = Task.human_attribute_name(:title)
+                      th = link_to Task.human_attribute_name(:deadline_on), sort_link("deadline_on", @sort || "ASC", @q)
+                      th = link_to Task.human_attribute_name(:priority), sort_link("priority", @sort || "ASC", @q)
+                      th = link_to Task.human_attribute_name(:status), sort_link("status", @sort || "ASC", @q)
+                      th = link_to Task.human_attribute_name(:created_at), sort_link("created_at", @sort || "ASC", @q)
+                      th = Task.human_attribute_name(:responsible)
+                      th = Task.human_attribute_name(:user)
+                      th ラベル
+                      th
+
+                  tbody.tasks-tbody
+                    - @tasks.close_deadline_tasks.each do |task|
+                      tr data-href="#{task_path(task)}"
+                        td.td-title = task.title
+                        td.td-deadlineon
+                          label class="label label-#{task.deadline_color_class}" = task.display_left_days_format
+                        td.td-priority
+                          label class="label label-#{task.priority_color_class}" = task.human_priority
+                        td.td-status
+                          label class="label label-#{task.status_color_class}" = task.human_status
+                        td.td-createdat = l task.created_at
+                        td = task.responsible.username.truncate(8)
+                        td = task.user.username.truncate(8)
+                        td
+                          - task.labels.each.with_index(1) do |label, i|
+                            = link_to tasks_path(task: { 'label_ids' => [label.id] }) do
+                              label.selected-label-green = label.name
+                            - if  i % 2 == 0
+                              br
+                        td
+                          = link_to edit_task_path(task) do
+                            .btn.btn-default.edit-task-btn
+                              i.fas.fa-pencil-alt
+                = paginate @tasks
+        #all_tasks.tab-pane.fade
+          .col-sm-12.mt20
             .panel.panel-default
               .panel-body
                 table.mt30.table
@@ -72,9 +117,9 @@
                       th
                       th
 
-                  tbody
+                  tbody.tasks-tbody
                     - @tasks.each do |task|
-                      tr
+                      tr data-href="#{task_path(task)}"
                         td.td-title = task.title
                         td.td-deadlineon = l task.deadline_on
                         td.td-priority
@@ -88,15 +133,9 @@
                           - task.labels.each.with_index(1) do |label, i|
                             = link_to tasks_path(task: { 'label_ids' => [label.id] }) do
                               label.selected-label-green = label.name
-                            - if  i % 2 == 0
+                            - if i % 2 == 0
                               br
                         td
-                          button class="btn btn-default task-modal-btn" type="button" data-toggle="modal" data-target="#task-id-#{task.id}"
-                            i.glyphicon.glyphicon-zoom-in
-                      = render partial: "modal", locals: { task: task }
-
-          = paginate @tasks
-
-        #new.tab-pane.fade
-          = render "tasks/form", locales: { task: @task }
-
+                          = link_to edit_task_path(task) do
+                            .btn.btn-default.edit-task-btn
+                              i.fas.fa-pencil-alt

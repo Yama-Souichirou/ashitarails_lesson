@@ -3,10 +3,10 @@ div#sidemenu.pt60
     ul
       = link_to root_path do
         li
-          i.fas.fa-tasks　タスク一覧
+          i.fas.fa-tasks　すべてのタスク
       = link_to user_path(@current_user.id) do 
         li
-          i.fas.fa-user 　マイページ
+          i.fas.fa-user 　担当タスク
       - if @current_user.role == "admin"
         = link_to admin_users_path do
           li

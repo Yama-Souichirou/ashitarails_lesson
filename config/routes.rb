@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :tasks, except: :show
+  resources :tasks
   resources :sessions, only: [:new, :create]
   resources :labels, only: [:index]
   resources :users, only: [:show, :update]

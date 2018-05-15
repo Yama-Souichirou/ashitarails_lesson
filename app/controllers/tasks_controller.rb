@@ -16,6 +16,9 @@ class TasksController < ApplicationController
     @task = Task.new
   end
   
+  def show
+  end
+  
   def create
     @task = Task.new(task_params)
     @task.user_id = @current_user.id

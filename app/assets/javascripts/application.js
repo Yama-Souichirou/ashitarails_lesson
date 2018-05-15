@@ -41,11 +41,11 @@ $(function(){
         var text = $('.select-label-form option:selected').text();
         var labelLength = $('.selected-labels span').length;
         var label = '<span class="selected-label selected-label-green">' + text + '</span>';
-        var hiddenFormLabelId = '<input type="hidden" value="' 
+        var hiddenFormLabelId = '<input type="hidden" value="'
           + value
-          + '" name="task[task_labels_attributes][' 
-          + labelLength 
-          + '][label_id]" id="task_task_labels_attributes_' 
+          + '" name="task[task_labels_attributes]['
+          + labelLength
+          + '][label_id]" id="task_task_labels_attributes_'
           + labelLength + '_label_id">';
 
         $('.select-label-form option').each(function(){
@@ -103,5 +103,14 @@ $(function(){
         })
     })
 
-
+    // trリンク
+    $('.tasks-tbody tr[data-href]').addClass('clickable').click(function () {
+        window.location = $(this).attr('data-href');
+    }).find('a').hover(function () {
+        $(this).parents('tr').unbind('click');
+    }, function () {
+        $(this).parents('tr').click(function () {
+            window.location = $(this).attr('data-href');
+        });
+    });
 });

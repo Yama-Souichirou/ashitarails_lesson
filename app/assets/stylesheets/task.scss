@@ -12,4 +12,10 @@
     height: 100%;
   }
 }
+.tasks-tbody tr	{
+  cursor:pointer;
+}
+.tasks-tbody tr:hover {
+  background: $base_color;
+}
 
