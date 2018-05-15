@@ -42,5 +42,16 @@
                 = f.attachment_field :image
               .form-group
                 = f.submit "変更", class: "main-btn"
+          .col-sm-12
+            p 所属グループ
+            table.table
+              thead
+                tr
+                  th グループ名
+              tbody
+                - @user.groups.each do |group|
+                  tr
+                    td = group.name
+
 
 
