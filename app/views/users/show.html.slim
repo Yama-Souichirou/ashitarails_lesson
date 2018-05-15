@@ -5,23 +5,22 @@
         p.text-center 担当しているタスクはありません
       - else
         - @user.responsibles.exclude_complete.each do |task|
-          .panel.panel-default.users-tasks
-            .panel-heading
-              = task.title
-            .panel-body
-              p
-                |  期日：
-                = l task.deadline_on
-              p.task-status-labels
-                label class="label label-#{task.priority_color_class}" = task.human_priority
-                label.label.label-default = task.human_status
-                label class="label label-#{task.deadline_color_class}" = task.display_left_days_format
-              hr
-              p = simple_format(task.description)
-            .panel-footer
-              = form_for task, html: { class: "clearfix", id: "data-form" } do |f|
-                = f.hidden_field :status, value: "complete"
-                = f.submit "完了にする", class: "main-btn pull-right data-submit"
+          = link_to task_path(task), style: "color: #000;" do
+            .panel.panel-default.users-tasks
+              .panel-heading
+                = task.title
+              .panel-body
+                p
+                  |  期日：
+                  = l task.deadline_on
+                p.task-status-labels
+                  label class="label label-#{task.priority_color_class}" = task.human_priority
+                  label.label.label-default = task.human_status
+                  label class="label label-#{task.deadline_color_class}" = task.display_left_days_format
+              .panel-footer
+                = form_for task, html: { class: "clearfix", id: "data-form" } do |f|
+                  = f.hidden_field :status, value: "complete"
+                  = f.submit "完了にする", class: "main-btn pull-right data-submit"
     .col-sm-4
       .panel.panel-default
         .panel-body

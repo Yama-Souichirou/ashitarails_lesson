@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature 'Tasks', type: :feature do
+RSpec.feature 'Tasks', type: :feature, js: true do
   let(:user) { FactoryGirl.create(:user) }
   before do
-    # helper
     user
     visit new_session_path
     fill_in 'メールアドレス', with: 's.yama@ashita-team.com'
@@ -12,10 +11,13 @@ RSpec.feature 'Tasks', type: :feature do
     visit root_path
   end
   
-  describe 'create task', js: true do
+  describe 'create task'do
+    before do
+      visit new_task_path
+    end
+    
     it 'change Task count 1' do
       expect {
-        find('#newtask_tab_link').click
         fill_in 'task_title', with: 'this is a test'
         fill_in 'task_deadline_on', with: '2018-04-04'
         find('.main-btn').click
@@ -25,16 +27,14 @@ RSpec.feature 'Tasks', type: :feature do
     end
   end
   
-  describe 'delete task', js: true do
+  describe 'delete task'do
     before do
-      FactoryGirl.create(:task, user: user, responsible: user)
-      visit root_path
+      task = FactoryGirl.create(:task, user: user, responsible: user)
+      visit task_path(task)
     end
     
     it 'change Task count -1' do
       expect {
-        # クラスをつける
-        page.all('tbody tr')[0].find('.task-modal-btn').click
         find('.delete-task-btn').click
         page.accept_confirm
         
@@ -43,7 +43,7 @@ RSpec.feature 'Tasks', type: :feature do
     end
   end
   
-  describe 'sort' do
+  describe 'sort'do
     context 'click thead "期日"' do
       before do
         1.upto(3) do |i|
@@ -55,6 +55,8 @@ RSpec.feature 'Tasks', type: :feature do
       context 'click link once' do
         before do
           click_link '期日'
+          click_link '全タスク'
+          sleep 1
         end
         it 'ordered deadline_on ASC' do
           expect(page.all('tbody tr')[0].find('.td-deadlineon').text).to match "#{(Date.today + 1.day).strftime('%Y/%m/%d')}"
@@ -67,6 +69,8 @@ RSpec.feature 'Tasks', type: :feature do
         before do
           click_link '期日'
           click_link '期日'
+          find('#all_tasks_tab_link').click
+          sleep 1
         end
         it 'ordered deadline_on DESC' do
           expect(page.all('tbody tr')[0].find('.td-deadlineon').text).to match "#{(Date.today + 3.day).strftime('%Y/%m/%d')}"
@@ -143,7 +147,7 @@ RSpec.feature 'Tasks', type: :feature do
     end
   end
   
-  describe 'search' do
+  describe 'search'do
     before do
       20.times { FactoryGirl.create(:task, user: user, responsible: user, status: 1) }
       visit root_path
@@ -168,6 +172,8 @@ RSpec.feature 'Tasks', type: :feature do
           Task.first.update(status: 3)
           select '完了',  from: 'search_status'
           click_button 'search-button'
+          click_link '全タスク'
+          sleep 1
         end
         
         it 'size 1' do
@@ -193,44 +199,6 @@ RSpec.feature 'Tasks', type: :feature do
           click_button 'search-button'
         end
         
-        it 'return 20' do
-          expect(page.all('tbody tr').size).to eq 20
-        end
-      end
-    end
-
-    context 'select status' do
-      before { find('.detail-toggle-btn').click }
-      context '完了' do
-        before do
-          Task.first.update(status: 3)
-          select '完了',  from: 'search_status'
-          click_button 'search-button'
-        end
-    
-        it 'size 1' do
-          expect(page.all('tbody tr').size).to eq 1
-        end
-      end
-  
-      context '着手中' do
-        before do
-          Task.first.update(status: 2)
-          select '着手中',  from: 'search_status'
-          click_button 'search-button'
-        end
-    
-        it 'size 1' do
-          expect(page.all('tbody tr').size).to eq 1
-        end
-      end
-  
-      context '未着手' do
-        before do
-          select '未着手',  from: 'search_status'
-          click_button 'search-button'
-        end
-    
         it 'return 20' do
           expect(page.all('tbody tr').size).to eq 20
         end
