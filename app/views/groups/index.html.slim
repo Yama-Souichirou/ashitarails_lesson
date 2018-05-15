@@ -1,0 +1,26 @@
+.container-fluid.mt20
+  .row
+    .col-sm-12
+      = link_to new_group_path, class: "main-btn" do
+        i.fas.fa-plus  グループ作成
+  .row
+    .col-sm-12
+      .panel.panel-default.mt20
+        .panel-body
+          table.table
+            thead
+              tr
+                th id
+                th グループ名
+                th 所属人数
+                th タスク数
+                th 作成日
+            tbody
+              - @groups.each do |group|
+                tr
+                  td = group.id
+                  td = group.name
+                  td = group.users.size
+                  td
+                  td = l group.created_at
+

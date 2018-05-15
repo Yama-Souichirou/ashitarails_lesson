@@ -6,11 +6,14 @@ div#sidemenu.pt60
           i.fas.fa-tasks　すべてのタスク
       = link_to user_path(@current_user.id) do 
         li
-          i.fas.fa-user 　担当タスク
+          i.fas.fa-user 　 担当タスク
+      = link_to groups_path do
+        li
+          i.fas.fa-user-friends　グループ一覧
       - if @current_user.role == "admin"
         = link_to admin_users_path do
           li
-            i.fas.fa-unlock-alt 　管理者専用
+            i.fas.fa-unlock-alt 　 管理者専用
 
 
 
