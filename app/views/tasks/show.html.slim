@@ -1,2 +1,42 @@
 .container-fluid
+  .row.mt20
+    .col-sm-12
+      = link_to task_path(@task), method: :delete, class: "btn btn-danger pull-right ml5" do
+        i.far.fa-trash-alt  削除
+      = link_to edit_task_path(@task), class: "btn main-btn pull-right" do
+        i.fas.fa-pencil-alt  編集
+
+
+  .panel.panel-default.mt20
+    .panel-body
+      .col-sm-12
+        p.small-text
+          = @task.user.username
+          | さんが
+          = @task.created_at.strftime("%Y/%m/%d")
+          | 日に作成
+        h4
+          = attachment_image_tag @current_user, :image, :fill, 50, 50, class: "img-circle mr20"
+          = @task.title
+      .col-sm-4
+        p
+          | 期日：
+          = l @task.deadline_on
+        p
+          | 担当者：
+          = @task.responsible.username
+      .col-sm-4
+        p
+          | 状況：
+          = @task.human_status
+        p
+          | 優先度：
+          = @task.human_priority
+        p
+          | 優先度：
+          = @task.human_priority
+      .col-sm-12
+        hr
+        p = simple_format(@task.description)
+
 
