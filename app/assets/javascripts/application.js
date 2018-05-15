@@ -100,8 +100,8 @@ $(function(){
             for(var i=0; i < messages.length; i++) {
                 toastr.error(messages[i]);
             }
-        })
-    })
+        });
+    });
 
     // trリンク
     $('.tasks-tbody tr[data-href]').addClass('clickable').click(function () {

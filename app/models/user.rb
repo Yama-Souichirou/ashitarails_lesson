@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   attachment :image
+  has_many :group_users
+  has_many :groups, through: :group_users
   has_many :tasks, :class_name => 'Task', :foreign_key => 'user_id'
   has_many :responsibles, :class_name => 'Task', :foreign_key => 'responsible_id'
  
