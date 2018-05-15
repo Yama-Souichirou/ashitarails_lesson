@@ -5,7 +5,7 @@
         .panel-body
           .col-sm-4.text-center
             .col-sm-12
-              = image_tag attachment_url(@user, :image, :fill, 200, 200), class: "img-responsibe img-circle"
+              = attachment_image_tag @user, :image, :fill, 200, 200, class: "img-responsibe img-circle"
             .col-sm-6.mt30
               = link_to "アカウント編集", edit_admin_registration_path(@user), class: "main-btn-block"
             .col-sm-6.mt30

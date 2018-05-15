@@ -26,7 +26,7 @@
       .panel.panel-default
         .panel-body
           .text-center.users-show_image
-            = image_tag attachment_url(@user, :image, :fill, 200, 200), class: "img-circle"
+            = attachment_image_tag @user, :image, :fill, 200, 200, class: "img-circle"
             .change-img-display.display-none
               p.text-center アイコンを変更する
           .col-sm-12.mt20
