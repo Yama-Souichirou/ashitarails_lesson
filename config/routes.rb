@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'users#index'
     resources :users, only: [:index, :show]
-    resources :tasks, except: :show
+    resources :tasks
     resources :registrations
     resources :labels, only: [:index, :new, :create, :destroy]
   end
