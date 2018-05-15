@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Tasks', type: :feature do
   let(:user) { FactoryGirl.create(:user) }
   before do
+    # helper
     user
     visit new_session_path
     fill_in 'メールアドレス', with: 's.yama@ashita-team.com'
@@ -32,7 +33,8 @@ RSpec.feature 'Tasks', type: :feature do
     
     it 'change Task count -1' do
       expect {
-        page.all('tbody tr')[0].find('.btn').click
+        # クラスをつける
+        page.all('tbody tr')[0].find('.task-modal-btn').click
         find('.delete-task-btn').click
         page.accept_confirm
         

@@ -39,7 +39,6 @@ RSpec.feature 'Tasks', type: :feature do
       end
     end
     
-    
     context 'have tasks' do
       before do
         task = FactoryGirl.create(:task, :with_user, :with_responsible)
@@ -48,9 +47,11 @@ RSpec.feature 'Tasks', type: :feature do
       end
       
       it 'can not delete' do
-        page.all('tbody tr')[0].find('.delete-label-btn').click
-        page.accept_confirm
-        expect(page).to have_content '削除できませんでした'
+        expect {
+          page.all('tbody tr')[0].find('.delete-label-btn').click
+          page.accept_confirm
+          expect(page).to have_content '削除できませんでした'
+        }.to change(Label, :count).by(0)
       end
     end
   end

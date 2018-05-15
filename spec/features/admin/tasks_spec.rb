@@ -32,7 +32,7 @@ RSpec.feature 'Tasks', type: :feature do
     
     it 'change Task count -1' do
       expect {
-        page.all('tbody tr')[0].find('.btn').click
+        page.all('tbody tr')[0].find('.task-modal-btn').click
         find('.delete-task-btn').click
         page.accept_confirm
         

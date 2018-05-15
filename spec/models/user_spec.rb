@@ -38,41 +38,44 @@ RSpec.describe User, type: :model do
     let(:user) { FactoryGirl.create(:user) }
     
     describe 'delete normal user' do
-      it 'change count -1' do
-        user = FactoryGirl.create(:user)
-        expect { user.destroy }.to change { User.count }.by(-1)
+      context 'has no tasks' do
+        it 'change count -1' do
+          expect { user.destroy }.to change(User, :count).by(-1)
+        end
+      end
+
+      context 'user has tasks' do
+        before do
+          FactoryGirl.create(:task, user: user, responsible: admin)
+        end
+  
+        it 'can not delete' do
+          user.destroy
+          expect(user.errors[:base]).to include('紐付いたタスクがあります')
+        end
       end
     end
     
-    context 'user has tasks' do
-      before do
-        FactoryGirl.create(:task, user: user, responsible: admin)
-      end
-      
-      it 'can not delete' do
-        user.destroy
-        expect(user.errors[:base]).to include('紐付いたタスクがあります')
-      end
-    end
+    describe 'delete admin' do
+      context 'more 2 admins' do
+        before { admin }
     
-    context 'more 2 admins' do
-      before { admin }
-      
-      it 'can delete' do
-        admin2 = FactoryGirl.create(:admin, email: "sample2@admin.com")
-        expect { admin2.destroy }.to change { User.count }.by(-1)
+        it 'can delete' do
+          admin2 = FactoryGirl.create(:admin, email: "sample2@admin.com")
+          expect { admin2.destroy }.to change(User, :count).by(-1)
+        end
       end
-    end
-    
-    context '1 admins' do
-      it 'can not delete' do
-        admin.destroy
-        expect(admin.errors[:base]).to include('少なくとも管理者が１人必要です')
+  
+      context '1 admins' do
+        it 'can not delete' do
+          admin.destroy
+          expect(admin.errors[:base]).to include('少なくとも管理者が１人必要です')
+        end
       end
     end
   end
   
-  it 'is default set normal to role' do
+  it 'set normal role for default' do
     user = FactoryGirl.create(:user, role: nil)
     expect(user.role).to eq "normal"
   end

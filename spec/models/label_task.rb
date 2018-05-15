@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Label, type: :model do
   it 'is valid with a name' do
+    # with a nameあるなら明示しよう。
     label = FactoryGirl.build(:label)
     expect(label).to be_valid
   end
