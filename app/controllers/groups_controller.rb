@@ -15,11 +15,10 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save!
-      flash[:notice] = "グループを作成しました"
-      redirect_to groups_path
+      flash[:notice] = "作成しました"
+      head :ok
     else
-      flash[:notice] = "むりです"
-      render 'new'
+      render json: { messages: group.errors.full_messages }, status: :bad_request
     end
   end
   

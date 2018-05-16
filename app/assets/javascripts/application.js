@@ -15,6 +15,13 @@
 //= require_tree .
 
 $(function(){
+    $('.groups-user-img img').mouseover(function(){
+        $(this).next('.user-info').fadeIn();
+    });
+    $('.groups-user-img .user-info').mouseout(function(){
+        $(this).fadeOut();
+    });
+
     // datepicker
     $('#datepicker-default .date').datepicker({
         format: "yyyy-mm-dd",

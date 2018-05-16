@@ -6,7 +6,6 @@
       = link_to edit_task_path(@task), class: "btn main-btn pull-right" do
         i.fas.fa-pencil-alt  編集
 
-
   .panel.panel-default.mt20
     .panel-body
       .col-sm-12
@@ -23,8 +22,11 @@
           | 期日：
           = l @task.deadline_on
         p
-          | 担当者：
+          | プロジェクト：
           = @task.responsible.username
+        p
+          | 担当者：
+          = @task.group.name
       .col-sm-4
         p
           | 状況：

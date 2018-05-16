@@ -1,13 +1,17 @@
 .container-fluid
   .row
-    .col-sm-12.clearfix
+    .col-sm-12.clearfix.mt10
       h4.page-title.pull-left
         = @group.name
-        br
-        - @group.users.each do |user|
-          label.selected-label-green = user.username
-      = link_to new_task_path(id: @group), class: "btn main-btn pull-right mt15" do
+      = link_to new_task_path(id: @group), class: "btn main-btn pull-right mt5" do
         i.fas.fa-plus  タスクを作成
+  .row
+    .col-sm-12.mt20
+      - @group.users.each do |user|
+        label.groups-user-img
+          = attachment_image_tag user, :image, :fill, 80, 80, class: "img-circle mr10 "
+          span.user-info
+            = user.username
   .row
     .col-sm-12
        .panel.panel-default.mt20

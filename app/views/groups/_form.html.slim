@@ -17,4 +17,5 @@
                 = select_tag 'group_users', options_for_select(User.all.map { |user| [user.username, user.id] }), include_blank: true, multiple: true, id: "user-select"
             .col-sm-12.mt20
               .form-group
-                = f.submit "作成", class: "btn main-btn"
+                = link_to "戻る", :back, class: "default-btn"
+                .btn.main-btn.pull-right"　作成
