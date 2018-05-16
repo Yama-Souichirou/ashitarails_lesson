@@ -22,14 +22,30 @@ $(function(){
 
     // multi-select
     $('#label-select').multiSelect();
+    $('#user-select').multiSelect();
 
     $('.detail-toggle-btn').on('click', function(){
         $('#detail').stop().fadeToggle(200);
-    })
+    });
+
+    // ユーザー追加
+    $('#user-select').on('change', function(){
+        $('.selected-user').remove();
+        var value = $(this).val();
+        for(var i=0; i < value.length; i++) {
+            var hidden_form = '<input type="hidden" value="'
+                + value[i]
+                + '" name="group[group_users_attributes]['
+                + i
+                + '][user_id]" class="selected-user" >';
+            $('#data-form').append(hidden_form);
+        }
+        // console.log(hidden_form);
+        // $(this).next().append(hidden_form);
+    });
 
     // ラベル選択に関する
     $('.selected-label').each(function(i, em) {
-        console.log(em);
         $('.select-label-form option').each(function(){
             if( $(this).text() == $(em).text()) {
                 $(this).remove();
