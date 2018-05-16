@@ -4,12 +4,9 @@ div#sidemenu.pt60
       = link_to root_path do
         li
           i.fas.fa-tasks　すべてのタスク
-      = link_to user_path(@current_user.id) do 
-        li
-          i.fas.fa-user 　 担当タスク
       = link_to groups_path do
         li
-          i.fas.fa-user-friends　グループ一覧
+          i.fas.fa-user-friends　プロジェクト
       - if @current_user.role == "admin"
         = link_to admin_users_path do
           li
