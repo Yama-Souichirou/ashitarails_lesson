@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180515075114) do
+ActiveRecord::Schema.define(version: 20180516061432) do
 
   create_table "group_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20180515075114) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.integer  "responsible_id"
+    t.integer  "group_id"
+    t.index ["group_id"], name: "index_tasks_on_group_id", using: :btree
     t.index ["responsible_id"], name: "index_tasks_on_responsible_id", using: :btree
     t.index ["user_id", "deadline_on", "priority"], name: "index_tasks_on_user_id_and_deadline_on_and_priority", using: :btree
   end
@@ -72,4 +74,5 @@ ActiveRecord::Schema.define(version: 20180515075114) do
   add_foreign_key "group_users", "users"
   add_foreign_key "task_labels", "labels"
   add_foreign_key "task_labels", "tasks"
+  add_foreign_key "tasks", "groups"
 end
