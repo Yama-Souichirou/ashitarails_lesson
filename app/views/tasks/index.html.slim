@@ -66,7 +66,7 @@
                       th = link_to Task.human_attribute_name(:deadline_on), sort_link("deadline_on", @sort || "ASC", @q)
                       th = link_to Task.human_attribute_name(:priority), sort_link("priority", @sort || "ASC", @q)
                       th = link_to Task.human_attribute_name(:status), sort_link("status", @sort || "ASC", @q)
-                      th = link_to Task.human_attribute_name(:created_at), sort_link("created_at", @sort || "ASC", @q)
+                      th プロジェクト
                       th = Task.human_attribute_name(:responsible)
                       th = Task.human_attribute_name(:user)
                       th ラベル
@@ -82,7 +82,7 @@
                           label class="label label-#{task.priority_color_class}" = task.human_priority
                         td.td-status
                           label class="label label-#{task.status_color_class}" = task.human_status
-                        td.td-createdat = l task.created_at
+                        td = task.group.name
                         td = task.responsible.username.truncate(8)
                         td = task.user.username.truncate(8)
                         td
@@ -107,10 +107,10 @@
                       th = link_to Task.human_attribute_name(:deadline_on), sort_link("deadline_on", @sort || "ASC", @q)
                       th = link_to Task.human_attribute_name(:priority), sort_link("priority", @sort || "ASC", @q)
                       th = link_to Task.human_attribute_name(:status), sort_link("status", @sort || "ASC", @q)
-                      th = link_to Task.human_attribute_name(:created_at), sort_link("created_at", @sort || "ASC", @q)
                       th = Task.human_attribute_name(:responsible)
                       th = Task.human_attribute_name(:user)
-                      th
+                      th ラベル
+                      th プロジェクト
                       th
 
                   tbody.data-tbody
@@ -122,7 +122,6 @@
                           label class="label label-#{task.priority_color_class}" = task.human_priority
                         td.td-status
                           label class="label label-#{task.status_color_class}" = task.human_status
-                        td.td-createdat = l task.created_at
                         td = task.responsible.username.truncate(8)
                         td = task.user.username.truncate(8)
                         td
@@ -131,6 +130,7 @@
                               label.selected-label-green = label.name
                             - if i % 2 == 0
                               br
+                        td = task.group.name
                         td
                           = link_to edit_task_path(task) do
                             .btn.btn-default.edit-task-btn
