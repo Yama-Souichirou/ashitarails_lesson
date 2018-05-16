@@ -1,5 +1,49 @@
 .container-fluid
   .row
-    .col-sm-12
-      h4.page-title
+    .col-sm-12.clearfix
+      h4.page-title.pull-left
         = @group.name
+        br
+        - @group.users.each do |user|
+          label.selected-label-green = user.username
+      = link_to new_task_path(id: @group), class: "btn main-btn pull-right mt15" do
+        i.fas.fa-plus  タスクを作成
+  .row
+    .col-sm-12
+       .panel.panel-default.mt20
+         .panel-body
+           table.mt30.table
+             thead
+               tr
+                 th = Task.human_attribute_name(:title)
+                 th = Task.human_attribute_name(:deadline_on)
+                 th = Task.human_attribute_name(:priority)
+                 th = Task.human_attribute_name(:status)
+                 th = Task.human_attribute_name(:created_at)
+                 th = Task.human_attribute_name(:responsible)
+                 th = Task.human_attribute_name(:user)
+                 th ラベル
+                 th
+             tbody.data-tbody
+               - @group.tasks.each do |task|
+                 tr data-href="#{task_path(task)}"
+                   td.td-title = task.title
+                   td.td-deadlineon
+                     label class="label label-#{task.deadline_color_class}" = task.display_left_days_format
+                   td.td-priority
+                     label class="label label-#{task.priority_color_class}" = task.human_priority
+                   td.td-status
+                     label class="label label-#{task.status_color_class}" = task.human_status
+                   td.td-createdat = l task.created_at
+                   td = task.responsible.username.truncate(8)
+                   td = task.user.username.truncate(8)
+                   td
+                     - task.labels.each.with_index(1) do |label, i|
+                       = link_to tasks_path(task: { 'label_ids' => [label.id] }) do
+                         label.selected-label-green = label.name
+                       - if  i % 2 == 0
+                         br
+                   td
+                     = link_to edit_task_path(task) do
+                       .btn.btn-default.edit-task-btn
+                         i.fas.fa-pencil-alt

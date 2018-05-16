@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   end
   
   def new
-    @task = Task.new
+    @task = Group.find(params[:id]).tasks.build
   end
   
   def show
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
   
   private
     def task_params
-      params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :user_id, :responsible_id, task_labels_attributes: [:task_id, :label_id, :_destroy, :id])
+      params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :group_id, :user_id, :responsible_id, task_labels_attributes: [:task_id, :label_id, :_destroy, :id])
     end
     
     def task_search_params

@@ -2,6 +2,7 @@ div.container-fluid.mt20
   div.panel.panel-default
     div.panel-body
       = form_for @task, html: { id: "data-form" } do |f|
+        = f.hidden_field :group_id, value: @task.group_id
         div.row
           div.col-sm-12
             div.form-group
@@ -32,7 +33,7 @@ div.container-fluid.mt20
             div.form-group
               = f.label :responsible_id, "担当者", class: "control-label"
               label.validate-label 必須
-              = f.select :responsible_id, User.all.map { |user| [user.username, user.id] }, {}, class: "form-control", id: "responsible_select"
+              = f.select :responsible_id, @task.group.users.map { |user| [user.username, user.id] }, {}, class: "form-control", id: "responsible_select"
         div.row
           div.col-sm-6
             .form-group.task_label_forms

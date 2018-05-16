@@ -35,23 +35,29 @@
             p
               | メールアドレス：
               = @user.email
+          hr
           .col-sm-12.change-image-form.mt20
-            p アイコンを変更する
+            label アイコンを変更する
             = form_for @user do |f|
               .form-group
                 = f.attachment_field :image
               .form-group
                 = f.submit "変更", class: "main-btn"
           .col-sm-12
-            p 所属グループ
+            label 所属グループ
             table.table
               thead
                 tr
+                  th ID
                   th グループ名
+                  th タスク数
               tbody
                 - @user.groups.each do |group|
                   tr
+                    td = group.id
                     td = group.name
+                    td
+                      = group.tasks.exclude_complete.size
 
 
 
