@@ -4,4 +4,6 @@ class Group < ApplicationRecord
   has_many :tasks
 
   accepts_nested_attributes_for :group_users,  allow_destroy: true
+  
+  validates :name, presence: true
 end

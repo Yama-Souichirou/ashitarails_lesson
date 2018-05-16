@@ -47,8 +47,6 @@ $(function(){
                 + '][user_id]" class="selected-user" >';
             $('#data-form').append(hidden_form);
         }
-        // console.log(hidden_form);
-        // $(this).next().append(hidden_form);
     });
 
     // ラベル選択に関する

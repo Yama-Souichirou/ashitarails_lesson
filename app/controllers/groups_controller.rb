@@ -14,11 +14,11 @@ class GroupsController < ApplicationController
   
   def create
     @group = Group.new(group_params)
-    if @group.save!
+    if @group.save
       flash[:notice] = "作成しました"
       head :ok
     else
-      render json: { messages: group.errors.full_messages }, status: :bad_request
+      render json: { messages: @group.errors.full_messages }, status: :bad_request
     end
   end
   

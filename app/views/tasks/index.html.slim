@@ -90,7 +90,7 @@
                               label.selected-label-green = label.name
                             - if  i % 2 == 0
                               br
-                        td = task.group.name
+                        td = link_to task.group.name, group_path(task.group)
                         td
                           = link_to edit_task_path(task) do
                             .btn.btn-default.edit-task-btn
@@ -130,7 +130,7 @@
                               label.selected-label-green = label.name
                             - if i % 2 == 0
                               br
-                        td = task.group.name
+                        td = link_to task.group.name, group_path(task.group)
                         td
                           = link_to edit_task_path(task) do
                             .btn.btn-default.edit-task-btn
