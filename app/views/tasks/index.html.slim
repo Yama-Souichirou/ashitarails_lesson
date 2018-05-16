@@ -76,7 +76,7 @@
                       th ラベル
                       th
 
-                  tbody.tasks-tbody
+                  tbody.data-tbody
                     - @tasks.close_deadline_tasks.each do |task|
                       tr data-href="#{task_path(task)}"
                         td.td-title = task.title
@@ -117,7 +117,7 @@
                       th
                       th
 
-                  tbody.tasks-tbody
+                  tbody.data-tbody
                     - @tasks.each do |task|
                       tr data-href="#{task_path(task)}"
                         td.td-title = task.title

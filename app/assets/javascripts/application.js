@@ -120,7 +120,7 @@ $(function(){
     });
 
     // trリンク
-    $('.tasks-tbody tr[data-href]').addClass('clickable').click(function () {
+    $('.data-tbody tr[data-href]').addClass('clickable').click(function () {
         window.location = $(this).attr('data-href');
     }).find('a').hover(function () {
         $(this).parents('tr').unbind('click');
