@@ -4,6 +4,10 @@ FactoryGirl.define do
     password "password"
     password_confirmation "password"
     email "s.yama@ashita-team.com"
+
+    trait :with_group do
+      association :group, factory: :group
+    end
   end
 
   factory :create_user, class: User do
@@ -26,5 +30,9 @@ FactoryGirl.define do
     password_confirmation "password"
     role 1
     email "s.yama@admin.com"
+
+    trait :with_group do
+      association :group, factory: :group
+    end
   end
 end
