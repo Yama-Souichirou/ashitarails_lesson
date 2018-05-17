@@ -18,3 +18,10 @@
       $(function () {
           toastr.error("#{flash[:too_deadline]}");
       })
+
+- if @errors.present?
+  - @errors.each do |error|
+    javascript:
+          $(function(){
+            toastr.error("#{error}");
+          })

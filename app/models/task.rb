@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  attachment :file
+  
   has_many :task_labels, dependent: :delete_all
   has_many :labels, through: :task_labels
   belongs_to :group

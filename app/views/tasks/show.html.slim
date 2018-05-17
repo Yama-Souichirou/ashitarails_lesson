@@ -41,6 +41,12 @@
         p
           | 優先度：
           = @task.human_priority
+      .col-sm-4
+        p
+          | 添付ファイル
+          = @task.file
+          - @task.file.present?
+            = link_to @task.file, attachment_url(@task, :file, :fill, 300, 300)
       .col-sm-12
         hr
         p = simple_format(@task.description)

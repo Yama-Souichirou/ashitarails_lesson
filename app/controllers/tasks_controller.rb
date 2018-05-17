@@ -24,9 +24,10 @@ class TasksController < ApplicationController
     @task.user_id = @current_user.id
     if @task.save
       flash[:notice] = "タスクを登録しました"
-      head :ok
+      redirect_to group_path(@task.group.id)
     else
-      render json: { messages: @task.errors.full_messages }, status: :bad_request
+      @errors = @task.errors.full_messages
+      render 'new'
     end
   end
   
@@ -36,9 +37,10 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       flash[:notice] = "更新しました"
-      head :ok
+      redirect_to group_path(@task.group.id)
     else
-      render json: { messages: @task.errors.full_messages }, status: :bad_request
+      @errors = @task.errors.full_messages
+      render 'new'
     end
   end
   
@@ -54,7 +56,7 @@ class TasksController < ApplicationController
   
   private
     def task_params
-      params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :group_id, :user_id, :responsible_id, task_labels_attributes: [:task_id, :label_id, :_destroy, :id])
+      params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :group_id, :user_id, :responsible_id, :file, :file_cache_id, etask_labels_attributes: [:task_id, :label_id, :_destroy, :id])
     end
     
     def task_search_params

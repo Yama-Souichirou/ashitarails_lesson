@@ -104,25 +104,26 @@ $(function(){
     $('.data-submit').on('click', function(){
         var $form = $('#data-form');
         var query = $form.serialize();
+        console.log($form.serializeArray());
 
-        $.ajax({
-            url: $form.attr('action'),
-            type: $form.attr('method'),
-            data: query,
-            headers: {
-                'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
-            },
-        })
-        .done((data) => {
-            var ref = document.referrer;
-            window.location.href = ref;
-        })
-        .fail((data) => {
-            var messages = data.responseJSON.messages;
-            for(var i=0; i < messages.length; i++) {
-                toastr.error(messages[i]);
-            }
-        });
+        // $.ajax({
+        //     url: $form.attr('action'),
+        //     type: $form.attr('method'),
+        //     data: query,
+        //     headers: {
+        //         'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
+        //     },
+        // })
+        // .done((data) => {
+        //     var ref = document.referrer;
+        //     window.location.href = ref;
+        // })
+        // .fail((data) => {
+        //     var messages = data.responseJSON.messages;
+        //     for(var i=0; i < messages.length; i++) {
+        //         toastr.error(messages[i]);
+        //     }
+        // });
     });
 
     // trリンク

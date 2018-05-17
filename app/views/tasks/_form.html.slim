@@ -6,6 +6,11 @@ div.container-fluid.mt20
         div.row
           div.col-sm-12
             div.form-group
+              = f.label :file, "ファイル", class: "control-label"
+              = f.attachment_field :file, class: "form-control"
+        div.row
+          div.col-sm-12
+            div.form-group
               = f.label :title, "タスク名", class: "control-label"
               label.validate-label 必須
               = f.text_field :title, class: "form-control"
@@ -47,4 +52,4 @@ div.container-fluid.mt20
         br
           .clearfix
             = link_to "戻る", :back, class: "default-btn"
-            btn.main-btn.data-submit.pull-right 登録
+            = f.submit '登録', class: "btn main-btn pull-right"
