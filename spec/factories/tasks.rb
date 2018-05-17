@@ -12,5 +12,9 @@ FactoryGirl.define do
     trait :with_responsible do
       association :responsible, factory: :responsible_user
     end
+
+    trait :with_group do
+      association :group, factory: :group
+    end
   end
 end

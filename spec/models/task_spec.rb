@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Task, type: :model do
   it "is valid with a title, deadline_on, status, and priority" do
-    task = FactoryGirl.build(:task, :with_user, :with_responsible)
+    task = FactoryGirl.build(:task, :with_user, :with_responsible, :with_group)
     expect(task).to be_valid
   end
   
@@ -43,7 +43,7 @@ RSpec.describe Task, type: :model do
   end
   
   it "has a valid factory" do
-    expect(FactoryGirl.create(:task, :with_user, :with_responsible)).to be_valid
+    expect(FactoryGirl.create(:task, :with_user, :with_responsible, :with_group)).to be_valid
   end
   
   describe "search" do
@@ -54,10 +54,10 @@ RSpec.describe Task, type: :model do
       context "タスク" do
         before do
           params[:title] = "タスク"
-          FactoryGirl.create(:task, user: user, responsible: user, title: 'これはタスク')
-          FactoryGirl.create(:task, user: user, responsible: user, title: 'タスクはこれ')
-          FactoryGirl.create(:task, user: user, responsible: user, title: 'これはちがう')
-          FactoryGirl.create(:task, user: user, responsible: user, title: 'これもちがう')
+          FactoryGirl.create(:task, :with_group, user: user, responsible: user,  title: 'これはタスク')
+          FactoryGirl.create(:task, :with_group, user: user, responsible: user,  title: 'タスクはこれ')
+          FactoryGirl.create(:task, :with_group, user: user, responsible: user,  title: 'これはちがう')
+          FactoryGirl.create(:task, :with_group, user: user, responsible: user,  title: 'これもちがう')
         end
         it "return 2 records" do
           expect(Task.search(params).count).to eq 2
@@ -67,7 +67,7 @@ RSpec.describe Task, type: :model do
     
     describe "status" do
       before do
-        30.times { FactoryGirl.create(:task, user: user, responsible: user) }
+        30.times { FactoryGirl.create(:task, :with_group, user: user, responsible: user) }
       end
       
       context "完了" do
