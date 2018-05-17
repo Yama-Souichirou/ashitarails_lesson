@@ -7,7 +7,7 @@
     .col-sm-12
       .panel.panel-default.mt20
         .panel-body
-          = form_for @q, method: :get do |f|
+          = form_for [:admin, @q], method: :get do |f|
             .row
               .col-sm-3
                 .form-group
@@ -49,7 +49,7 @@
                     i.glyphicon.glyphicon-search
                 .col-sm-2
                   label.label-control リセット
-                  = link_to root_path, id: "reset-button", class: "sub-btn-block" do
+                  = link_to admin_tasks_path, id: "reset-button", class: "sub-btn-block" do
                     i.fas.fa-times
   .row.mt20
     .col-sm-12
