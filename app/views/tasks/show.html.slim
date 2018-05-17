@@ -23,32 +23,32 @@
           = @task.title
       .col-sm-4
         p
-          | 期日：
+          label 期日：
           = l @task.deadline_on
         p
-          | プロジェクト：
+          label プロジェクト：
           = @task.responsible.username
         p
-          | 担当者：
+          label 担当者：
           = @task.group.name
       .col-sm-4
         p
-          | 状況：
+          label 状況
           = @task.human_status
         p
-          | 優先度：
+          label 優先度：
           = @task.human_priority
         p
-          | 優先度：
+          label 優先度：
           = @task.human_priority
       .col-sm-4
         p
-          | 添付ファイル
-          = @task.file
-          - @task.file.present?
-            = link_to @task.file, attachment_url(@task, :file, :fill, 300, 300)
+          label 添付ファイル
+          br
+          - if @task.file.present?
+            = link_to @task.file, attachment_url(@task, :file), target: '_blank'
       .col-sm-12
         hr
         p = simple_format(@task.description)
-
+  = link_to "戻る", :back
 
