@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
   
   def show
     @group = Group.find(params[:id])
+    authenticate_group_member!
   end
   
   def new
@@ -31,11 +32,25 @@ class GroupsController < ApplicationController
   end
   
   def destroy
-  
+    @group = Group.find(params[:id])
+    if @group.destroy
+      flash[:notice] = "削除しました"
+      redirect_to groups_path
+    else
+      flash[:danger] = "削除できませんでした"
+      redirect_to group_path(@group)
+    end
   end
   
   private
     def group_params
       params.require(:group).permit(:name, :description, group_users_attributes: [:user_id, :group_id, :_destroy, :id])
+    end
+  
+    def authenticate_group_member!
+      unless @current_user.group_ids.include?(@group.id)
+        flash[:danger] = "このプロジェクトに参加しておりません"
+        redirect_to :back
+      end
     end
 end
