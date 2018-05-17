@@ -1,10 +1,9 @@
-.container-fluid
+.container-fluid#group-show
   .row
     .col-sm-12.clearfix.mt10
       h4.page-title.pull-left
         = @group.name
-      = link_to new_task_path(id: @group), class: "btn main-btn pull-right mt5" do
-        i.fas.fa-plus  タスクを作成
+
   .row
     .col-sm-12.mt20
       - @group.users.each do |user|
@@ -16,8 +15,18 @@
     .col-sm-12
        .panel.panel-default.mt20
          .panel-body
-           p style="color: #888888; font-size: 12px;"
-             = @group.description
+           .col-sm-10
+             p style="color: #888888; font-size: 12px;"
+               = @group.description
+           .col-sm-2
+             .btn-group.pull-right.mt0
+               a.dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                 i.fas.fa-bars
+               .dropdown-menu
+                 li
+                   = link_to "タスク作成", new_task_path(id: @group.id), class: "dropdown-item"
+                 li
+                   = link_to "プロジェクトを削除", group_path, method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "dropdown-item"
            table.mt30.table
              thead
                tr
