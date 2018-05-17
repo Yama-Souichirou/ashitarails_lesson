@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :feature do
+RSpec.feature "Users", type: :feature, js: true do
   let(:user) { FactoryGirl.create(:user) }
+  let(:group) { FactoryGirl.create(:group) }
+  
   before do
     user
     visit new_session_path
@@ -19,7 +21,8 @@ RSpec.feature "Users", type: :feature do
   
   describe "click '完了にする'" do
     before do
-      FactoryGirl.create(:task, user: user, responsible: user)
+      FactoryGirl.create(:task, user: user, responsible: user, group: group)
+      visit current_path
     end
     
     it "change Task count 0" do
