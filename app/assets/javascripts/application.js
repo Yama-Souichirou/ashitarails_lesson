@@ -73,7 +73,7 @@ $(function(){
             if( $(this).val() == value) {
                 $(this).remove();
             }
-        })
+        });
 
         $('.selected-labels').append(label);
         $('.selected-labels').append(hiddenFormLabelId);
@@ -97,7 +97,7 @@ $(function(){
                 .val(data.id)
                 .text(data.name)
             $('.select-label-form').append($option);
-        })
+        });
     });
 
     // tasks create
@@ -114,7 +114,8 @@ $(function(){
             },
         })
         .done((data) => {
-            location.reload();
+            var ref = document.referrer;
+            window.location.href = ref;
         })
         .fail((data) => {
             var messages = data.responseJSON.messages;

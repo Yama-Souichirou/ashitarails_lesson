@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
   resources :labels, only: [:index]
   resources :users, only: [:show, :update]
-  resources :groups
+  resources :groups do
+    resources :users do
+      resource :group_users, only: :destroy
+    end
+  end
   delete "/session" => "sessions#destroy", as: :destroy_session
   
   namespace :admin do

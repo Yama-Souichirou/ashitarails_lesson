@@ -1,11 +1,12 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_group, only: [:show, :destroy, :edit, :update]
   
   def index
     @groups = Group.all
   end
   
   def show
-    @group = Group.find(params[:id])
     authenticate_group_member!
   end
   
@@ -24,15 +25,19 @@ class GroupsController < ApplicationController
   end
   
   def edit
-  
+    @group.users.build
   end
   
   def update
-  
+    if @group.update(group_params)
+      flash[:notice] = "更新しました"
+      head :ok
+    else
+      render json: { messages: @group.errors.full_messages }, status: :bad_request
+    end
   end
   
   def destroy
-    @group = Group.find(params[:id])
     if @group.destroy
       flash[:notice] = "削除しました"
       redirect_to groups_path
@@ -45,6 +50,10 @@ class GroupsController < ApplicationController
   private
     def group_params
       params.require(:group).permit(:name, :description, group_users_attributes: [:user_id, :group_id, :_destroy, :id])
+    end
+    
+    def set_group
+      @group = Group.find(params[:id])
     end
   
     def authenticate_group_member!
