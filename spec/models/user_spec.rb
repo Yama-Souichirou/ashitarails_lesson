@@ -36,6 +36,7 @@ RSpec.describe User, type: :model do
   describe 'delete' do
     let(:admin) { FactoryGirl.create(:admin) }
     let(:user) { FactoryGirl.create(:user) }
+    let(:group) { FactoryGirl.create(:group) }
     
     describe 'delete normal user' do
       context 'has no tasks' do
@@ -46,7 +47,7 @@ RSpec.describe User, type: :model do
 
       context 'user has tasks' do
         before do
-          FactoryGirl.create(:task, user: user, responsible: admin)
+          FactoryGirl.create(:task, user: user, responsible: admin, group: group)
         end
   
         it 'can not delete' do
