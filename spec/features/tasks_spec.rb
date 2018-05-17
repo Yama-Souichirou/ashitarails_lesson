@@ -24,7 +24,7 @@ RSpec.feature 'Tasks', type: :feature, js: true do
       expect {
         fill_in 'task_title', with: 'this is a test'
         fill_in 'task_deadline_on', with: '2018-04-04'
-        find('.data-submit').click
+        find('.main-btn').click
         
         expect(page).to have_content 'タスクを登録しました'
       }.to change(Task, :count).by(1)
