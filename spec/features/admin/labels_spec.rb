@@ -41,7 +41,7 @@ RSpec.feature 'Tasks', type: :feature do
     
     context 'have tasks' do
       before do
-        task = FactoryGirl.create(:task, :with_user, :with_responsible)
+        task = FactoryGirl.create(:task, :with_user, :with_responsible, :with_group)
         TaskLabel.create(task_id: task.id, label_id: label.id)
         visit admin_labels_path
       end

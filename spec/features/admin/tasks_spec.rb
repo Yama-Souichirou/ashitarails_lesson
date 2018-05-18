@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.feature 'Tasks', type: :feature, js: true do
   let(:admin) { FactoryGirl.create(:admin) }
+  let(:group) { FactoryGirl.create(:group) }
+  let(:group_user) { FactoryGirl.create(:group_user, user: admin, group: group) }
+
   before do
     admin
     visit new_session_path
@@ -11,31 +14,16 @@ RSpec.feature 'Tasks', type: :feature, js: true do
     visit root_path
   end
   
-  describe 'create task'do
-    before do
-      visit new_admin_task_path
-    end
-    
-    it 'change Task count 1' do
-      expect {
-        fill_in 'task_title', with: 'this is a test'
-        fill_in 'task_deadline_on', with: '2018-04-04'
-        find('.main-btn').click
-        
-        expect(page).to have_content 'タスクを登録しました'
-      }.to change(Task, :count).by(1)
-    end
-  end
-  
   describe 'delete task'do
     before do
-      task = FactoryGirl.create(:task, user: admin, responsible: admin)
+      group_user
+      task = FactoryGirl.create(:task, user: admin, responsible: admin, group: group)
       visit admin_task_path(task)
     end
     
     it 'change Task count -1' do
       expect {
-        find('.delete-task-btn').click
+        find('.btn-danger').click
         page.accept_confirm
         
         expect(page).to have_content '削除しました'
@@ -47,7 +35,7 @@ RSpec.feature 'Tasks', type: :feature, js: true do
     context 'click thead "期日"' do
       before do
         1.upto(3) do |i|
-          FactoryGirl.create(:task, user: admin, responsible: admin, deadline_on: Date.today + i.day)
+          FactoryGirl.create(:task, user: admin, responsible: admin, group: group, deadline_on: Date.today + i.day)
         end
         visit root_path
       end
@@ -83,7 +71,7 @@ RSpec.feature 'Tasks', type: :feature, js: true do
     context 'click link thead "優先度"' do
       before do
         0.upto(3) do |i|
-          FactoryGirl.create(:task, user: admin, responsible: admin, priority: Task.priorities.keys[i])
+          FactoryGirl.create(:task, user: admin, responsible: admin, group: group, priority: Task.priorities.keys[i])
         end
         visit root_path
       end
@@ -113,43 +101,12 @@ RSpec.feature 'Tasks', type: :feature, js: true do
         end
       end
     end
-    
-    context 'click link thead "優先度"' do
-      before do
-        1.upto(3) do |i|
-          FactoryGirl.create(:task, user: adminadmin, responsible: admin, created_at: Date.today + i.day)
-        end
-        visit root_path
-      end
-      
-      context 'click link once' do
-        before do
-          click_link '作成日'
-        end
-        it 'ordered created_at ASC' do
-          expect(page.all('tbody tr')[0].find('.td-createdat').text).to match "#{(Date.today + 1.day).strftime('%Y/%m/%d 00:00:00')}"
-          expect(page.all('tbody tr')[1].find('.td-createdat').text).to match "#{(Date.today + 2.day).strftime('%Y/%m/%d 00:00:00')}"
-          expect(page.all('tbody tr')[2].find('.td-createdat').text).to match "#{(Date.today + 3.day).strftime('%Y/%m/%d 00:00:00')}"
-        end
-      end
-      
-      context 'click link twice' do
-        before do
-          click_link '作成日'
-          click_link '作成日'
-        end
-        it 'ordered created_at DESC' do
-          expect(page.all('tbody tr')[0].find('.td-createdat').text).to match "#{(Date.today + 3.day).strftime('%Y/%m/%d 00:00:00')}"
-          expect(page.all('tbody tr')[1].find('.td-createdat').text).to match "#{(Date.today + 2.day).strftime('%Y/%m/%d 00:00:00')}"
-          expect(page.all('tbody tr')[2].find('.td-createdat').text).to match "#{(Date.today + 1.day).strftime('%Y/%m/%d 00:00:00')}"
-        end
-      end
-    end
+
   end
   
   describe 'search'do
     before do
-      20.times { FactoryGirl.create(:task, admin: admin, responsible: admin, status: 1) }
+      20.times { FactoryGirl.create(:task, user: admin, responsible: admin, group: group, status: 1) }
       visit root_path
     end
     
@@ -209,7 +166,7 @@ RSpec.feature 'Tasks', type: :feature, js: true do
   describe 'paginate' do
     context 'create 30 tasks' do
       before do
-        30.times { FactoryGirl.create(:task, user: admin, responsible: admin) }
+        30.times { FactoryGirl.create(:task, user: admin, responsible: admin, group: group) }
         visit root_path
       end
       

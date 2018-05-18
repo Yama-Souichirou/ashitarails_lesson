@@ -44,12 +44,12 @@
               .form-group
                 = f.submit "変更", class: "main-btn"
           .col-sm-12
-            label 所属グループ
+            label 所属プロジェクト
             table.table
               thead
                 tr
                   th ID
-                  th グループ名
+                  th = Group.human_attribute_name(:name)
                   th タスク数
               tbody
                 - @user.groups.each do |group|
