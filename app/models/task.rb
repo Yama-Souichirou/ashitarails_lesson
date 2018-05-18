@@ -3,10 +3,12 @@ class Task < ApplicationRecord
   
   has_many :task_labels, dependent: :delete_all
   has_many :labels, through: :task_labels
+  has_many :task_images, dependent: :delete_all
   belongs_to :group
   belongs_to :user
   belongs_to :responsible, :class_name => 'User'
   accepts_nested_attributes_for :task_labels, allow_destroy: true
+  accepts_attachments_for :task_images, attachment: :file
 
   validates :title, presence: true
   validates :deadline_on, presence: true

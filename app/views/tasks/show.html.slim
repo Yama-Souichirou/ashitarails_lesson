@@ -45,8 +45,10 @@
         p
           label 添付ファイル
           br
-          - if @task.file.present?
-            = link_to @task.file, attachment_url(@task, :file), target: '_blank', download: "#{@task.file_id}"
+          - if @task.task_images.present?
+            - @task.task_images.each do |image|
+              = link_to image.file, attachment_url(image, :file), target: '_blank', download: "#{image.file_id}"
+              br
       .col-sm-12
         hr
         p = simple_format(@task.description)

@@ -14,9 +14,8 @@ gem 'rails', '~> 5.0.7'
 gem 'puma', '~> 3.0'
 gem 'mysql2'
 gem 'kaminari'
-gem "mini_magick"
-gem "refile", require: ["refile/rails", "refile/image_processing"]
-
+gem "refile", github: 'refile/refile', require: "refile/rails"
+gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

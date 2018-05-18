@@ -6,8 +6,8 @@ div.container-fluid.mt20
         div.row
           div.col-sm-12
             div.form-group
-              = f.label :file, "ファイル", class: "control-label"
-              = f.attachment_field :file, class: "form-control"
+              = f.label :task_images_files, "ファイル", class: "control-label"
+              = f.attachment_field :task_images_files, multiple: true, direct: true, class: "form-control"
         div.row
           div.col-sm-12
             div.form-group
