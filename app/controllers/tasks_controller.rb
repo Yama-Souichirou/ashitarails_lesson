@@ -55,7 +55,11 @@ class TasksController < ApplicationController
   end
 
   def calendar
-
+    @tasks = Task.search_deadlin_on(params[:date])
+    respond_to do |format|
+      format.html
+      format.json { render 'calendar', handlers: 'jbuilder' }
+    end
   end
   
   private

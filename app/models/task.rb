@@ -31,6 +31,10 @@ class Task < ApplicationRecord
   scope :close_deadline_tasks, -> () {
     exclude_complete.where("tasks.deadline_on < ?", Date.today + 2.day)
   }
+
+  scope :search_deadlin_on, -> (date) {
+    where(deadline_on: date) if date.present?
+  }
   
   def self.search(params)
     tasks = Task.all

@@ -1,1 +1,51 @@
-#vue-test
+.container-fluid
+  .row#calendar
+    .col-sm-7.bg-white
+      .col-sm-12
+        .mt20
+          .flex.main
+            .shift-button.col-sm-3
+              .btn.default-btn v-on:click="shift('back')"
+                i.fas.fa-chevron-left
+            div class="month-year-info col-sm-6"
+              p.text-center
+                label
+                  | {{year}}年{{month}}月
+            .shift-button.col-sm-3
+              .btn.default-btn.pull-right v-on:click="shift('next')"
+                i.fas.fa-chevron-right
+          .col-sm-12
+              table.table
+                thead
+                  tr
+                    th 日
+                    th 月
+                    th 火
+                    th 水
+                    th 木
+                    th 金
+                    th 土
+                tbody
+                  tr v-for="n in [0,1,2,3,4,5]"
+                    td v-for="week in weekList" v-on:click="getTasks(dates[$index + (n * 7)].day)"
+                      | {{ dates[$index + (n * 7)].day }}
+                      p.text-red.text-center
+    .col-sm-5.mt20
+      .text-center v-if="tasks.length == 0"
+        | 期日のタスクはありません
+      .panel.panel-default v-for="task in tasks"
+        .panel-body
+          h4
+            | {{task.title}}
+          hr
+          a v-bind:href="'/tasks/' + task.id "
+            p
+              |担当：
+              | {{task.responsible}}
+            p
+              | 作成者：
+              | {{task.user}}
+            p
+              | 作成日：
+              | {{task.created}}
+

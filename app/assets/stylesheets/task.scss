@@ -21,3 +21,8 @@
 .small-text {
   font-size: 12px;
 }
+#calendar {
+  td {
+    cursor: pointer;
+  }
+}
