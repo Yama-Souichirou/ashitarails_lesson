@@ -27,6 +27,7 @@
     float: left;
     width: 80%;
     height: 60px;
+    border-bottom: 1px solid $accent;
     background-color: #fff;
 
     .account-icon {
@@ -58,6 +59,7 @@
 #sidemenu, #admin-sidemenu {
   width: 20%;
   height: 100%;
+  border-right: 1px solid $accent;
   position: fixed;
   top: 0;
   left: 0;
