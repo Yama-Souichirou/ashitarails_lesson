@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :tasks
+  resources :tasks do
+    get :calendar, on: :collection
+  end
   resources :sessions, only: [:new, :create]
   resources :labels, only: [:index]
   resources :users, only: [:show, :update]
