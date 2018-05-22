@@ -32,6 +32,9 @@ $admin_base: #226B80;
 .bg-white {
   background-color: #fff;
 }
+.bg-gray {
+  background-color: $base_color;
+}
 
 .text-red {
   color: #ff4646;

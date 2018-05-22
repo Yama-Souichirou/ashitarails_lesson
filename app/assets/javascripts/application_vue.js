@@ -3,6 +3,7 @@ window.onload = function(){
   new Vue({
     el: '#calendar',
     data: {
+      isClick: false,
       year: '',
       month: '',
       start_week: '',
@@ -51,6 +52,7 @@ window.onload = function(){
       },
       getTasks: function(day) {
         var self = this;
+        self.isClick = true;
         axios.get('/tasks/calendar.json', {
           params: {
             date: '"' + this.year + '-' + this.month + '-' + day + '"',

@@ -25,4 +25,14 @@
   td {
     cursor: pointer;
   }
+  td:hover {
+    background-color: $base_color;
+  }
+  
+  .selected-tasks {
+    a {
+      color: #000;
+    }
+  }
+
 }
