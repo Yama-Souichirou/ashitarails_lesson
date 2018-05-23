@@ -27,6 +27,8 @@ ja:
       group:
         name: "プロジェクト名"
         description: "説明"
+      label:
+        name: "ラベル名"
   enum:
     tasks:
       priorities:
