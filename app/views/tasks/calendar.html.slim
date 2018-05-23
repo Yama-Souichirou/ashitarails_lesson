@@ -1,5 +1,5 @@
 .container-fluid
-  .row#calendar
+  .row#tasks-calendar
     .col-sm-7.bg-white.task-calendar
       .col-sm-12
         .mt20
@@ -26,14 +26,14 @@
                     th 金
                     th 土
                 tbody
-                  tr v-for="n in (dates.length / 7)"
-                    td v-for="week in weekList" v-on:click="getTasks(dates[$index + (n * 7)].day)" v-bind:class="{bg-gray: isClick}"
-                      | {{ dates[$index + (n * 7)].day }}
+                  tr v-for="n in (calendar_dates.length / 7)"
+                    td v-for="week in weekList" v-on:click="getTasks(calendar_dates[$index + (n * 7)].day)" v-bind:class="{bg-gray: isClick}"
+                      | {{ calendar_dates[$index + (n * 7)].day }}
                       p.text-red.text-center
     .col-sm-5.mt20.selected-tasks
       .text-center v-if="tasks.length == 0"
         | 期日のタスクはありません
-      .panel.panel-default v-for="task in tasks"
+      .panel.panel-default v-for="task in select_tasks"
         a v-bind:href="'/tasks/' + task.id "
           .panel-body
             h4

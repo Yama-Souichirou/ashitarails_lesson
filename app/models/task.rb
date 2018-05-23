@@ -31,9 +31,11 @@ class Task < ApplicationRecord
   scope :close_deadline_tasks, -> () {
     exclude_complete.where("tasks.deadline_on < ?", Date.today + 2.day)
   }
-
-  scope :search_deadlin_on, -> (date) {
-    where(deadline_on: date) if date.present?
+  scope :search_deadlin_on, -> (deadline_on) {
+    where(deadline_on: deadline_on) if deadline_on.present?
+  }
+  scope :search_month, -> (start_day, end_day) {
+    where("deadline_on BETWEEN ? AND ?", start_day, end_day) if start_day.present? && end_day.present?
   }
   
   def self.search(params)
