@@ -3,7 +3,6 @@ window.onload = function(){
   new Vue({
     el: '#tasks-calendar',
     data: {
-      isClick: false,
       year: '',
       month: '',
       start_week: '',
@@ -19,11 +18,11 @@ window.onload = function(){
       this.year       = now.getFullYear();
       this.month      = now.getMonth() + 1;
   
-      // 以下月の全タスク
+      // 月の全タスクを取得してcalendar_tasksにセット
       axios.get('/tasks/calendar.json', {
         params: {
-          start_day: this.year + '-' + this.month + '-1',
-          end_day: this.year + '-' + this.month + '-' + new Date(this.year, this.month, 0).getDate(),
+          start_day: self.year + '-' + self.month + '-1',
+          end_day: self.year + '-' + self.month + '-' + new Date(self.year, self.month, 0).getDate(),
         }
       }).then(function (response) {
         self.setCallendarDates(response.data); // カレンダーで表示させる配列をモデルにセット
@@ -33,17 +32,17 @@ window.onload = function(){
       shift: function(val) {
         var self = this;
         if (val === 'back') {
-          this.month = (this.month === 1)?12:this.month -1;
-          this.year = (this.month === 1)?this.year -1:this.year;
+          self.month = (self.month === 1)?12:self.month -1;
+          self.year = (self.month === 1)?self.year -1:self.year;
         } else {
-          this.month = (this.month === 12)?1:this.month + 1;
-          this.year = (this.month === 1)?this.year + 1:this.year;
+          self.month = (self.month === 12)?1:self.month + 1;
+          self.year = (self.month === 1)?self.year + 1:self.year;
         };
         
         axios.get('/tasks/calendar.json', {
           params: {
-            start_day: this.year + '-' + this.month + '-1',
-            end_day: this.year + '-' + this.month + '-' + new Date(this.year, this.month, 0).getDate(),
+            start_day: self.year + '-' + self.month + '-1',
+            end_day: self.year + '-' + self.month + '-' + new Date(self.year, self.month, 0).getDate(),
           }
         }).then(function (response) {
           self.setCallendarDates(response.data); // カレンダーで表示させる配列をモデルのセット
@@ -52,10 +51,10 @@ window.onload = function(){
       
       getTasks: function(day) {
         var self = this;
-        this.isClick = true;
+        
         axios.get('/tasks/calendar.json', {
           params: {
-            deadline_on: this.year + '-' + this.month + '-' + day,
+            deadline_on: self.year + '-' + self.month + '-' + day,
           }
         }).then(function (response) {
           var select_tasks = [];
@@ -68,23 +67,25 @@ window.onload = function(){
       
       setCallendarDates: function(data) {
         var self = this;
-        this.start_week = new Date(this.year, this.month -1, 1).getDay(); //初日と曜日を合わせるために必要
-        var end_date    = new Date(this.year, this.month, 0); // 月の最終日
-        this.days       = Array.from(new Array(end_date.getDate())).map((v,i)=> i + 1); // 月の日数の配列
         
-        this.calendar_dates = [];
+        self.start_week = new Date(self.year, self.month -1, 1).getDay(); //初日と曜日を合わせるために必要
+        var end_date    = new Date(self.year, self.month, 0); // 月の最終日
+        self.days       = Array.from(new Array(end_date.getDate())).map((v,i)=> i + 1); // 月の日数の配列
+        
+        self.calendar_dates = [];
         var dates = [];
-        for ( var i = 0; i < this.days.length; i++ ) {
-          var week_num = new Date(this.year, this.month -1, this.days[i]).getDay();
+        for ( var i = 0; i < self.days.length; i++ ) {
+          var week_num = new Date(self.year, self.month -1, self.days[i]).getDay();
           var tasks = data.filter(function(item, index) {
             if ( item.deadline_on ==  self.year + '-' + self.month + '-' + self.days[i]) return true;
           });
-          dates.push({week: week_num, day: this.days[i], task_size: tasks.length + '件'});
+          dates.push({week: week_num, day: self.days[i], task_size: tasks.length + '件'});
         };
-        for ( var i = 0; i < this.start_week; i++) {
+        for ( var i = 0; i < self.start_week; i++) {
           dates.unshift({week: '', day: ''});
         };
-        this.calendar_dates = dates;
+        
+        self.calendar_dates = dates;
       }
     }
   })

@@ -30,7 +30,7 @@
                     td v-for="week in weekList" v-on:click="getTasks(calendar_dates[$index + (n * 7)].day)" v-bind:class="{ bg-gray: isClick }"
                       | {{ calendar_dates[$index + (n * 7)].day }}
                       p.text-red.text-center
-                        label.label.label-success v-html=" calendar_dates[$index + (n * 7)].task_size "
+                        label.label.label-success v-html=" calendar_dates[$index + (n * 7)].task_size"
     .col-sm-5.mt20.selected-tasks
       .text-center v-if="select_tasks.length == 0"
         | 期日のタスクはありません
@@ -49,4 +49,3 @@
             p
               | 作成日：
               | {{task.created}}
-
