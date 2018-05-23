@@ -121,6 +121,21 @@ $admin_base: #226B80;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
+.default-label-green {
+  font-size: 9px;
+  margin-top: 5px;
+  margin-right: 4px;
+  padding: 2px 3px;
+  color: $accent;
+  border: solid 1px $accent;
+  background-color: #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.label-success {
+  background-color: $accent !important;
+}
 .selected-label-green {
   font-size: 9px;
   margin-top: 5px;

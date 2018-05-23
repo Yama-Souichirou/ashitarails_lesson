@@ -27,11 +27,12 @@
                     th 土
                 tbody
                   tr v-for="n in (calendar_dates.length / 7)"
-                    td v-for="week in weekList" v-on:click="getTasks(calendar_dates[$index + (n * 7)].day)" v-bind:class="{bg-gray: isClick}"
+                    td v-for="week in weekList" v-on:click="getTasks(calendar_dates[$index + (n * 7)].day)" v-bind:class="{ bg-gray: isClick }"
                       | {{ calendar_dates[$index + (n * 7)].day }}
                       p.text-red.text-center
+                        label.label.label-success v-html=" calendar_dates[$index + (n * 7)].task_size "
     .col-sm-5.mt20.selected-tasks
-      .text-center v-if="tasks.length == 0"
+      .text-center v-if="select_tasks.length == 0"
         | 期日のタスクはありません
       .panel.panel-default v-for="task in select_tasks"
         a v-bind:href="'/tasks/' + task.id "

@@ -21,18 +21,24 @@
 .small-text {
   font-size: 12px;
 }
+
+// scss sass
 #tasks-calendar {
-  td {
-    cursor: pointer;
-  }
-  td:hover {
-    background-color: $base_color;
-  }
-  
-  .selected-tasks {
-    a {
-      color: #000;
-    }
-  }
+   td {
+     cursor: pointer;
+   }
+   td:hover {
+     background-color: $base_color;
+   }
+
+   .selected-tasks {
+     a {
+       color: #000;
+     }
+   }
+ }
+
+// css
+#tasks-calendar td {
 
 }
