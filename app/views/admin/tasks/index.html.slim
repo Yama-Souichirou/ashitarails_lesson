@@ -1,10 +1,6 @@
 .container-fluid.mt20
   .row
     .col-sm-12
-      = link_to new_admin_task_path, class: "main-btn" do
-        i.fas.fa-plus  新規作成
-  .row
-    .col-sm-12
       .panel.panel-default.mt20
         .panel-body
           = form_for [:admin, @q], method: :get do |f|
@@ -76,10 +72,11 @@
                       th ラベル
                       th
 
-                  tbody.data-tbody
+                  tbody.data-tbody.sortable
                     - @tasks.close_deadline_tasks.each do |task|
-                      tr data-href="#{admin_task_path(task)}"
-                        td.td-title = task.title
+                      tr
+                        td.td-title
+                          = link_to task.title, admin_task_path(task)
                         td.td-deadlineon
                           label class="label label-#{task.deadline_color_class}" = task.display_left_days_format
                         td.td-priority
@@ -117,10 +114,11 @@
                       th
                       th
 
-                  tbody.data-tbody
+                  tbody.data-tbody.sortable
                     - @tasks.each do |task|
-                      tr data-href="#{admin_task_path(task)}"
-                        td.td-title = task.title
+                      tr
+                        td.td-title
+                          = link_to task.title, admin_task_path(task)
                         td.td-deadlineon = l task.deadline_on
                         td.td-priority
                           label class="label label-#{task.priority_color_class}" = task.human_priority
