@@ -25,8 +25,6 @@ RSpec.feature 'Tasks', type: :feature, js: true do
         fill_in 'task_title', with: 'this is a test'
         fill_in 'task_deadline_on', with: '2018-04-04'
         find('.main-btn').click
-        find('tbody tr')[0].text
-        page.save_screenshot '~/Desktop/test.png'
         expect(page).to have_content 'タスクを登録しました'
       }.to change(Task, :count).by(1)
     end
@@ -70,7 +68,7 @@ RSpec.feature 'Tasks', type: :feature, js: true do
     context 'click thead "期日"' do
       before do
         1.upto(3) do |i|
-          FactoryGirl.create(:task, user: user, responsible: user, group: group, deadline_on: Date.today + i.day)
+          FactoryGirl.create(:task, user: user, responsible: user, group: group, deadline_on: Ω)
         end
         visit root_path
       end

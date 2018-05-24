@@ -27,6 +27,7 @@ RSpec.feature "Users", type: :feature, js: true do
     
     it "change Task count 0" do
       page.first('.data-submit').click
+      page.save_screenshot '~/Desktop/test.png'
       expect(page).to have_content "更新しました"
       page.all('.users-tasks').count eq 0
     end
