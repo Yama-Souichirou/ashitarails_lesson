@@ -4,14 +4,14 @@
       .col-sm-12
         .mt20
           .flex.main
-            .shift-button.col-sm-3
+            .shift-button.back.col-sm-3
               .btn.default-btn v-on:click="shift('back')"
                 i.fas.fa-chevron-left
             div class="month-year-info col-sm-6"
               p.text-center
                 label
                   | {{year}}年{{month}}月
-            .shift-button.col-sm-3
+            .shift-button.next.col-sm-3
               .btn.default-btn.pull-right v-on:click="shift('next')"
                 i.fas.fa-chevron-right
           .col-sm-12
