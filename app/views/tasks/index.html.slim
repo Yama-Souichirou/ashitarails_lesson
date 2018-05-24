@@ -71,10 +71,11 @@
                       th ラベル
                       th プロジェクト
 
-                  tbody.data-tbody
+                  tbody.data-tbody.sortable
                     - @tasks.close_deadline_tasks.each do |task|
-                      tr data-href="#{task_path(task)}"
-                        td.td-title = task.title
+                      tr 
+                        td.td-title
+                           = link_to task.title, task_path(task)
                         td.td-deadlineon
                           label class="label label-#{task.deadline_color_class}" = task.display_left_days_format
                         td.td-priority
@@ -107,10 +108,11 @@
                       th ラベル
                       th プロジェクト
 
-                  tbody.data-tbody
+                  tbody.data-tbody.sortable
                     - @tasks.each do |task|
-                      tr data-href="#{task_path(task)}"
-                        td.td-title = task.title
+                      tr
+                        td.td-title
+                          = link_to task.title, task_path(task)
                         td.td-deadlineon = l task.deadline_on
                         td.td-priority
                           label class="label label-#{task.priority_color_class}" = task.human_priority

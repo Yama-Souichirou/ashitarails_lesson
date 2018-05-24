@@ -15,6 +15,9 @@
 //= require_tree .
 
 $(function(){
+    $('.sortable').sortable();
+    $('.sortable').disableSelection();
+    
     $('.groups-user-img img').mouseover(function(){
         $(this).next('.user-info').fadeIn();
     });
@@ -125,15 +128,5 @@ $(function(){
             }
         });
     });
-
-    // trリンク
-    $('.data-tbody tr[data-href]').addClass('clickable').click(function () {
-        window.location = $(this).attr('data-href');
-    }).find('a').hover(function () {
-        $(this).parents('tr').unbind('click');
-    }, function () {
-        $(this).parents('tr').click(function () {
-            window.location = $(this).attr('data-href');
-        });
-    });
+    
 });
