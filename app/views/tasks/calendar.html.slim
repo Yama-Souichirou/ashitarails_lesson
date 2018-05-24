@@ -34,6 +34,8 @@
     .col-sm-5.mt20.selected-tasks
       .text-center v-if="select_tasks.length == 0"
         | 期日のタスクはありません
+      p.text-center v-if="select_tasks.length > 0"
+        | {{year}}年{{month}}月{{day}}日が期限のタスク
       .panel.panel-default v-for="task in select_tasks"
         a v-bind:href="'/tasks/' + task.id "
           .panel-body

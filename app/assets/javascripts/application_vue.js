@@ -5,6 +5,7 @@ window.onload = function(){
     data: {
       year: '',
       month: '',
+      day: '',
       start_week: '',
       weekList: ['日', '月', '火', '水', '木', '金', '土'],
       days: [],
@@ -25,7 +26,7 @@ window.onload = function(){
           end_day: self.year + '-' + self.month + '-' + new Date(self.year, self.month, 0).getDate(),
         }
       }).then(function (response) {
-        self.setCallendarDates(response.data); // カレンダーで表示させる配列をモデルにセット
+        self.setCalendarDates(response.data); // カレンダーで表示させる配列をモデルにセット
       });
     },
     methods: {
@@ -45,13 +46,14 @@ window.onload = function(){
             end_day: self.year + '-' + self.month + '-' + new Date(self.year, self.month, 0).getDate(),
           }
         }).then(function (response) {
-          self.setCallendarDates(response.data); // カレンダーで表示させる配列をモデルのセット
+          self.setCalendarDates(response.data); // カレンダーで表示させる配列をモデルのセット
         });
       },
       
       getTasks: function(day) {
         var self = this;
         
+        self.day = day;
         axios.get('/tasks/calendar.json', {
           params: {
             deadline_on: self.year + '-' + self.month + '-' + day,
@@ -65,7 +67,7 @@ window.onload = function(){
         });
       },
       
-      setCallendarDates: function(data) {
+      setCalendarDates: function(data) {
         var self = this;
         
         self.start_week = new Date(self.year, self.month -1, 1).getDay(); //初日と曜日を合わせるために必要
