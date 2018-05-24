@@ -24,7 +24,6 @@ class TasksController < ApplicationController
     @task.user_id = @current_user.id
     if @task.save
       flash[:notice] = "タスクを登録しました"
-      redirect_to group_path(@task.group.id)
     else
       @errors = @task.errors.full_messages
       render 'new'
@@ -37,7 +36,6 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       flash[:notice] = "更新しました"
-      redirect_to group_path(@task.group.id)
     else
       @errors = @task.errors.full_messages
       render 'new'
