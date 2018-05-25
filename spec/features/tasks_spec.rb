@@ -6,12 +6,7 @@ RSpec.feature 'Tasks', type: :feature, js: true do
   let(:group_user) { FactoryGirl.create(:group_user, user: user, group: group) }
   
   before do
-    user
-    visit new_session_path
-    fill_in 'メールアドレス', with: 's.yama@ashita-team.com'
-    fill_in 'パスワード', with: 'password'
-    click_on 'Sign In'
-    visit root_path
+    login(user)
   end
   
   describe 'create task'do
@@ -68,7 +63,7 @@ RSpec.feature 'Tasks', type: :feature, js: true do
     context 'click thead "期日"' do
       before do
         1.upto(3) do |i|
-          FactoryGirl.create(:task, user: user, responsible: user, group: group, deadline_on: Ω)
+          FactoryGirl.create(:task, user: user, responsible: user, group: group, deadline_on: Date.today + i.day)
         end
         visit root_path
       end

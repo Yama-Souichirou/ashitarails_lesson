@@ -7,11 +7,7 @@ RSpec.feature 'Calendar', type: :feature, js: true do
   let(:today) { Date.today }
 
   before do
-    user
-    visit new_session_path
-    fill_in 'メールアドレス', with: 's.yama@ashita-team.com'
-    fill_in 'パスワード', with: 'password'
-    click_on 'Sign In'
+    login(user)
     visit calendar_tasks_path
   end
 
