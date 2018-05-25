@@ -4,7 +4,12 @@ class Admin::LabelsController < ApplicationController
   
   def index
     @labels = Label.all
-    @label = Label.new
+    @label  = Label.new
+
+    respond_to do |format|
+      format.html
+      format.json {}
+    end
   end
   
   def create

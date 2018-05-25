@@ -29,3 +29,40 @@
                 = f.text_field :name, class: "form-control"
             .col-sm-12
               = f.submit "登録", class: "main-btn"
+
+      .panel.panel-default
+       .panel-body
+          <div id="chart_div"></div>
+
+
+javascript:
+    window.onload = function () {
+        var labelsData = [];
+        $.ajax({
+            url: "labels.json",
+            type: "GET",
+        })
+        .done((data) => {
+          for ( i = 0; i < data.length; i++ ) {
+            var label = [data[i].name, data[i].tasks_size];
+            labelsData.push(label);
+          }
+        })
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows(labelsData);
+
+            var options = {'title':'The proportion of the label',
+                           'width':450,
+                           'height':300};
+
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    }
+
+
