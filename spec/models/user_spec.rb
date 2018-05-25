@@ -41,6 +41,7 @@ RSpec.describe User, type: :model do
     describe 'delete normal user' do
       context 'has no tasks' do
         it 'change count -1' do
+          user
           expect { user.destroy }.to change(User, :count).by(-1)
         end
       end
