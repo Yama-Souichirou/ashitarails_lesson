@@ -23,7 +23,9 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = @current_user.id
     if @task.save
+      TasksMailer.send_responsible_task(@task).deliver_now
       flash[:notice] = "タスクを登録しました"
+      redirect_to :back
     else
       @errors = @task.errors.full_messages
       render 'new'
@@ -35,10 +37,12 @@ class TasksController < ApplicationController
   
   def update
     if @task.update(task_params)
+      TasksMailer.send_responsible_task(@task).deliver_now
       flash[:notice] = "更新しました"
+      redirect_to :back
     else
       @errors = @task.errors.full_messages
-      render 'new'
+      render 'edit'
     end
   end
   
