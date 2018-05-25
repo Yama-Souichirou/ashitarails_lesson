@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :username, presence: true
   
   before_create :set_default_role
-  before_destroy :validates_must_exist_admin, if: :admin_and_more_one?
+  before_destroy :validates_must_exist_admin, if: :one_person_following?
   before_destroy :validates_has_tasks
   
   ROLE = { normal: 0, admin: 1 }
@@ -61,7 +61,7 @@ class User < ApplicationRecord
       throw :abort
     end
   
-    def admin_and_more_one?
+    def one_person_following?
       User.where(role: "admin").length <= 1 && self.role == "admin"
     end
   
