@@ -48,7 +48,7 @@
                 - @user.groups.each do |group|
                   tr
                     td = group.id
-                    td = group.name
+                    td = link_to group.name, group_path(group)
                     td
                       = group.tasks.exclude_complete.size
 
