@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   delete "/session" => "sessions#destroy", as: :destroy_session
   
   namespace :admin do
-    root 'users#index'
+    root 'tasks#index'
     resources :users, only: [:index, :show]
     resources :tasks
     resources :registrations
