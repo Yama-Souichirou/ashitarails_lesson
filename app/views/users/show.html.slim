@@ -34,7 +34,7 @@
             p
               | メールアドレス：
               = @user.email
-            p = link_to "アカウント変更", edit_registration_path(@current_user.id), class: "btn main-btn"
+            p = link_to "アカウント変更", edit_user_path(@current_user.id), class: "btn main-btn"
 
           .col-sm-12.mt20
             label 所属プロジェクト

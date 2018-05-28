@@ -4,6 +4,9 @@ class UsersController < ApplicationController
 
 	def show
 	end
+
+	def edit
+	end
   
   def update
 		if @user.update(user_params)
@@ -17,7 +20,7 @@ class UsersController < ApplicationController
   
   private
     def user_params
-			params.require(:user).permit(:image)
+			params.require(:user).permit(:image, :email, :username, :password, :password_confirmation)
 		end
   
     def set_user

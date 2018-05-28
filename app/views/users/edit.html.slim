@@ -5,20 +5,15 @@
         .panel-heading
           h4.text-center = @user.username
         .panel-body
-          = form_for(@user, url: registration_path, method: :put, html: { id: "data-form" }) do |f|
-            - if @current_user.id == @user.id
-              .col-sm-12
-                .form-group
-                  = f.label :image, "アイコン画像", class: "label-control"
-                  = f.attachment_field :image
+          = form_for @user do |f|
+            .col-sm-12
+              .form-group
+                = f.label :image, "アイコン画像", class: "label-control"
+                = f.attachment_field :image
             .col-sm-12
               .form-group
                 = f.label :username, "ユーザーネーム", class: "label-control"
                 = f.text_field :username, class: "form-control"
-            .col-sm-12
-              .form-group
-                = f.label :role, "役割", class: "label-control"
-                = f.select :role, User.roles.map { |k, _v| [User.role_options[k.to_sym], k] }, {}, class: "form-control"
             .col-sm-12
               .form-group
                 = f.label :email, "メールアドレス", class: "label-control"
@@ -32,4 +27,4 @@
                 = f.label :password_confirmation, "パスワード確認用", class: "label-control"
                 = f.password_field :password_confirmation, class: "form-control"
             .col-sm-12.mt30
-              btn.main-btn-block.data-submit 登録
+              = f.submit "登録", class: "btn main-btn-block"
