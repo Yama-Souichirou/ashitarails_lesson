@@ -37,3 +37,9 @@
                 tr
                   td 完了したタスク
                   td = @user.completed_tasks.size
+                tr
+                  td 所属しているプロジェクト
+                  td
+                    - @user.groups.each do |group|
+                      = group.name
+                      br
