@@ -57,9 +57,7 @@ class TasksController < ApplicationController
   end
 
   def calendar
-    @tasks = Task
-      .search_deadlin_on(params[:deadline_on])
-      .search_month(params[:start_day], params[:end_day])
+    @tasks = Task.search(params)
     respond_to do |format|
       format.html
       format.json { render 'calendar', handlers: 'jbuilder' }

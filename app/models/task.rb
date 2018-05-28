@@ -27,17 +27,10 @@ class Task < ApplicationRecord
   scope :exclude_complete, -> () {
     where.not(status: "complete")
   }
-  
   scope :close_deadline_tasks, -> () {
     exclude_complete.where("tasks.deadline_on < ?", Date.today + 2.day)
   }
-  scope :search_deadlin_on, -> (deadline_on) {
-    where(deadline_on: deadline_on) if deadline_on.present?
-  }
-  scope :search_month, -> (start_day, end_day) {
-    where("deadline_on BETWEEN ? AND ?", start_day, end_day) if start_day.present? && end_day.present?
-  }
-  
+
   def self.search(params)
     tasks = Task.all
 
@@ -61,6 +54,15 @@ class Task < ApplicationRecord
     if params[:label_ids].present?
       ids = params[:label_ids].map { | id| id.to_i }
       tasks = tasks.joins(:task_labels).where("task_labels.label_id IN (?)", ids)
+    end
+    if params[:deadline_on].present?
+      tasks = tasks.where(deadline_on: params[:deadline_on])
+    end
+    if params[:start_day].present?
+      tasks = tasks.where("deadline_on >= ?", params[:start_day])
+    end
+    if params[:end_day].present?
+      tasks = tasks.where("deadline_on <= ?", params[:end_day])
     end
     tasks
   end
