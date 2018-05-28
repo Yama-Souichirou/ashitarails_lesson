@@ -16,7 +16,7 @@
                 th タスク数
                 th 作成日
                 th
-            tbody.data-tbody
+            tbody.data-tbody.sortable
               - @groups.each do |group|
                 tr data-href="#{group_path(group.id)}"
                   td = group.id
