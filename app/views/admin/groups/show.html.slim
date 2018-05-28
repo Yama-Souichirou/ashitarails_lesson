@@ -44,8 +44,8 @@
                  th
              tbody.data-tbody.sortable
                - @group.tasks.each do |task|
-                 tr data-href="#{admin_task_path(task)}"
-                   td.td-title = task.title
+                 tr
+                   td.td-title = link_to task.title, admin_task_path(task)
                    td.td-deadlineon
                      = l task.deadline_on
                    td.td-priority
