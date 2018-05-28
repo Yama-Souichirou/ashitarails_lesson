@@ -1,0 +1,14 @@
+.container-fluid
+  .row
+    .col-sm-12
+      .panel.panel-default.mt20
+        .panel-body
+          = form_for [:admin, @group], html: { id: "data-form" } do |f|
+            .col-sm-12
+              label 追加
+              .form-group
+                = select_tag 'group_users', options_for_select(User.where.not(id: @group.user_ids).map { |user| [user.username, user.id] }), include_blank: true, multiple: true, id: "user-select"
+            .col-sm-12.mt20
+              .form-group
+                = link_to "戻る", :back, class: "default-btn"
+                .btn.main-btn.pull-right.data-submit 追加
