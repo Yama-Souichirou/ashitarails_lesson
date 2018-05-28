@@ -1,6 +1,6 @@
 class Admin::RegistrationsController < ApplicationController
   before_action :set_user, only: [:edit , :update, :destroy]
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, only: [:new, :create, :destroy]
   layout 'admin'
   
   def new

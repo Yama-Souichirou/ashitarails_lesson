@@ -26,8 +26,7 @@
         .panel-body
           .text-center.users-show_image
             = attachment_image_tag @user, :image, :fill, 200, 200, class: "img-circle"
-            .change-img-display.display-none
-              p.text-center アイコンを変更する
+
           .col-sm-12.mt20
             p
               | ユーザー名：
@@ -35,15 +34,9 @@
             p
               | メールアドレス：
               = @user.email
-          hr
-          .col-sm-12.change-image-form.mt20
-            label アイコンを変更する
-            = form_for @user do |f|
-              .form-group
-                = f.attachment_field :image
-              .form-group
-                = f.submit "変更", class: "main-btn"
-          .col-sm-12
+            p = link_to "アカウント変更", edit_registration_path(@current_user.id), class: "btn main-btn"
+
+          .col-sm-12.mt20
             label 所属プロジェクト
             table.table
               thead
