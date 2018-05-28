@@ -18,18 +18,20 @@
             table.table
               thead
                 tr
-                  th #id
                   th = User.human_attribute_name(:username)
                   th = User.human_attribute_name(:email)
+                  th タスク数
                   th = User.human_attribute_name(:created_at)
                   th = User.human_attribute_name(:role)
                   th
               tbody
                 - @users.each do |user|
                   tr
-                    td = user.id
                     td = user.username
                     td = user.email
+                    td
+                      = user.responsibles.exclude_complete.size
+                      | 個
                     td = l user.created_at
                     td = user.human_roles
                     td = link_to "詳細を見る", admin_user_path(user), class: "main-btn"

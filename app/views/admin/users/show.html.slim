@@ -33,7 +33,7 @@
                   td = @user.tasks.size
                 tr
                   td 担当しているタスク
-                  td = @user.responsibles.size
+                  td = @user.responsibles.exclude_complete.size
                 tr
                   td 完了したタスク
                   td = @user.completed_tasks.size

@@ -10,7 +10,6 @@
           table.table
             thead
               tr
-                th id
                 th = Group.human_attribute_name(:name)
                 th 所属人数
                 th タスク数
@@ -19,10 +18,13 @@
             tbody.data-tbody.sortable
               - @groups.each do |group|
                 tr
-                  td = group.id
                   td = link_to group.name, admin_group_path(group)
-                  td = group.users.size
-                  td = group.tasks.exclude_complete.size
+                  td
+                    = group.users.size
+                    | 人
+                  td
+                    = group.tasks.exclude_complete.size
+                    | 個
                   td = l group.created_at
                   td
                     - if group.user_ids.include?(@current_user.id)

@@ -10,7 +10,6 @@
           table.table
             thead
               tr
-                th id
                 th = Group.human_attribute_name(:name)
                 th 所属人数
                 th タスク数
@@ -19,7 +18,6 @@
             tbody.data-tbody.sortable
               - @groups.each do |group|
                 tr data-href="#{group_path(group.id)}"
-                  td = group.id
                   td = group.name
                   td = group.users.size
                   td = group.tasks.exclude_complete.size

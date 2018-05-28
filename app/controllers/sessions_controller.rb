@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
     if @user.authenticate(session_params[:password])
       sign_in(@user)
       flash[:notice] = "ログインしました"
-      flash[:close_deadline] = close_deadline_tasks_notification
-      flash[:too_deadline] = too_deadline_tasks_notification
+      flash[:close_deadline] = close_deadline_tasks
+      flash[:too_deadline] = too_deadline_tasks
       after_sign_in_path
     else
       flash[:danger] = "ログインできませんでした"
@@ -52,7 +52,7 @@ class SessionsController < ApplicationController
       cookies.delete(:user_remember_token)
     end
   
-    def close_deadline_tasks_notification
+    def close_deadline_tasks
       tasks = @current_user
         .responsibles
         .exclude_complete
@@ -60,7 +60,7 @@ class SessionsController < ApplicationController
       return "期日が3日以内のタスクが#{tasks.size}件あります" if tasks.present?
     end
   
-    def too_deadline_tasks_notification
+    def too_deadline_tasks
       tasks = @current_user
         .responsibles
         .exclude_complete

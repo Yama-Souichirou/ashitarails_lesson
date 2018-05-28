@@ -23,7 +23,7 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         created_at: "登録日"
-        role: "ロール"
+        role: "権限"
       group:
         name: "プロジェクト名"
         description: "説明"
