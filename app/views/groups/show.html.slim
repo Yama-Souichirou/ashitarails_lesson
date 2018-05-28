@@ -42,7 +42,7 @@
                  th = Task.human_attribute_name(:user)
                  th ラベル
                  th
-             tbody.data-tbody
+             tbody.data-tbody.sortable
                - @group.tasks.each do |task|
                  tr data-href="#{task_path(task)}"
                    td.td-title = task.title
