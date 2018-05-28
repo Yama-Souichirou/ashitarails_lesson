@@ -18,6 +18,11 @@ Rails.application.routes.draw do
     resources :tasks
     resources :registrations
     resources :labels, only: [:index, :new, :create, :destroy]
+    resources :groups do
+      resources :users do
+        resource :group_users, only: :destroy
+      end
+    end
   end
   root "tasks#index"
   

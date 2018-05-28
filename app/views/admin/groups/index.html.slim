@@ -1,0 +1,30 @@
+.container-fluid.mt20
+  .row
+    .col-sm-12
+      = link_to new_group_path, class: "main-btn" do
+        i.fas.fa-plus  プロジェクト
+  .row
+    .col-sm-12
+      .panel.panel-default.mt20
+        .panel-body
+          table.table
+            thead
+              tr
+                th id
+                th = Group.human_attribute_name(:name)
+                th 所属人数
+                th タスク数
+                th 作成日
+                th
+            tbody.data-tbody.sortable
+              - @groups.each do |group|
+                tr
+                  td = group.id
+                  td = link_to group.name, admin_group_path(group)
+                  td = group.users.size
+                  td = group.tasks.exclude_complete.size
+                  td = l group.created_at
+                  td
+                    - if group.user_ids.include?(@current_user.id)
+                      i.far.fa-flag
+

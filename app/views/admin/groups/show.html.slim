@@ -1,0 +1,67 @@
+.container-fluid#group-show
+  .row
+    .col-sm-12.clearfix.mt10
+      h4.page-title.pull-left
+        = @group.name
+
+  .row
+    .col-sm-12.mt20
+      - @group.users.each do |user|
+        label.groups-user-img
+          = link_to group_user_group_users_path(@group, user), data: { confirm: "プロジェクトからこのユーザーを削除します。よろしいですか？" }, method: :delete do
+            = attachment_image_tag user, :image, :fill, 80, 80, class: "img-circle mr10 "
+            span.user-info
+              = user.username
+  .row
+    .col-sm-12
+       .panel.panel-default.mt20
+         .panel-body
+           .col-sm-10
+             p style="color: #888888; font-size: 12px;"
+               = @group.description
+           .col-sm-2
+             .btn-group.pull-right.mt0
+               a.dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                 i.fas.fa-bars
+               .dropdown-menu
+                 li
+                   = link_to "タスク作成", new_admin_task_path(id: @group.id), class: "dropdown-item"
+                 li
+                   = link_to "ユーザーを追加", edit_admin_group_path(@group), class: "dropdown-item"
+                 li
+                   = link_to "プロジェクトを削除", admin_group_path, method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "dropdown-item"
+           table.mt30.table
+             thead
+               tr
+                 th = Task.human_attribute_name(:title)
+                 th = Task.human_attribute_name(:deadline_on)
+                 th = Task.human_attribute_name(:priority)
+                 th = Task.human_attribute_name(:status)
+                 th = Task.human_attribute_name(:created_at)
+                 th = Task.human_attribute_name(:responsible)
+                 th = Task.human_attribute_name(:user)
+                 th ラベル
+                 th
+             tbody.data-tbody.sortable
+               - @group.tasks.each do |task|
+                 tr data-href="#{admin_task_path(task)}"
+                   td.td-title = task.title
+                   td.td-deadlineon
+                     = l task.deadline_on
+                   td.td-priority
+                     label class="label label-#{task.priority_color_class}" = task.human_priority
+                   td.td-status
+                     label class="label label-#{task.status_color_class}" = task.human_status
+                   td.td-createdat = l task.created_at
+                   td = task.responsible.username.truncate(8)
+                   td = task.user.username.truncate(8)
+                   td
+                     - task.labels.each.with_index(1) do |label, i|
+                       = link_to tasks_path(task: { 'label_ids' => [label.id] }) do
+                         label.selected-label-green = label.name
+                       - if  i % 2 == 0
+                         br
+                   td
+                     = link_to edit_admin_task_path(task) do
+                       .btn.btn-default.edit-task-btn
+                         i.fas.fa-pencil-alt
