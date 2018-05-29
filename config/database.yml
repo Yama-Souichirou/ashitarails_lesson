@@ -10,15 +10,13 @@ default: &default
   timeout: 5000
   encoding: utf8
   host:      localhost
-  socket:    /tmp/mysql.sock
 
 development:
   <<: *default
   username:  ashita_lesson_local
   password:  ashita_lesson_local
   database:  ashita_lesson_local
-
-
+  socket:    /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
