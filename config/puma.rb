@@ -4,15 +4,22 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum, this matches the default thread size of Active Record.
 #
-_app_path = "#{File.expand_path("../..", __FILE__)}"
-_app_name = "manyo"
-_home = ENV.fetch("HOME") { "/home/manyo" }
-pidfile "#{_home}/run/#{_app_name}.pid"
-bind "unix://#{_home}/run/#{_app_name}.sock"
-directory _app_path
+app_dir = File.expand_path("../..", __FILE__)
+tmp_dir = "#{app_dir}/tmp"
 
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-threads threads_count, threads_count
+# 環境変数を指定する。起動時に変数があればそれを見る。無ければテスト環境である"staging"としている
+rails_env = ENV['RAILS_ENV'] || "production"
+environment rails_env
+
+# socketでbindする。nginxからsocket経由で接続するため
+bind "unix://#{tmp_dir}/sockets/puma.sock"
+
+# ログ出力ファイルの指定
+stdout_redirect "#{tmp_dir}/logs/puma.stdout.log", "#{tmp_dir}/logs/puma.stderr.log", true
+
+# pidとstateファイルの格納
+pidfile "#{tmp_dir}/pids/puma.pid"
+state_path "#{tmp_dir}/pids/puma.state"
 
 # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
 #
