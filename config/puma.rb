@@ -4,16 +4,23 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum, this matches the default thread size of Active Record.
 #
+_app_path = "#{File.expand_path("../..", __FILE__)}"
+_app_name = File.basename(_app_path)
+_home = ENV.fetch("HOME") { "/home/manyo" }
+pidfile "#{_home}/run/#{_app_name}.pid"
+bind "unix://#{_home}/run/#{_app_name}.sock"
+directory _app_path
+
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
 threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
 #
-port        ENV.fetch("PORT") { 80 }
+port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch("RAILS_ENV") { "development" }
+environment ENV.fetch("RAILS_ENV") { "production" }
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
