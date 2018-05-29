@@ -37,4 +37,4 @@ production:
   host:      localhost
   database: ashita_lesson
   username: ashita_lesson
-  password: ashita_lesson
+  password: ""
