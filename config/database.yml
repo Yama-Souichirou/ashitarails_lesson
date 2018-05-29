@@ -30,5 +30,5 @@ test:
   password: ""
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
+  database: ashita_lesson_local

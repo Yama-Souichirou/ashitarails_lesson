@@ -5,3 +5,7 @@
     - if @task.labels.present?
       - @task.labels.each do |label|
         span.selected-label.selected-label-green data-task_id=@task.id = label.name
+
+
+= f.fields_for @task.task_labels.build do |t|
+  = t.text_field :label_id
