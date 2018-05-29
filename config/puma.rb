@@ -5,7 +5,7 @@
 # and maximum, this matches the default thread size of Active Record.
 #
 _app_path = "#{File.expand_path("../..", __FILE__)}"
-_app_name = File.basename(_app_path)
+_app_name = "manyo"
 _home = ENV.fetch("HOME") { "/home/manyo" }
 pidfile "#{_home}/run/#{_app_name}.pid"
 bind "unix://#{_home}/run/#{_app_name}.sock"
