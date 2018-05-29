@@ -34,7 +34,5 @@ production:
   pool: 5
   timeout: 5000
   encoding: utf8
-  host:      localhost
-  database: ashita_lesson
   username: ashita_lesson
-  password: ""
+  database: ashita_lesson
