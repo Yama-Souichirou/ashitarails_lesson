@@ -1,0 +1,1324 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ */
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt0 {
+  margin-top: 0px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb0 {
+  margin-bottom: 0px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml0 {
+  margin-left: 0px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr0 {
+  margin-right: 0px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt0 {
+  padding-top: 0px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb0 {
+  padding-bottom: 0px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt5 {
+  margin-top: 5px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb5 {
+  margin-bottom: 5px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml5 {
+  margin-left: 5px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr5 {
+  margin-right: 5px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt5 {
+  padding-top: 5px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb5 {
+  padding-bottom: 5px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt10 {
+  margin-top: 10px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb10 {
+  margin-bottom: 10px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml10 {
+  margin-left: 10px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr10 {
+  margin-right: 10px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt10 {
+  padding-top: 10px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb10 {
+  padding-bottom: 10px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt15 {
+  margin-top: 15px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb15 {
+  margin-bottom: 15px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml15 {
+  margin-left: 15px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr15 {
+  margin-right: 15px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt15 {
+  padding-top: 15px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb15 {
+  padding-bottom: 15px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt20 {
+  margin-top: 20px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb20 {
+  margin-bottom: 20px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml20 {
+  margin-left: 20px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr20 {
+  margin-right: 20px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt20 {
+  padding-top: 20px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb20 {
+  padding-bottom: 20px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt25 {
+  margin-top: 25px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb25 {
+  margin-bottom: 25px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml25 {
+  margin-left: 25px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr25 {
+  margin-right: 25px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt25 {
+  padding-top: 25px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb25 {
+  padding-bottom: 25px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt30 {
+  margin-top: 30px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb30 {
+  margin-bottom: 30px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml30 {
+  margin-left: 30px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr30 {
+  margin-right: 30px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt30 {
+  padding-top: 30px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb30 {
+  padding-bottom: 30px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt35 {
+  margin-top: 35px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb35 {
+  margin-bottom: 35px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml35 {
+  margin-left: 35px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr35 {
+  margin-right: 35px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt35 {
+  padding-top: 35px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb35 {
+  padding-bottom: 35px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt40 {
+  margin-top: 40px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb40 {
+  margin-bottom: 40px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml40 {
+  margin-left: 40px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr40 {
+  margin-right: 40px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt40 {
+  padding-top: 40px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb40 {
+  padding-bottom: 40px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt45 {
+  margin-top: 45px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb45 {
+  margin-bottom: 45px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml45 {
+  margin-left: 45px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr45 {
+  margin-right: 45px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt45 {
+  padding-top: 45px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb45 {
+  padding-bottom: 45px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt50 {
+  margin-top: 50px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb50 {
+  margin-bottom: 50px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml50 {
+  margin-left: 50px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr50 {
+  margin-right: 50px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt50 {
+  padding-top: 50px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb50 {
+  padding-bottom: 50px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt55 {
+  margin-top: 55px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb55 {
+  margin-bottom: 55px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml55 {
+  margin-left: 55px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr55 {
+  margin-right: 55px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt55 {
+  padding-top: 55px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb55 {
+  padding-bottom: 55px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt60 {
+  margin-top: 60px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb60 {
+  margin-bottom: 60px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml60 {
+  margin-left: 60px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr60 {
+  margin-right: 60px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt60 {
+  padding-top: 60px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb60 {
+  padding-bottom: 60px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt65 {
+  margin-top: 65px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb65 {
+  margin-bottom: 65px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml65 {
+  margin-left: 65px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr65 {
+  margin-right: 65px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt65 {
+  padding-top: 65px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb65 {
+  padding-bottom: 65px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt70 {
+  margin-top: 70px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb70 {
+  margin-bottom: 70px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml70 {
+  margin-left: 70px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr70 {
+  margin-right: 70px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt70 {
+  padding-top: 70px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb70 {
+  padding-bottom: 70px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt75 {
+  margin-top: 75px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb75 {
+  margin-bottom: 75px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml75 {
+  margin-left: 75px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr75 {
+  margin-right: 75px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt75 {
+  padding-top: 75px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb75 {
+  padding-bottom: 75px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt80 {
+  margin-top: 80px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb80 {
+  margin-bottom: 80px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml80 {
+  margin-left: 80px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr80 {
+  margin-right: 80px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt80 {
+  padding-top: 80px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb80 {
+  padding-bottom: 80px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt85 {
+  margin-top: 85px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb85 {
+  margin-bottom: 85px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml85 {
+  margin-left: 85px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr85 {
+  margin-right: 85px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt85 {
+  padding-top: 85px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb85 {
+  padding-bottom: 85px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt90 {
+  margin-top: 90px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb90 {
+  margin-bottom: 90px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml90 {
+  margin-left: 90px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr90 {
+  margin-right: 90px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt90 {
+  padding-top: 90px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb90 {
+  padding-bottom: 90px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt95 {
+  margin-top: 95px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb95 {
+  margin-bottom: 95px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml95 {
+  margin-left: 95px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr95 {
+  margin-right: 95px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt95 {
+  padding-top: 95px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb95 {
+  padding-bottom: 95px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt100 {
+  margin-top: 100px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb100 {
+  margin-bottom: 100px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml100 {
+  margin-left: 100px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr100 {
+  margin-right: 100px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt100 {
+  padding-top: 100px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb100 {
+  padding-bottom: 100px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt105 {
+  margin-top: 105px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb105 {
+  margin-bottom: 105px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml105 {
+  margin-left: 105px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr105 {
+  margin-right: 105px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt105 {
+  padding-top: 105px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb105 {
+  padding-bottom: 105px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt110 {
+  margin-top: 110px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb110 {
+  margin-bottom: 110px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml110 {
+  margin-left: 110px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr110 {
+  margin-right: 110px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt110 {
+  padding-top: 110px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb110 {
+  padding-bottom: 110px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt115 {
+  margin-top: 115px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb115 {
+  margin-bottom: 115px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml115 {
+  margin-left: 115px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr115 {
+  margin-right: 115px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt115 {
+  padding-top: 115px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb115 {
+  padding-bottom: 115px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt120 {
+  margin-top: 120px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb120 {
+  margin-bottom: 120px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml120 {
+  margin-left: 120px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr120 {
+  margin-right: 120px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt120 {
+  padding-top: 120px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb120 {
+  padding-bottom: 120px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt125 {
+  margin-top: 125px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb125 {
+  margin-bottom: 125px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml125 {
+  margin-left: 125px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr125 {
+  margin-right: 125px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt125 {
+  padding-top: 125px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb125 {
+  padding-bottom: 125px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt130 {
+  margin-top: 130px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb130 {
+  margin-bottom: 130px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml130 {
+  margin-left: 130px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr130 {
+  margin-right: 130px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt130 {
+  padding-top: 130px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb130 {
+  padding-bottom: 130px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt135 {
+  margin-top: 135px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb135 {
+  margin-bottom: 135px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml135 {
+  margin-left: 135px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr135 {
+  margin-right: 135px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt135 {
+  padding-top: 135px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb135 {
+  padding-bottom: 135px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt140 {
+  margin-top: 140px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb140 {
+  margin-bottom: 140px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml140 {
+  margin-left: 140px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr140 {
+  margin-right: 140px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt140 {
+  padding-top: 140px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb140 {
+  padding-bottom: 140px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt145 {
+  margin-top: 145px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb145 {
+  margin-bottom: 145px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml145 {
+  margin-left: 145px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr145 {
+  margin-right: 145px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt145 {
+  padding-top: 145px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb145 {
+  padding-bottom: 145px !important;
+}
+
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mt150 {
+  margin-top: 150px !important;
+}
+
+/* line 16, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mb150 {
+  margin-bottom: 150px !important;
+}
+
+/* line 19, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.ml150 {
+  margin-left: 150px !important;
+}
+
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.mr150 {
+  margin-right: 150px !important;
+}
+
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pt150 {
+  padding-top: 150px !important;
+}
+
+/* line 28, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.pb150 {
+  padding-bottom: 150px !important;
+}
+
+/* line 32, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+/* line 37, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.bg-white {
+  background-color: #fff;
+}
+
+/* line 40, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.bg-gray {
+  background-color: #F3F3F4;
+}
+
+/* line 44, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.text-red {
+  color: #ff4646;
+}
+
+/* line 48, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.main-btn {
+  background-color: #79D1C3;
+  color: #fff;
+  padding: 5px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* line 57, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.default-btn {
+  background-color: #fff;
+  color: #ccc;
+  padding: 5px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+
+/* line 67, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.sub-btn {
+  background-color: #C9FDD7;
+  color: #6892D5;
+  padding: 5px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+/* line 75, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.sub-btn:hover {
+  color: #6892D5;
+}
+
+/* line 79, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.main-btn-block {
+  display: block;
+  width: 100%;
+  background-color: #79D1C3;
+  color: #fff;
+  text-align: center;
+  padding: 7px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/* line 90, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.sub-btn-block {
+  display: block;
+  width: 100%;
+  background-color: #F3F3F4;
+  color: #6892D5;
+  text-align: center;
+  padding: 7px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 100, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.sub-btn-block:hover {
+  color: #6892D5;
+}
+
+/* line 104, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.default-btn-block {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  color: #ccc;
+  text-align: center;
+  padding: 7px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 2px solid #ccc;
+}
+/* line 115, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.default-btn-block:hover {
+  color: #ccc;
+}
+
+/* line 119, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.validate-label {
+  color: #79D1C3;
+  font-size: 12px;
+  border: 2px solid #79D1C3;
+  padding: 2px 5px;
+  margin-left: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/* line 129, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.default-label-green {
+  font-size: 9px;
+  margin-top: 5px;
+  margin-right: 4px;
+  padding: 2px 3px;
+  color: #79D1C3;
+  border: solid 1px #79D1C3;
+  background-color: #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* line 141, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.label-success {
+  background-color: #79D1C3 !important;
+}
+
+/* line 144, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.selected-label-green {
+  font-size: 9px;
+  margin-top: 5px;
+  margin-right: 4px;
+  padding: 2px 3px;
+  color: #6892D5;
+  background-color: #C9FDD7;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* line 155, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.display-none {
+  display: none;
+}
+
+/* line 158, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.detail-toggle-btn {
+  cursor: pointer;
+}
+
+/* line 161, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.data-tbody tr {
+  cursor: move;
+}
+
+/* line 164, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.data-tbody tr:hover {
+  background: #F3F3F4;
+}
+
+/* line 167, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/common.scss */
+.small-text {
+  font-size: 12px;
+}
+
+/* line 1, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#header {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+/* line 9, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#header .header-icon {
+  float: left;
+  height: 60px;
+  width: 20%;
+  margin: 0;
+  background-color: #79D1C3;
+  text-align: center;
+  line-height: 60px;
+}
+/* line 18, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#header .header-icon a {
+  font-size: 25px;
+  color: #fff;
+}
+/* line 22, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#header .header-icon :hover {
+  text-decoration: none;
+}
+/* line 26, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#header .header-nav, #header .admin-header-nav {
+  float: left;
+  width: 80%;
+  height: 60px;
+  border-bottom: 1px solid #79D1C3;
+  background-color: #fff;
+}
+/* line 33, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#header .header-nav .account-icon, #header .admin-header-nav .account-icon {
+  height: 60px;
+  width: 100px;
+  text-align: center;
+}
+/* line 37, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#header .header-nav .account-icon img, #header .admin-header-nav .account-icon img {
+  height: 40px;
+  width: 40px;
+  margin-top: 9px;
+  -webkit-border-radius: 50px 50px;
+  -moz-border-radius: 50px 50px;
+  border-radius: 50px 50px;
+}
+/* line 45, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#header .header-nav .account-icon :hover, #header .admin-header-nav .account-icon :hover {
+  cursor: pointer;
+}
+/* line 50, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#header .admin-header-nav {
+  background-color: #226B80;
+}
+/* line 53, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#header .dropdown .dropdown-menu {
+  right: 0 !important;
+  left: inherit;
+}
+
+/* line 59, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#sidemenu, #admin-sidemenu {
+  width: 20%;
+  height: 100%;
+  border-right: 1px solid #79D1C3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+/* line 67, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#sidemenu a, #admin-sidemenu a {
+  font-weight: bold;
+}
+/* line 70, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#sidemenu li, #admin-sidemenu li {
+  padding: 15px 8px !important;
+  list-style: none;
+}
+
+/* line 75, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#sidemenu {
+  background-color: #fff;
+}
+/* line 79, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#sidemenu ul a {
+  color: #888888;
+}
+/* line 81, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#sidemenu ul a:hover {
+  color: #888888;
+}
+/* line 85, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#sidemenu ul li {
+  border-bottom: 1px solid #79D1C3;
+  font-size: 14px;
+}
+
+/* line 91, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#admin-sidemenu {
+  background-color: #226B80;
+}
+/* line 95, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#admin-sidemenu ul a {
+  color: #fff;
+}
+/* line 98, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/menu.scss */
+#admin-sidemenu ul li {
+  border-bottom: 1px solid #fff;
+  font-size: 14px;
+}
+
+/* line 1, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/main.scss */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* line 6, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/main.scss */
+body {
+  background-color: #F3F3F4 !important;
+}
+
+/* line 9, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/main.scss */
+#wrapper {
+  position: relative;
+}
+
+/* line 12, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/main.scss */
+#content {
+  width: 100%;
+  padding-top: 60px !important;
+  padding-left: 20% !important;
+}
+
+/* line 17, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/main.scss */
+a {
+  color: #000;
+}
+
+/* line 20, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/main.scss */
+a:hover {
+  text-decoration: none !important;
+}
+
+/* line 2, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/task.scss */
+#tasks .task-status-labels label {
+  margin-right: 3px !important;
+}
+/* line 5, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/task.scss */
+#tasks .users-show_image {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  position: relative;
+}
+/* line 11, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/task.scss */
+#tasks .users-show_image img {
+  width: 100%;
+  height: 100%;
+}
+/* line 17, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/task.scss */
+#tasks #tasks-calendar td {
+  cursor: pointer;
+}
+/* line 20, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/task.scss */
+#tasks #tasks-calendar td:hover {
+  background-color: #F3F3F4;
+}
+/* line 25, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/task.scss */
+#tasks #tasks-calendar .selected-tasks a {
+  color: #000;
+}
+
+/* line 3, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/group.scss */
+#group-show .fa-bars {
+  font-size: 20px;
+  color: #888;
+}
+
+/* line 9, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/group.scss */
+.groups-user-img {
+  cursor: pointer;
+  position: relative;
+}
+/* line 13, /Users/yamasouichirou/Desktop/office/ashita_rails_lesson/app/assets/stylesheets/group.scss */
+.groups-user-img .user-info {
+  display: none;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(68, 68, 68, 0.5);
+  color: #fff;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
