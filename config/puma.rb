@@ -4,7 +4,7 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum, this matches the default thread size of Active Record.
 #
-app_dir = File.expand_path("../", __FILE__)
+app_dir = File.expand_path("../../", __FILE__)
 tmp_dir = "#{app_dir}/tmp"
 
 # 環境変数を指定する。起動時に変数があればそれを見る。無ければテスト環境である"staging"としている
