@@ -3,31 +3,30 @@
 # Any libraries that use thread pools should be configured to match
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum, this matches the default thread size of Active Record.
-#
-app_dir = File.expand_path("../../", __FILE__)
-tmp_dir = "#{app_dir}/tmp"
 
-# 環境変数を指定する。起動時に変数があればそれを見る。無ければテスト環境である"staging"としている
-rails_env = ENV['RAILS_ENV'] || "production"
-environment rails_env
+if Rails.env == "production"
+  app_dir = File.expand_path("../../", __FILE__)
+  tmp_dir = "#{app_dir}/tmp"
 
-# socketでbindする。nginxからsocket経由で接続するため
-bind "unix://#{tmp_dir}/sockets/puma.sock"
+  rails_env = ENV['RAILS_ENV'] || "production"
+  environment rails_env
 
-# ログ出力ファイルの指定
-stdout_redirect "#{tmp_dir}/logs/puma.stdout.log", "#{tmp_dir}/logs/puma.stderr.log", true
+  bind "unix://#{tmp_dir}/sockets/puma.sock"
 
-# pidとstateファイルの格納
-pidfile "#{tmp_dir}/pids/puma.pid"
-state_path "#{tmp_dir}/pids/puma.state"
+  stdout_redirect "#{tmp_dir}/logs/puma.stdout.log", "#{tmp_dir}/logs/puma.stderr.log", true
 
-# Specifies the `port` that Puma will listen on to receive requests, default is 3000.
+  pidfile "#{tmp_dir}/pids/puma.pid"
+  state_path "#{tmp_dir}/pids/puma.state"
 
-# port        ENV.fetch("PORT") { 3000 }
+  environment ENV.fetch("RAILS_ENV") { "production" }
+else
+  threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+  threads threads_count, threads_count
 
-# Specifies the `environment` that Puma will run in.
-#
-environment ENV.fetch("RAILS_ENV") { "production" }
+  port        ENV.fetch("PORT") { 3000 }
+  environment ENV.fetch("RAILS_ENV") { "development" }
+end
+
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
