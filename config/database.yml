@@ -29,6 +29,6 @@ test:
 
 production:
   <<: *default
-  username: manyo
-  database: manyo
-#  password: manyo
+  username: manyo_virtual
+  database: manyo_virtual
+  password: manyo_virtual
