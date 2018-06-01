@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :api do
+    resources :tasks, only: [:index]
+  end
   resources :tasks do
     get :calendar, on: :collection
   end

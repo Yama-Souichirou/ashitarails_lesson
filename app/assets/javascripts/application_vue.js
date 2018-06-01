@@ -20,7 +20,7 @@ window.onload = function(){
       this.month      = now.getMonth() + 1;
   
       // 月の全タスクを取得してcalendar_tasksにセット
-      axios.get('/tasks/calendar.json', {
+      axios.get('/api/tasks.json', {
         params: {
           start_day: self.year + '-' + self.month + '-1',
           end_day: self.year + '-' + self.month + '-' + new Date(self.year, self.month, 0).getDate(),
@@ -40,7 +40,7 @@ window.onload = function(){
           self.year = (self.month === 1)?self.year + 1:self.year;
         };
         
-        axios.get('/tasks/calendar.json', {
+        axios.get('/api/tasks.json', {
           params: {
             start_day: self.year + '-' + self.month + '-1',
             end_day: self.year + '-' + self.month + '-' + new Date(self.year, self.month, 0).getDate(),
@@ -54,7 +54,7 @@ window.onload = function(){
         var self = this;
         
         self.day = day;
-        axios.get('/tasks/calendar.json', {
+        axios.get('/api/tasks.json', {
           params: {
             deadline_on: self.year + '-' + self.month + '-' + day,
           }

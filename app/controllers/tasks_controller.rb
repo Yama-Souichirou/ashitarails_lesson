@@ -57,11 +57,6 @@ class TasksController < ApplicationController
   end
 
   def calendar
-    @tasks = Task.search(params)
-    respond_to do |format|
-      format.html
-      format.json { render 'calendar', handlers: 'jbuilder' }
-    end
   end
   
   private
