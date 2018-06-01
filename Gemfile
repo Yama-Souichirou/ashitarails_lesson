@@ -16,6 +16,9 @@ gem 'mysql2'
 gem 'kaminari'
 gem "refile", github: 'refile/refile', require: "refile/rails"
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
