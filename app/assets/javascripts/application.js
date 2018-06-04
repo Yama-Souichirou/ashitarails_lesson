@@ -131,4 +131,57 @@ $(function(){
             window.location = $(this).attr('data-href');
         });
     });
+    
+    // taskテーブル一括操作
+    $('.collect-update').on('click', function(){
+      var task_ids = $('input[name="task_id"]:checked').map(function(){
+        return $(this).val();
+      }).get();
+  
+      $.ajax({
+        url: '/api/tasks/' + task_ids[0],
+        type: 'PATCH',
+        data: {
+          task_ids: task_ids
+        },
+        headers: {
+          'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
+        },
+      })
+      .done((data) => {
+        // console.log(data);
+        window.location.href = data.url;
+      })
+      .fail((data) => {
+        toastr.error(data.message);
+      });
+    });
+  
+    $('.collect-delete').on('click', function(){
+      var task_ids = $('input[name="task_id"]:checked').map(function(){
+        return $(this).val();
+      }).get();
+      
+      if(confirm('本当に削除しますか？')) {
+        $.ajax({
+          url: '/api/tasks/' + task_ids[0],
+          type: 'DELETE',
+          data: {
+            task_ids: task_ids
+          },
+          headers: {
+            'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
+          },
+        })
+        .done((data) => {
+          window.location.href = data.url;
+        })
+        .fail((data) => {
+          console.log(data);
+          // toastr.error(data.message);
+        });
+      } else {
+        //
+      }
+    });
 });

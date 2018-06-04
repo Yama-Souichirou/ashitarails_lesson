@@ -62,6 +62,7 @@
                 table.mt30.table
                   thead
                     tr
+                      th
                       th = Task.human_attribute_name(:title)
                       th = link_to Task.human_attribute_name(:deadline_on), sort_link("deadline_on", @sort || "ASC", @q)
                       th = link_to Task.human_attribute_name(:priority), sort_link("priority", @sort || "ASC", @q)
@@ -73,7 +74,9 @@
 
                   tbody.data-tbody.sortable
                     - @tasks.close_deadline_tasks.each do |task|
-                      tr 
+                      tr
+                        td
+                          input type="checkbox"
                         td.td-title
                            = link_to task.title, task_path(task)
                         td.td-deadlineon
@@ -91,7 +94,10 @@
                             - if  i % 2 == 0
                               br
                         td = link_to task.group.name, group_path(task.group)
-                = paginate @tasks
+              .panel-footer.clearfix
+                .btn.default-btn.pull-right.ml10.collect-update 一括完了
+                .btn.btn-danger.pull-right.collect-delete 一括削除
+              = paginate @tasks
         #all_tasks.tab-pane.fade
           .col-sm-12.mt20
             .panel.panel-default
@@ -99,6 +105,7 @@
                 table.mt30.table
                   thead
                     tr
+                      th
                       th = Task.human_attribute_name(:title)
                       th = link_to Task.human_attribute_name(:deadline_on), sort_link("deadline_on", @sort || "ASC", @q)
                       th = link_to Task.human_attribute_name(:priority), sort_link("priority", @sort || "ASC", @q)
@@ -111,6 +118,8 @@
                   tbody.data-tbody.sortable
                     - @tasks.each do |task|
                       tr
+                        td
+                          input type="checkbox" name="task_id" value="#{task.id}"
                         td.td-title
                           = link_to task.title, task_path(task)
                         td.td-deadlineon = l task.deadline_on
@@ -127,3 +136,6 @@
                             - if i % 2 == 0
                               br
                         td = link_to task.group.name, group_path(task.group)
+              .panel-footer.clearfix
+                .btn.default-btn.pull-right.ml10.collect-update 一括完了
+                .btn.btn-danger.pull-right.collect-delete 一括削除
