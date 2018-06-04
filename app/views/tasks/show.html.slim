@@ -42,6 +42,12 @@
           label = Task.human_attribute_name(:priority)
           |：
           = @task.human_priority
+        p
+          label ラベル
+          br
+          - @task.labels.each.with_index(1) do |label, i|
+            = link_to tasks_path(task: { 'label_ids' => [label.id] }) do
+              label.selected-label-green = label.name
       .col-sm-4
         p
           label 添付ファイル
