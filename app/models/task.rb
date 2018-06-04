@@ -34,7 +34,7 @@ class Task < ApplicationRecord
   def self.search(params)
     tasks = Task.all
 
-    return tasks if params.blank?
+    return tasks.exclude_complete if params.blank?
     
     if params[:title].present?
       tasks = tasks.where("title like ?", "%#{params[:title]}%")
@@ -64,7 +64,11 @@ class Task < ApplicationRecord
     if params[:end_day].present?
       tasks = tasks.where("deadline_on <= ?", params[:end_day])
     end
-    tasks
+    unless params[:status].present? && params[:status] == "complete"
+      tasks.exclude_complete
+    else
+      tasks
+    end
   end
   
   def human_priority
