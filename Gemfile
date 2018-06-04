@@ -16,9 +16,6 @@ gem 'mysql2'
 gem 'kaminari'
 gem "refile", github: 'refile/refile', require: "refile/rails"
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano-bundler'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -63,7 +60,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rspec-rails'
-  # gem 'pry-rails'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma',   require: false
 end
 
 group :production do
