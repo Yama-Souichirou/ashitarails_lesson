@@ -3,7 +3,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
   
   def index
+    @groups = @current_user.groups
     @tasks = Task
+      .where(group_id: @groups.ids)
       .includes(:user)
       .search(params[:task])
       .order(sortable_conditions_str(params[:sort]))

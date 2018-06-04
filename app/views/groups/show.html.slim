@@ -33,6 +33,7 @@
            table.mt30.table
              thead
                tr
+                 th
                  th = Task.human_attribute_name(:title)
                  th = Task.human_attribute_name(:deadline_on)
                  th = Task.human_attribute_name(:priority)
@@ -43,8 +44,10 @@
                  th ラベル
                  th
              tbody.data-tbody.sortable
-               - @group.tasks.each do |task|
-                 tr data-href="#{task_path(task)}"
+               - @group.tasks.exclude_complete.each do |task|
+                 tr
+                   td
+                     input type="checkbox" name="task_id" value="#{task.id}"
                    td.td-title = task.title
                    td.td-deadlineon
                      = l task.deadline_on
@@ -65,3 +68,5 @@
                      = link_to edit_task_path(task) do
                        .btn.btn-default.edit-task-btn
                          i.fas.fa-pencil-alt
+         .panel-footer.clearfix
+           .btn.default-btn.pull-right.ml10.collect-update 一括完了
