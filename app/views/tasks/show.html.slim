@@ -23,23 +23,24 @@
           = @task.title
       .col-sm-4
         p
-          label 期日：
+          label = Task.human_attribute_name(:deadline_on)
+          |：
           = l @task.deadline_on
         p
           label プロジェクト：
-          = @task.responsible.username
-        p
-          label 担当者：
           = @task.group.name
+        p
+          label = Task.human_attribute_name(:responsible)
+          |：
+          = @task.responsible.username
       .col-sm-4
         p
-          label 状況
+          label = Task.human_attribute_name(:status)
+          |：
           = @task.human_status
         p
-          label 優先度：
-          = @task.human_priority
-        p
-          label 優先度：
+          label = Task.human_attribute_name(:priority)
+          |：
           = @task.human_priority
       .col-sm-4
         p
