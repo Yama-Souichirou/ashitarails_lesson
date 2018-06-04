@@ -1,14 +1,16 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.2"
 
-set :application, "manyo"
+set :application, "192.168.56.103"
 set :repo_url, "https://github.com/Yama-Souichirou/ashitarails_lesson.git"
+# set :scm, :git
+set :use_sudo, true
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/manyo/htdocs"
+set :deploy_to, "/var/www/rails"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -21,7 +23,7 @@ set :deploy_to, "/home/manyo/htdocs"
 set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml"
+# append :linked_files, "config/database.yml"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
