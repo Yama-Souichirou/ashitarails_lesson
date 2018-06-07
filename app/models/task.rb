@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   attachment :file
-  
+
   has_many :task_labels, dependent: :delete_all
   has_many :labels, through: :task_labels
   has_many :task_images, dependent: :delete_all
@@ -14,30 +14,33 @@ class Task < ApplicationRecord
   validates :deadline_on, presence: true
   validates :status, presence: true
   validates :priority, presence: true
-  
+
   PRIORITIES = { anytime: 1, normal: 2, prior: 3, top_prior: 4 }
   STATUSES   = { not_start: 1, working: 2, complete: 3 }
-  
+
   enum priority: PRIORITIES
   enum status: STATUSES
-  
+
   before_create :set_default_status
   before_create :set_default_priority
-  
+
   scope :exclude_complete, -> () {
     where.not(status: "complete")
   }
   scope :close_deadline_tasks, -> () {
     exclude_complete.where("tasks.deadline_on < ?", Date.today + 2.day)
   }
+  scope :search_title, -> (title) {
+    where("tasks.title like ?", "%#{title}%") if title.present?
+  }
 
   def self.search(params)
     tasks = Task.all
 
     return tasks.exclude_complete if params.blank?
-    
+
     if params[:title].present?
-      tasks = tasks.where("title like ?", "%#{params[:title]}%")
+      tasks = tasks.search_title(params[:title])
     end
     if params[:status].present?
       tasks = tasks.where(status: params[:status])
@@ -45,11 +48,11 @@ class Task < ApplicationRecord
     if params[:priority].present?
       tasks = tasks.where(priority: params[:priority])
     end
-    if params[:responsible_id].present?
-      tasks = tasks.where(responsible: params[:responsible_id])
+    if params[:responsible].present?
+      tasks = tasks.where(responsible: params[:responsible])
     end
-    if params[:user_id].present?
-      tasks = tasks.where(user_id: params[:user_id])
+    if params[:user].present?
+      tasks = tasks.where(user_id: params[:user])
     end
     if params[:label_ids].present?
       ids = params[:label_ids].map { | id| id.to_i }
@@ -70,7 +73,7 @@ class Task < ApplicationRecord
       tasks
     end
   end
-  
+
   def human_priority
     I18n.t "enum.tasks.priorities.#{self.priority}"
   end
@@ -78,7 +81,7 @@ class Task < ApplicationRecord
   def human_status
     I18n.t "enum.tasks.statuses.#{self.status}"
   end
-  
+
   def self.priority_options
     I18n.t 'enum.tasks.priorities'
   end
@@ -86,12 +89,12 @@ class Task < ApplicationRecord
   def self.status_options
     I18n.t 'enum.tasks.statuses'
   end
-  
+
   def left_days
     left_days = self.deadline_on - Date.today
     left_days.to_i
   end
-  
+
   def display_left_days_format
     if self.left_days.to_i <= -1
       "期限を過ぎています"
@@ -99,7 +102,7 @@ class Task < ApplicationRecord
       "残り#{left_days.to_i}日"
     end
   end
-  
+
   def priority_color_class
     priority = self.priority
     if priority == "anytime" || priority == "normal"
@@ -131,7 +134,7 @@ class Task < ApplicationRecord
       "info"
     end
   end
-  
+
   private
     def set_default_status
       self.status ||= 1

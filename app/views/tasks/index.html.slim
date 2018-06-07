@@ -1,3 +1,5 @@
+= javascript_include_tag 'tasks_vue'
+
 .container-fluid#tasks
   .row
     .col-sm-12
@@ -8,7 +10,7 @@
               .col-sm-3
                 .form-group
                   = f.label :title, "タスク名", class: "label-control"
-                  = f.text_field :title, class: "form-control", id: "search_title"
+                  input.form-control v-model="params.task.title" v-on:keyup="search"
               .row
                 .col-sm-12
                   .col-sm-3
@@ -20,33 +22,30 @@
                     .col-sm-6
                       .form-group
                         = f.label :status, "ステータス", class: "label-control"
-                        = f.select :status, Task.status_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", id: "search_status"
+                        = f.select :status, Task.status_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", id: "search_status", 'v-model': "params.task.status", 'v-on:change': 'selectChange'
                     .col-sm-6
                       .form-group
                         = f.label :priority, "優先順位", class: "label-control"
-                        = f.select :priority, Task.priority_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control"
+                        = f.select :priority, Task.priority_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", 'v-model': "params.task.priority", 'v-on:change': 'selectChange'
                     .col-sm-6
                       .form-group
                         = f.label :responsible_id, "担当者", class: "label-control"
-                        = f.select :responsible_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control"
+                        = f.select :responsible_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control", 'v-model': "params.task.responsible", 'v-on:change': 'selectChange'
                     .col-sm-6
                       .form-group
                         = f.label :user_id, "作成者", class: "label-control"
-                        = f.select :user_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control"
+                        = f.select :user_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control", 'v-model': "params.task.user", 'v-on:change': 'selectChange'
                   .col-sm-6
                     .form-group
                       = label_tag "task[label_ids]", "ラベル"
-                      = select_tag 'task[label_ids]', options_for_select(Label.all.map { |label| [label.name, label.id] }), include_blank: true, multiple: true, id: "label-select"
+                      = select_tag 'task[label_ids]', options_for_select(Label.all.map { |label| [label.name, label.id] }), include_blank: true, multiple: true, id: "label-select", 'v-model': 'params.task.label_ids'
             .row
               .col-sm-12
                 .col-sm-2
-                  label.label-control 検索
-                  = button_tag id: "search-button", class: "main-btn-block" do
-                    i.glyphicon.glyphicon-search
-                .col-sm-2
                   label.label-control リセット
-                  = link_to root_path, id: "reset-button", class: "sub-btn-block" do
+                  .sub-btn-block#reset-button v-on:click="reset"
                     i.fas.fa-times
+
   .row.mt20
     .col-sm-12
       ul.nav.nav-tabs
@@ -73,27 +72,24 @@
                       th プロジェクト
 
                   tbody.data-tbody.sortable
-                    - @tasks.close_deadline_tasks.each do |task|
-                      tr
-                        td
-                          input type="checkbox"
-                        td.td-title
-                           = link_to task.title, task_path(task)
-                        td.td-deadlineon
-                          label class="label label-#{task.deadline_color_class}" = task.display_left_days_format
-                        td.td-priority
-                          label class="label label-#{task.priority_color_class}" = task.human_priority
-                        td.td-status
-                          label class="label label-#{task.status_color_class}" = task.human_status
-                        td = task.responsible.username.truncate(8)
-                        td = task.user.username.truncate(8)
-                        td
-                          - task.labels.each.with_index(1) do |label, i|
-                            = link_to tasks_path(task: { 'label_ids' => [label.id] }) do
-                              label.selected-label-green = label.name
-                            - if  i % 2 == 0
-                              br
-                        td = link_to task.group.name, group_path(task.group)
+                    tr v-for="task in close_deadline_tasks"
+                      td
+                        input type="checkbox" name="task_id" v-bind:value="task.id"
+                      td
+                        a v-bind:href='"tasks/" + task.id' v-html="task.title"
+                      td.td-deadlineon v-html="task.deadline_on"
+                      td.td-priority
+                        label v-html="task.priority" v-bind:class="'label label-' + task.priority_class"
+                      td.td-status
+                        label v-bind:class="'label label-' + task.status_class" v-html="task.status"
+                      td v-html="task.responsible"
+                      td v-html="task.user"
+                      td
+                        span v-for="label in task.labels"
+                          a v-bind:href="'/tasks?task' + label.id"
+                            label.selected-label-green v-html="label.name"
+                    td
+                      a v-bind:href="'groups/' + task.group_id" v-html="task.group"
               .panel-footer.clearfix
                 .btn.default-btn.pull-right.ml10.collect-update 一括完了
               = paginate @tasks
@@ -115,25 +111,24 @@
                       th プロジェクト
 
                   tbody.data-tbody.sortable
-                    - @tasks.each do |task|
-                      tr
-                        td
-                          input type="checkbox" name="task_id" value="#{task.id}"
-                        td.td-title
-                          = link_to task.title, task_path(task)
-                        td.td-deadlineon = l task.deadline_on
-                        td.td-priority
-                          label class="label label-#{task.priority_color_class}" = task.human_priority
-                        td.td-status
-                          label class="label label-#{task.status_color_class}" = task.human_status
-                        td = task.responsible.username.truncate(8)
-                        td = task.user.username.truncate(8)
-                        td
-                          - task.labels.each.with_index(1) do |label, i|
-                            = link_to tasks_path(task: { 'label_ids' => [label.id] }) do
-                              label.selected-label-green = label.name
-                            - if i % 2 == 0
-                              br
-                        td = link_to task.group.name, group_path(task.group)
+                    tr v-for="task in tasks"
+                      td
+                        input type="checkbox" name="task_id" v-bind:value="task.id"
+                      td
+                        a v-bind:href='"tasks/" + task.id' v-html="task.title"
+                         | {{task.title}}
+                      td.td-deadlineon v-html="task.deadline_on"
+                      td.td-priority
+                        label v-html="task.priority" v-bind:class="'label label-' + task.priority_class"
+                      td.td-status
+                        label v-bind:class="'label label-' + task.status_class" v-html="task.status"
+                      td v-html="task.responsible"
+                      td v-html="task.user"
+                      td
+                        span v-for="label in task.labels"
+                          a v-bind:href="'/tasks?task' + label.id"
+                            label.selected-label-green v-html="label.name"
+                      td
+                        a v-bind:href="'groups/' + task.group_id" v-html="task.group"
               .panel-footer.clearfix
                 .btn.default-btn.pull-right.ml10.collect-update 一括完了

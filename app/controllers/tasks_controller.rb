@@ -7,11 +7,14 @@ class TasksController < ApplicationController
     @tasks = Task
       .where(group_id: @groups.ids)
       .includes(:user)
-      .search(params[:task])
-      .order(sortable_conditions_str(params[:sort]))
+      .search(params["task"])
       .page(params[:page])
-    @task = Task.new
     @q = params[:task].present? ? Task.new(task_search_params) : Task.new(status: nil, priority: nil)
+
+    respond_to do |format|
+      format.html {}
+      format.json { render "index", handlers: "jbuilder" }
+    end
   end
   
   def new
@@ -67,7 +70,7 @@ class TasksController < ApplicationController
     end
     
     def task_search_params
-      params.require(:task).permit(:title, :status, :priority, :user_id, :responsible_id, label_ids: [])
+      # params.require(:task).permit(:title, :status, :priority, :user_id, :responsible_id, label_ids: [])
     end
   
     def set_task
