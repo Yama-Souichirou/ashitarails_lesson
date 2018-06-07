@@ -12,7 +12,7 @@ window.onload = function(){
           priority: undefined,
           responsible: undefined,
           user: undefined,
-          label_ids: undefined,
+          labels: undefined,
         }
       }
     },
@@ -48,12 +48,6 @@ window.onload = function(){
           self.tasks = response.tasks;
           self.deadClosedTasks = response.close_dead_tasks;
         });
-      },
-      selectChange: function() {
-        this.search();
-      },
-      fieldChange: function() {
-        this.search();
       },
       reset: function() {
         this.default_search();

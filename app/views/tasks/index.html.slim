@@ -22,23 +22,23 @@
                     .col-sm-6
                       .form-group
                         = f.label :status, "ステータス", class: "label-control"
-                        = f.select :status, Task.status_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", id: "search_status", 'v-model': "params.task.status", 'v-on:change': 'selectChange'
+                        = f.select :status, Task.status_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", id: "search_status", 'v-model': "params.task.status", 'v-on:change': 'search'
                     .col-sm-6
                       .form-group
                         = f.label :priority, "優先順位", class: "label-control"
-                        = f.select :priority, Task.priority_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", 'v-model': "params.task.priority", 'v-on:change': 'selectChange'
+                        = f.select :priority, Task.priority_options.map { |k, v| [v, k] }, { include_blank: true }, class: "form-control", 'v-model': "params.task.priority", 'v-on:change': 'search'
                     .col-sm-6
                       .form-group
                         = f.label :responsible_id, "担当者", class: "label-control"
-                        = f.select :responsible_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control", 'v-model': "params.task.responsible", 'v-on:change': 'selectChange'
+                        = f.select :responsible_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control", 'v-model': "params.task.responsible", 'v-on:change': 'search'
                     .col-sm-6
                       .form-group
                         = f.label :user_id, "作成者", class: "label-control"
-                        = f.select :user_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control", 'v-model': "params.task.user", 'v-on:change': 'selectChange'
+                        = f.select :user_id, User.all.map { |user| [user.username, user.id] }, { include_blank: true }, class: "form-control", 'v-model': "params.task.user", 'v-on:change': 'search'
                   .col-sm-6
                     .form-group
                       = label_tag "task[label_ids]", "ラベル"
-                      = select_tag 'task[label_ids]', options_for_select(Label.all.map { |label| [label.name, label.id] }), include_blank: true, multiple: true, id: "label-select", 'v-model': 'params.task.label_ids'
+                      = select_tag 'task[label_ids]', options_for_select(Label.all.map { |label| [label.name, label.id] }), include_blank: true, multiple: true, id: "label-select", 'v-model': 'params.task.labels', 'v-on:change': 'search'
             .row
               .col-sm-12
                 .col-sm-2
