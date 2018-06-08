@@ -33,3 +33,4 @@ production:
   username: manyoproduction
   database: manyoproduction
   password: manyoproduction
+  socket: /var/lib/mysql/mysql.sock

@@ -54,7 +54,7 @@ server "18.220.110.192",
   roles: %w{web app},
   ssh_options: {
     user: "yama", # overrides user setting above
-    keys: %w(~/.ssh/ec2-yama),
+    keys: %w(~/.ssh/rookie_ec2),
     forward_agent: false,
     auth_methods: %w(publickey password)
     # password: "please use keys"
