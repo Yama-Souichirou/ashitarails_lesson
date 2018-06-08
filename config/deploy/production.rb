@@ -49,12 +49,12 @@
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server "192.168.56.103",
+server "18.220.110.192",
   user: "yama",
   roles: %w{web app},
   ssh_options: {
     user: "yama", # overrides user setting above
-    keys: %w(~/.ssh/virtualbox_id_rsa),
+    keys: %w(~/.ssh/ec2-yama),
     forward_agent: false,
     auth_methods: %w(publickey password)
     # password: "please use keys"
