@@ -9,10 +9,10 @@ default: &default
   pool: 5
   timeout: 5000
   encoding: utf8
-  host:      localhost
 
 development:
   <<: *default
+  host:      localhost
   username:  ashita_lesson_local
   password:  ashita_lesson_local
   database:  ashita_lesson_local
@@ -29,6 +29,7 @@ test:
 
 production:
   <<: *default
-  username: manyo_virtual
-  database: manyo_virtual
-  password: manyo_virtual
+  host:     ec2-18-220-110-192.us-east-2.compute.amazonaws.com
+  username: manyoproduction
+  database: manyoproduction
+  password: manyoproduction
