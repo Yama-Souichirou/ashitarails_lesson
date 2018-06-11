@@ -4,7 +4,7 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum, this matches the default thread size of Active Record.
 
-if Rails.env == "production"
+if ENV.fetch("RAILS_ENV") == "production"
   app_dir = File.expand_path("../../", __FILE__)
   tmp_dir = "#{app_dir}/tmp"
 
