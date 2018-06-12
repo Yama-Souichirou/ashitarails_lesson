@@ -54,6 +54,27 @@ window.onload = function(){
         $('input').val('');
         $('select').val('');
       },
+      collectComplete: function() {
+        var task_ids = $('input[name="task_id"]:checked').map(function(){
+          return $(this).val();
+        }).get();
+  
+        $.ajax({
+          url: '/api/tasks/' + task_ids[0],
+          type: 'PATCH',
+          data: {
+            task_ids: task_ids
+          },
+          headers: {
+            'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
+          },
+        }).then(function (response) {
+          console.log(response);
+           // toastr.success();
+        }).fail(function (response) {
+          // toastr.error(data.message);
+        })
+      }
     }
   })
   

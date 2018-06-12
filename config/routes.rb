@@ -2,19 +2,6 @@ Rails.application.routes.draw do
   namespace :api do
     resources :tasks, only: [:index, :update, :destroy]
   end
-
-  resources :tasks do
-    get :calendar, on: :collection
-  end
-  resources :sessions, only: [:new, :create]
-  resources :labels, only: [:index]
-  resources :users, only: [:show, :update, :edit]
-  resources :groups do
-    resources :users do
-      resource :group_users, only: :destroy
-    end
-  end
-  delete "/session" => "sessions#destroy", as: :destroy_session
   
   namespace :admin do
     root 'tasks#index'
@@ -28,6 +15,18 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :tasks do
+    get :calendar, on: :collection
+  end
+  resources :sessions, only: [:new, :create]
+  resources :labels, only: [:index]
+  resources :users, only: [:show, :update, :edit]
+  resources :groups do
+    resources :users do
+      resource :group_users, only: :destroy
+    end
+  end
+  delete "/session" => "sessions#destroy", as: :destroy_session
   root "tasks#index"
-  
 end

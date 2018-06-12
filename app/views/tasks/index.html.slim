@@ -131,4 +131,4 @@
                       td
                         a v-bind:href="'groups/' + task.group_id" v-html="task.group"
               .panel-footer.clearfix
-                .btn.default-btn.pull-right.ml10.collect-update 一括完了
+                .btn.default-btn.pull-right.ml10 v-on:click="collectComplete" 一括完了

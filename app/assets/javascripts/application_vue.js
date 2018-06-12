@@ -20,7 +20,7 @@ window.onload = function(){
       this.month      = now.getMonth() + 1;
   
       // 月の全タスクを取得してcalendar_tasksにセット
-      axios.get('/tasks.json', {
+      axios.get('/api/tasks.json', {
         params: {
           start_day: self.year + '-' + self.month + '-1',
           end_day: self.year + '-' + self.month + '-' + new Date(self.year, self.month, 0).getDate(),

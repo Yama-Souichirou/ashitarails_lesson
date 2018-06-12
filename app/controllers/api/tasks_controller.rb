@@ -9,8 +9,12 @@ class Api::TasksController < ApplicationController
     ids = params[:task_ids].map { |id| id.to_i }
     @tasks = Task.where(id: ids)
     if @tasks.update_all(status: 3)
-      flash[:notice] = "一括更新しました"
-      render json: { url: "#{tasks_path}" }, status: :ok
+      @tasks = Task
+        .where(group_id: @current_user.groups.ids)
+        .includes(:user)
+        .search(params["task"])
+        .page(params[:page])
+      render json: { message: "更新しました", handlers: 'jbuilder' }, status: :ok
     else
       render json: { message: "更新できませんでした" }, status: :bad_request
     end

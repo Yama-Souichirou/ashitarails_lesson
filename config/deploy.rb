@@ -3,6 +3,7 @@ lock "~> 3.11.0"
 
 set :application, "18.191.34.194"
 set :repo_url, "https://github.com/Yama-Souichirou/ashitarails_lesson.git"
+set :branch, fetch(:branch, "master")
 # set :scm, :git
 set :use_sudo, true
 
@@ -40,7 +41,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 set :puma_threads,    [4,16]
-set :puma_workers,    0
+set :puma_workers,    1
 set :stage,           :production
 set :deploy_via,      :remote_cache
 set :puma_bind,       "unix://var/www/manyo/current/tmp/sockets/puma.sock"

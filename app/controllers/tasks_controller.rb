@@ -9,7 +9,7 @@ class TasksController < ApplicationController
       .includes(:user)
       .search(params["task"])
       .page(params[:page])
-    @q = params[:task].present? ? Task.new(task_search_params) : Task.new(status: nil, priority: nil)
+    @q = Task.new(status: nil, priority: nil)
 
     respond_to do |format|
       format.html {}
@@ -67,10 +67,6 @@ class TasksController < ApplicationController
   private
     def task_params
       params.require(:task).permit(:title, :description, :deadline_on, :priority, :status, :group_id, :user_id, :responsible_id, task_labels_attributes: [:task_id, :label_id, :_destroy, :id], task_images_files: [])
-    end
-    
-    def task_search_params
-      # params.require(:task).permit(:title, :status, :priority, :user_id, :responsible_id, label_ids: [])
     end
   
     def set_task
