@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require plugins/multi-select/js/jquery.multi-select.js
 
 $(function(){
     $('.sortable').sortable();
