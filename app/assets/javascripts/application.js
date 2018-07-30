@@ -25,8 +25,8 @@ $(function(){
     });
 
     // multi-select
-    $('#label-select').multiSelect();
-    $('#user-select').multiSelect();
+    // $('#label-select').multiSelect();
+    // $('#user-select').multiSelect();
 
     $('.detail-toggle-btn').on('click', function(){
         $('#detail').stop().fadeToggle(200);
